@@ -1,21 +1,21 @@
 {
-  "name": "parcel-project-template",
+  "name": "filmoteka_by_ITLegend",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://goitacademy.github.io/parcel-project-template",
+  "homepage": "https://Musiyan98.github.io/filmoteka_by_ITLegend",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /filmoteka_by_ITLegend/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
+    "url": "git+https://github.com/Musiyan98/filmoteka_by_ITLegend.git"
   },
   "keywords": [],
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "https://github.com/Musiyan98/filmoteka_by_ITLegend/issues"
   },
   "dependencies": {
     "modern-normalize": "^1.1.0"
