@@ -18,12 +18,12 @@
       width: 280px;
 
       &:not(:last-child) {
-         margin-bottom: 20px;
+         margin-bottom: 10px;
       }
    }
 
    @include mq (tablet-only) {
-      margin-top: 32px;
+      margin-top: 22px;
       flex-basis: calc((100% - 32px) / 2);
 
       &:nth-child(2n-1) {
@@ -36,7 +36,7 @@
    }
 
    @include mq (desktop) {
-      margin-top: 32px;
+      margin-top: 22px;
       margin-right: 16px;
       flex-basis: calc((100% - 32px) / 3);
 
@@ -149,4 +149,5 @@
 
 .gallery__info {
    display: flex;
+   padding-bottom: 10px;
 };
