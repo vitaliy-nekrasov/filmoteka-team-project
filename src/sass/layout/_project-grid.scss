@@ -5,6 +5,7 @@
 
 .gallery__item {
    transition: var(--animations-link-shadow);
+
    
    &:hover,
    &:focus {
@@ -12,6 +13,8 @@
    }
 
    @include mq (mobile-only) {
+      margin-left: auto;
+      margin-right: auto;
       width: 280px;
 
       &:not(:last-child) {
@@ -59,7 +62,7 @@
    line-height: 1.17;
    letter-spacing: 0.06em;
    text-transform: uppercase;
-   color: #000000;
+   color: var(--color-text-main);
 
    @include mq(tablet) {
       margin-top: 8px;
@@ -78,7 +81,7 @@
       font-size: 12px;
       line-height: 1.17;
       letter-spacing: 0.06em;
-      color: #FF6B08;
+      color: var(--color-text-accent);
    
       @include mq(tablet) {
          line-height: 1.33;
@@ -96,7 +99,7 @@
    font-size: 12px;
    line-height: 1.17;
    letter-spacing: 0.06em;
-   color: #FF6B08;
+   color: var(--color-text-accent);
    position: relative;
 
    @include mq(tablet) {
