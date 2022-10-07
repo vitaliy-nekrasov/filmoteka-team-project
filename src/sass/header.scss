@@ -1,9 +1,14 @@
+<<<<<<< Updated upstream
 
     // body {
     //     background-color: black;
     //   }
       
       .header {
+=======
+   
+      .header{
+>>>>>>> Stashed changes
         background-image: url(../images/abstract-background-with-red-lines\ 1\ \(2x\).png);
         background-size: cover;
         padding-top: 40px;
@@ -13,14 +18,20 @@
       .link__box {
         display: flex;
         justify-content: space-between;
+<<<<<<< Updated upstream
         margin-bottom: 41px;
+=======
+      }
+
+      .logo__box {
+        display: flex;
+>>>>>>> Stashed changes
       }
   
       .navigation__link {
         text-decoration: none;
         text-transform: uppercase;
         color: white;
-        font-family: 'Roboto';
         font-style: normal;
         font-weight: 500;
         font-size: 12px;
@@ -43,11 +54,12 @@
         text-align: center;
         margin-right: auto;
         margin-left: auto;
+        margin-top: 40px;
       }
   
       .input__form {
         position: relative;
-        width: 394px;
+        width: 280px;
         color: white;
         background-color: rgb(0,0,0, 0.01);
         border-top: none;
@@ -55,28 +67,33 @@
         border-right: none;
         border-color: white;
         border-width: 0.5px;
+      
+        @media screen and (min-width: 768px) {
+          width: 336px;
+      }
+
+      @media screen and (min-width: 1280px) {
+        width: 394px;
+    }      
       }
   
+.image__logo {
+  margin-right: 12px;
+}
+
       .input__form::placeholder {
         color: white
       }
   
       .logo {
         color: white;
-        text-decoration: none;
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 500;
         font-size: 30px;
-        line-height: 35px;
         display: flex;
-        align-items: center;
-        text-align: center;
+        display: none;
+      
+      @media screen and (min-width: 768px) {
+        display: block;
       }
-  
-      .logo::before {
-        content: url(../images/film.svg);
-        margin-right: 10px;
     }
   
   .submit {
@@ -91,6 +108,7 @@
   
   .submit:hover {
     scale: 1.2;
+    transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .current {
