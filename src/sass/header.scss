@@ -1,0 +1,99 @@
+
+    // body {
+    //     background-color: black;
+    //   }
+      
+      .header{
+        background-image: url(../images/abstract-background-with-red-lines\ 1\ \(2x\).png);
+        background-size: cover;
+        padding-top: 40px;
+        padding-bottom: 80px;
+      }
+  
+      .link__box {
+        display: flex;
+        justify-content: space-around;
+      }
+  
+      .navigation__link {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: white;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+      }
+  
+      .home {
+        margin-right: 39px;
+      }
+  
+      .navigation__list {
+        display: flex;
+        list-style-type: none;
+        justify-content: right;
+        margin: 0;
+        padding: 0;
+      }
+  
+      .form {
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+      }
+  
+      .input__form {
+        position: relative;
+        width: 394px;
+        color: white;
+        background-color: rgb(0,0,0, 0.01);
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-color: white;
+        border-width: 0.5px;
+      }
+  
+      .input__form::placeholder {
+        color: white
+      }
+  
+      .logo {
+        color: white;
+        text-decoration: none;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 35px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+  
+      .logo::before {
+        content: url(../images/film.svg);
+        margin-right: 10px;
+    }
+  
+  .submit {
+    position:relative;
+    right: 25px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: url(../images/search_2.svg) no-repeat center;
+    cursor: pointer;
+  }
+  
+  .submit:hover {
+    scale: 1.2;
+  }
+  
+  .current {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: #FF001B;
+  }
