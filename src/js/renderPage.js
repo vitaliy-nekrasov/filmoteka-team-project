@@ -8,15 +8,19 @@ form.addEventListener('submit', onSubmitFilterFilm);
 
 let page = 1;
 let searchNameFilm = '';
+
 let currentArrFilmLS = [];
 let currentFilmReadLS = [];
 
 // Получение с бэкэнда массива жанров фильмов и сохраниние его в LocalStorage для дальнейшей работы
+
 fetchGenres().then(responce => {
   localStorage.setItem('Genres', JSON.stringify(responce.genres));
 });
 
+
 // Чтение перед загрузкой стартовой страницы сохраненного массива жанров фильмов
+
 const gen = localStorage.getItem('Genres');
 
 function inputFilterFilm(event) {
@@ -46,7 +50,9 @@ function renderFilmoteka(films) {
 function onReadCurrentArrayFilmLS() {
   let filmReadLocalStorage = localStorage.getItem('currentArrayFilm');
   currentFilmReadLS = JSON.parse(filmReadLocalStorage);
+
   console.log(currentFilmReadLS);
+
 }
 
 onReadCurrentArrayFilmLS();
@@ -77,6 +83,7 @@ function makeGallery(arrayCards) {
     })
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
+
   // Удаление из LocalStorage массива жанров фильмов
   localStorage.removeItem('Genres');
   // Сохранение в LocalStorage массива фильмов текущей страницы
@@ -84,6 +91,7 @@ function makeGallery(arrayCards) {
 }
 
 // Очистка галереи
+
 function clearGallery() {
   gallery.innerHTML = '';
 }
