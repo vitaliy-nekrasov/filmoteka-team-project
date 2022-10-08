@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    min-height: calc(100vh - 80px);
+}
+
+.footer {
+    margin: 30px 0 0 0;
+    background-color: #f7f7f7;
+}
+
+.footer__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    color: #545454;
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-size: 16px;
+    }
+}
+
+.footer__content {
+    display: flex;
+    margin-top: 29px;
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        margin-bottom: 29px;
+    }
+}
+
+.footer__develop {
+    display: flex;
+    margin-bottom: 29px;
+    margin-right: 68px;
+    padding: 5px;
+
+    @media screen and (min-width: 768px) {
+        margin-top: 29px;
+    }
+}
+
+.btn {
+    display: flex;
+    width: 55px;
+    padding-left: 4px;
+}
+
+.btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    margin-top: 20px;
+    width: 120px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #ffa500;
+    transition: transform 250ms linear;
+    transform: scale(0);
+}
+
+.btn:hover::after {
+    transform: scale(1);
+}
+
+.btn:hover {
+    font-weight: bold;
+    transition: transform 250ms linear;
+}
+
+.goit__stud {
+    padding-left: 4px;
+    color: #545454;
+}
+
+.animate__heart {
+    width: 14px;
+    height: 13px;
+    margin: 0 5px;
+    animation: beat 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+    
+    @keyframes beat {
+        0% {
+            transform: scale(1);
+        }
+
+        15% {
+            transform: scale(1.6);
+        }
+
+        26% {
+            transform: scale(1.4);
+        }
+
+        44% {
+            transform: scale(1.6);
+        }
+
+        75% {
+            transform: scale(1.4);
+        }
+    }
+}
+
+button {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    color: #ff6b01;
+    background-color: #f7f7f7;
+}
