@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <meta name="description"
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta name="description"
     content=""> -->
-    <title>library</title>
-    <link rel="shortcut icon" href="/src/images/main_icon.svg" />
-    <link rel="stylesheet" href="./sass/index.scss" />
-  </head>
+  <title>library</title>
+  <link rel="shortcut icon" href="/src/images/main_icon.svg" />
+  <link rel="stylesheet" href="./sass/index.scss" />
+</head>
 
-  <body>
-    <main>
-      <!-- ❗️❗️❗️ Add partials like so for every page -->
-      <!-- <include src="./partials/example.html"></include> -->
-      <include src="./partials/header_lib.html"></include>
-      <include src="./partials/main_library.html"></include>
-      
+<body>
+  <include src="./partials/header_lib.html"></include>
 
+  <main>
+    <!-- ❗️❗️❗️ Add partials like so for every page -->
+    <!-- <include src="./partials/example.html"></include> -->
+    <include src="./partials/main_library.html"></include>
+    <include src="./partials/film-gallery-lib.html"></include>
+  </main>
+  <include src="./footer.html"></include>
 
+  <include src="./partials/loader.html"></include>
+  <script type="module" src="./index.js"></script>
+</body>
 
-      <include src="./footer.html"></include>
-    </main>
-    <include src="./partials/loader.html"></include>
-    <script type="module" src="./index.js"></script>
-  </body>
 </html>
