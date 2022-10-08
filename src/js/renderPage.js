@@ -46,6 +46,10 @@ function renderFilmoteka(films) {
 function onReadCurrentArrayFilmLS() {
   let filmReadLocalStorage = localStorage.getItem('currentArrayFilm');
   currentFilmReadLS = JSON.parse(filmReadLocalStorage);
+<<<<<<< Updated upstream
+=======
+  console.log(currentFilmReadLS);
+>>>>>>> Stashed changes
 }
 
 onReadCurrentArrayFilmLS();
