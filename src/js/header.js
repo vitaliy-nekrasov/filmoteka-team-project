@@ -10,7 +10,6 @@ refs.formEl.addEventListener('submit', getValue);
 function getValue (e){
     e.preventDefault();
     const formValue = e.currentTarget.elements[0].value
-    // console.log(formValue)
     refs.error.style.display = 'none';
 if (formValue == ''){
     refs.error.style.display = 'block';
