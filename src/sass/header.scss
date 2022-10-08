@@ -121,9 +121,9 @@
     cursor: pointer;
   }
   
-  .submit:hover {
-    scale: 1.2;
-    transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  .submit:hover, .submit:focus {
+    scale: 1.5;
+    transition: scale 450ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .current {
@@ -172,4 +172,10 @@ transition: scale 450ms cubic-bezier(0.4, 0, 0.2, 1);
   .active {
   background-color: #FF6B01;
   border: none;
+  }
+
+  .error__message {
+    display: none;
+    margin-top: 20px;
+    color: #FF001B;
   }
