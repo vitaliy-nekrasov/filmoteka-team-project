@@ -55,7 +55,7 @@ function getFilmById(id) {
   return electFilm;
 }
 
-function renderModalWindoq(filmEl, genhes) {
+function renderModalWindoq(filmEl) {
   const {
     id,
     title,
@@ -65,6 +65,7 @@ function renderModalWindoq(filmEl, genhes) {
     vote_average,
     vote_count,
     overview,
+    genresName,
   } = filmEl;
 
   // .innerHTML = ``;
