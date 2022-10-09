@@ -40,7 +40,7 @@ function onCloseModal(e) {
   const addQueue = document.querySelector('.add_queue');
   const imdbBtnEl = document.querySelector('.imdb-btn');
 
-  // imdbBtnEl.removeEventListener('click', e => console.log(e));
+  imdbBtnEl.removeEventListener('click', onGoIMDbPage);
   // addWatched.removeEventListener('click', e => console.log(e));
   // addQueue.removeEventListener('click', e => console.log(e));
 
