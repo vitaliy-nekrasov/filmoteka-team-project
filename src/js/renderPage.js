@@ -23,7 +23,6 @@ fetchGenres().then(responce => {
   localStorage.setItem('Genres', JSON.stringify(responce.genres));
 });
 
-
 // Чтение перед загрузкой стартовой страницы сохраненного массива жанров фильмов
 
 const gen = localStorage.getItem('Genres');
@@ -57,7 +56,6 @@ function onReadCurrentArrayFilmLS() {
   currentFilmReadLS = JSON.parse(filmReadLocalStorage);
 
   console.log(currentFilmReadLS);
-
 }
 
 onReadCurrentArrayFilmLS();
@@ -101,7 +99,7 @@ function makeGallery(arrayCards) {
         });
       }
       genres = genres.slice(0, genres.length - 2);
-      return `<div class="card">
+      return `<div class="card" id="${card.id}">
       <img class="gallery__image" src="${API_IMAGE}/w300${card.poster_path}" alt="Постер не найден" loading="lazy" />
     <p class="genres">${genres}</p>
   </div>`;
@@ -110,7 +108,7 @@ function makeGallery(arrayCards) {
   gallery.insertAdjacentHTML('beforeend', markup);
 
   // Удаление из LocalStorage массива жанров фильмов
-  localStorage.removeItem('Genres');
+  // localStorage.removeItem('Genres');
   // Сохранение в LocalStorage массива фильмов текущей страницы
   localStorage.setItem('currentArrayFilm', JSON.stringify(currentArrFilmLS));
 }
