@@ -1,4 +1,9 @@
-import { fetchSearchFilm, fetchTrending, fetchGenres } from './API.js';
+import {
+  fetchSearchFilm,
+  fetchTrending,
+  fetchGenres,
+  fetchIMDbId,
+} from './API.js';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.form');
@@ -56,6 +61,26 @@ function onReadCurrentArrayFilmLS() {
 }
 
 onReadCurrentArrayFilmLS();
+console.log(currentFilmReadLS);
+
+// Получение ID  фильма с объекта в LS
+function onReadIdFromLS(numberFilmPage) {
+  return currentFilmReadLS[numberFilmPage].id;
+}
+
+// Получение IMDb_id с бэкэнда через ID фильма с картотеки с сохранением IMDb_id в LS
+fetchIMDbId(onReadIdFromLS(2)).then(responce => {
+  localStorage.setItem('IMDb_id', JSON.stringify(responce.imdb_id));
+});
+
+// console.log(localStorage.getItem());
+
+// Чтение IMDb_id с LS для получения ссылки на сайт IMDb
+let idIMDb = JSON.parse(localStorage.getItem('IMDb_id'));
+console.log(idIMDb);
+
+// Пример открытия ссылки в новой вкладке
+// console.log(window.open(`https://www.imdb.com/title/${idIMDb}`, '_blank'));
 
 function makeGallery(arrayCards) {
   const API_IMAGE = 'https://image.tmdb.org/t/p';

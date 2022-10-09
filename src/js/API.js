@@ -38,7 +38,20 @@ async function fetchGenres() {
   }
 }
 
-export { fetchTrending, fetchSearchFilm, fetchGenres };
+async function fetchIMDbId(filmoId) {
+  try {
+    console.log(filmoId);
+    const URL = 'https://api.themoviedb.org/3/movie/';
+
+    const response = await fetch(`${URL}${filmoId}?api_key=${API_KEY}`);
+    return response.json();
+  } catch (error) {
+    // обработка ошибки получения данных с бэкэнда
+    console.error(error);
+  }
+}
+
+export { fetchTrending, fetchSearchFilm, fetchGenres, fetchIMDbId };
 
 // Комментарии по поиску
 //        Галерея:
