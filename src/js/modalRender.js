@@ -107,6 +107,7 @@ function renderModalWindoq(filmEl, idInIMDB) {
                 </p>
                 <p class="about__movie--text">About</p>
                 <p class="about__movie--text--content">${overview}</p>
+                <button class="trailer" type="button">trailer</button>
                 <ul class="list__btn--add">
                     <li><button class="add__watched" data-id="${id}" type="button">add to Watched</button></li>
                     <li><button class="aadd_queue" data-id="${id}" type="button">add to queue</button></li>
