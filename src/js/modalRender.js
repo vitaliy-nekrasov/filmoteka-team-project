@@ -64,7 +64,7 @@ function getGenres(genre_ids) {
 
 function onReadCurrentArrayFilmLS() {
   let filmReadLocalStorage = localStorage.getItem('currentArrayFilm');
-  currentFilmReadLS = JSON.parse(filmReadLocalStorage);
+  let currentFilmReadLS = JSON.parse(filmReadLocalStorage);
   return currentFilmReadLS;
 }
 
