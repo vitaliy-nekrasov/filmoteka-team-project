@@ -5,7 +5,13 @@ const refs = {
     error: document.querySelector('.error__message')
 }
 
-refs.formEl.addEventListener('submit', getValue);
+try {
+    refs.formEl.addEventListener('submit', getValue);
+} catch (eror) {
+    console.log(eror);
+}
+
+// refs.formEl.addEventListener('submit', getValue);
 
 function getValue (e){
     e.preventDefault();
