@@ -4,3 +4,4 @@ import './js/library';
 import './js/renderPage';
 import './js/gallery-lib';
 import './js/modalRender';
+import './js/renderMainGallery';

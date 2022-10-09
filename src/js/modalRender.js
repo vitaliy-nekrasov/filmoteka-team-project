@@ -3,32 +3,43 @@
 //   let filmId = e.target.closest('.gallery__card').id;
 // });
 
+import fetchIMDbId from './API';
+
 const listEl = document.querySelector('.gallery');
 listEl.addEventListener('click', onRenderModal);
 
 document.querySelector('.button-modal__close').addEventListener('click', e => {
   document.querySelector('.backdrop').classList.add('display__none');
+  document.querySelector('.modal').lastChild.remove();
+  // console.log(document.querySelector('.modal').lastChild);
+  // очистить локал стор
 });
 
 function onRenderModal(e) {
   if (e.target === e.currentTarget) {
-    console.log('nahui');
+    // console.log('nahui');
     return;
   }
 
-  let filmId = e.target.closest('.card').id;
+  let filmId = e.target.closest('.gallery__card').id;
   let electFilm = getFilmById(filmId);
   let idGenresOfElectFilm = electFilm.genre_ids;
   let nameGenresOfElectFilm = getGenres(idGenresOfElectFilm);
   let remakeElectFilm = remareFilmObj(electFilm);
-  console.log(remakeElectFilm);
+  // console.log(remakeElectFilm);
+
+  // \\\\\\\
+  // fetchIMDbId(onReadIdFromLS(filmId)).then(responce => {
+  //   localStorage.setItem('IMDb_id', JSON.stringify(responce.imdb_id));
+  // });
   let idIMDb = JSON.parse(localStorage.getItem('IMDb_id'));
-  console.log(idIMDb);
+  // // console.log(idIMDb);
+  // \\\\\\\
 
   renderModalWindoq(remakeElectFilm, idIMDb);
   document.querySelector('.backdrop').classList.remove('display__none');
 
-  // console.log(nameGenresOfElectFilm);
+  // // console.log(nameGenresOfElectFilm);
   // renderModalWindoq(electFilm, nameGenresOfElectFilm);
 }
 
@@ -75,6 +86,7 @@ function renderModalWindoq(filmEl, idInIMDB) {
     overview,
     genresName,
   } = filmEl;
+  document.querySelector('.modal').lastChild.remove();
   let modalRenderCod = `    
         <div class="button-modal--flex">
             <img class="button-modal__img" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${title} poster">
@@ -110,16 +122,16 @@ function renderModalWindoq(filmEl, idInIMDB) {
 }
 
 function remareFilmObj(film) {
-  console.log('film', film);
+  // console.log('film', film);
   film.genresName = getGenres(film.genre_ids);
-  console.log('film.genresName', film.genresName);
+  // console.log('film.genresName', film.genresName);
   return film;
 }
 
 // remareFilsmObj(onReadCurrentArrayFilmLS());
 
 function remareFilsmObj(films) {
-  console.log('films', films);
+  // console.log('films', films);
   let remake = films.map(el => remareFilmObj(el));
-  console.log('remake', remake);
+  // console.log('remake', remake);
 }
