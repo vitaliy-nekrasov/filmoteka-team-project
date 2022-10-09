@@ -37,6 +37,11 @@
 .logo__box {
   display: flex;
   align-items: center;
+  transition: scale 0.4s ease-in-out;
+}
+
+.logo__box:hover, .logo__box:focus {
+  scale: 1.2;
 }
 
 .navigation__link {
@@ -47,6 +52,15 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
+  text-shadow: 0 0 10px red,0 0 20px red,0 0 30px red,0 0 40px red;
+}
+
+.navigation__item {
+  transition: scale 0.4s ease-in-out;
+}
+
+.navigation__item:hover, .navigation__item:focus {
+  scale: 1.2;
 }
 
 .home {
@@ -104,12 +118,17 @@
   font-size: 30px;
   display: flex;
   display: none;
+  transition: color 0.4s ease-in-out;
+  text-shadow: 0 0 10px red,0 0 20px red,0 0 30px red,0 0 40px red;
 
   @media screen and (min-width: 768px) {
     display: block;
   }
 }
 
+.logo__box:hover .logo{
+  color: rgba(255, 99, 71, 1);
+}
 .submit {
   position: relative;
   right: 25px;
