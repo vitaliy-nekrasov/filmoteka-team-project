@@ -37,6 +37,7 @@
 }
 
 .modal__about--title--movie {
+  position: relative;
   display: flex;
   font-weight: 500;
   font-size: 12px;
@@ -162,7 +163,6 @@
   line-height: 1.33;
   text-transform: uppercase;
   color: #ffffff;
-  margin-left: 24px;
 }
 .aadd_queue {
   width: 136px;
@@ -177,4 +177,33 @@
   text-transform: uppercase;
 
   color: #000000;
+}
+
+.imdb-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 80px;
+  right: 145px;
+  width: 36px;
+  height: 18px;
+  background-color: black;
+  color: #e7be00;
+  border: 1px solid #e7be00;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-left: 25px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.imdb-btn:hover,
+.imdb-btn:focus {
+  filter: drop-shadow(0px 8px 43px rgba(1, 1, 1, 0.6));
+  color: white;
+  border: 1px solid #000000;
+  outline: 2px solid #e7be00;
 }
