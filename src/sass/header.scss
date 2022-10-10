@@ -28,6 +28,30 @@
   }
 }
 
+.language_box {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 8px;
+}
+
+.language__item:not(:last-child) {
+  margin-right: 8px;
+}
+
+.change__language {
+  outline: none;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+
+
+
+
+
 .link__box {
   display: flex;
   justify-content: space-between;
