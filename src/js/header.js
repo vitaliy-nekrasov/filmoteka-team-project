@@ -2,16 +2,28 @@ const refs = {
     formEl: document.querySelector('.form'),
     inputEl: document.querySelector('.input__form'),
     buttonEl: document.querySelector('.submit'),
-    error: document.querySelector('.error__message')
+    error: document.querySelector('.error__message'),
+    enLang: document.querySelector('.en'),
+    ukLang: document.querySelector('.uk'),
 }
+
+console.log(refs.enLang)
+
+refs.enLang.addEventListener('click', ()=>{
+    refs.enLang.classList.add('activeLang');
+    refs.ukLang.classList.remove('activeLang');
+});
+
+refs.ukLang.addEventListener('click', ()=>{
+    refs.ukLang.classList.add('activeLang');
+    refs.enLang.classList.remove('activeLang');
+});
 
 try {
     refs.formEl.addEventListener('submit', getValue);
 } catch (eror) {
     console.log(eror);
 }
-
-// refs.formEl.addEventListener('submit', getValue);
 
 function getValue (e){
     e.preventDefault();
