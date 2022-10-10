@@ -3,9 +3,14 @@ import { fetchIMDbId } from './API';
 const listEl = document.querySelector('.gallery');
 const modalWindowEl = document.querySelector('.modal');
 const modalCloseBtnEl = document.querySelector('.button-modal__close');
+//Alex
+const LOCALSTORAGE_WATCHED = 'films-to-watched';
+const LOCALSTORAGE_QUEUE = 'films-to-queue';
 
-listEl.addEventListener('click', onRenderModal);
-modalCloseBtnEl.addEventListener('click', onCloseModal);
+if (listEl) {
+  listEl.addEventListener('click', onRenderModal);
+  modalCloseBtnEl.addEventListener('click', onCloseModal);
+}
 
 function onRenderModal(e) {
   if (e.target === e.currentTarget) {
@@ -23,8 +28,48 @@ function onRenderModal(e) {
   const imdbBtnEl = document.querySelector('.imdb-btn');
 
   imdbBtnEl.addEventListener('click', onGoIMDbPage);
-  // addWatched.addEventListener('click', e => console.log(e));
-  // addQueue.addEventListener('click', e => console.log(e));
+  //Alex
+  addWatched.addEventListener(
+    'click',
+    onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+  );
+  addQueue.addEventListener(
+    'click',
+    onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+  );
+}
+
+//Alex
+async function onBtnAddClick(electFilm, currentLocalStorage, evt) {
+  evt.preventDefault();
+
+  let arrayAdd = localStorage.getItem(currentLocalStorage);
+  try {
+    arrayAdd = JSON.parse(arrayAdd);
+    if (!Array.isArray(arrayAdd)) {
+      arrayAdd = [];
+    }
+  } catch {
+    arrayAdd = [];
+  }
+
+  const textMessage =
+    currentLocalStorage === LOCALSTORAGE_WATCHED
+      ? 'to the watched'
+      : 'to the queue';
+
+  for (valueFilm of arrayAdd) {
+    if (valueFilm.id === electFilm.id) {
+      window.alert(`This film has already been added ${textMessage}!`);
+      return;
+    }
+  }
+
+  arrayAdd.push(electFilm);
+  window.alert(`New film ${electFilm.title} added ${textMessage}!`);
+  localStorage.setItem(currentLocalStorage, JSON.stringify(arrayAdd));
+
+  console.dir(arrayAdd);
 }
 
 async function onGoIMDbPage(e) {
@@ -41,8 +86,9 @@ function onCloseModal(e) {
   const imdbBtnEl = document.querySelector('.imdb-btn');
 
   imdbBtnEl.removeEventListener('click', onGoIMDbPage);
-  // addWatched.removeEventListener('click', e => console.log(e));
-  // addQueue.removeEventListener('click', e => console.log(e));
+  //Alex
+  addWatched.removeEventListener('click', onBtnAddClick);
+  addQueue.removeEventListener('click', onBtnAddClick);
 
   document.querySelector('.backdrop').classList.add('display__none');
   document.querySelector('.button-modal--flex').remove();

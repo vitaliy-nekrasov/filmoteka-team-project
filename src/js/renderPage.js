@@ -11,8 +11,10 @@ const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.form');
 const error = document.querySelector('.error__message');
 
-form.addEventListener('input', inputFilterFilm);
-form.addEventListener('submit', onSubmitFilterFilm);
+if (form) {
+  form.addEventListener('input', inputFilterFilm);
+  form.addEventListener('submit', onSubmitFilterFilm);
+}
 
 let page = 1;
 let searchNameFilm = '';
