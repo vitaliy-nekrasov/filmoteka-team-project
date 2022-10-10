@@ -6,4 +6,5 @@ import './js/gallery-lib';
 import './js/modalRender';
 import './js/renderMainGallery';
 import './js/renderPage';
+import './js/pagination'
 import './js/headerButton';
