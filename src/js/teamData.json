@@ -1,0 +1,59 @@
+[
+    {
+        "id":"1",
+        "name":"Evhen Musiyan",
+        "role": "Team Lead",
+        "urlLinkedin":"https://www.linkedin.com/in/євген-мусіян-b31937229/",
+        "urlGithub":"https://github.com/Musiyan98"
+    },
+    {
+        "id":"2",
+        "name":"Vitaliy Nekrasov",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/vitaliy-nekrasov-dev/",
+        "urlGithub":"https://github.com/vitaliy-nekrasov"
+    },
+    {
+        "id":"3",
+        "name":"Volodymyr Dzyura",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/volodymyr-dzyura-6a3436b6",
+        "urlGithub":"https://github.com/volodymyrdzyura"
+    },
+    {
+        "id":"4",
+        "name":"Tatyana Syrbu",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/tatyana-syrbu-b11b10240/",
+        "urlGithub":"https://github.com/SyTatyana"
+    },
+    {
+        "id":"5",
+        "name":"Ihor Rykun",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/ihor-rykun-40a187241/",
+        "urlGithub":"https://github.com/IhorRykun"
+    },
+    {
+        "id":"6",
+        "name":"Alexandr Andriushchenko",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/aleksandr-andriushchenko-92b25964/",
+        "urlGithub":"https://github.com/AlexAndriushchenko"
+    },
+    {
+        "id":"7",
+        "name":"Serhiy Koba",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/serhiy-koba-2a408b252/",
+        "urlGithub":"https://github.com/kobaserg"
+    },
+    {
+        "id":"8",
+        "name":"Yaroslav Ostrovskiy",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/",
+        "urlGithub":"https://github.com/ReddenUA"
+    }
+
+]
