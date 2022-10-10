@@ -32,11 +32,18 @@ iframe {
   }
 }
 .trailer {
+  display: none;
   margin: 0;
   padding: 0;
   border: none;
-  // background-color: transparent;
-  color: red;
-  width: 50px;
-  height: 50px;
+  background-color: transparent;
+  position: absolute;
+  @include mq(desktop) {
+    display: inline-flex;
+    top: 50px;
+    left: 20px;
+  }
+}
+.trailer__icon {
+  fill: red;
 }

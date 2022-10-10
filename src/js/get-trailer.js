@@ -1,19 +1,32 @@
+import { loaderShow, loaderHide } from './loader';
+
 const listEl = document.querySelector('.gallery');
 const trailerModalEl = document.querySelector('.trailer__modal');
 const trailerBackdropEl = document.querySelector('.trailer__backdrop');
 listEl.addEventListener('click', getId);
+let id = undefined;
 
-async function getId(evt) {
-  let filmId = await evt.target.closest('.gallery__card').id;
-  let trailerBtnEl = await document.querySelector('.trailer');
-  let listener = await trailerBtnEl.addEventListener('click', () => {
-    fetchTrailerById(filmId).then(result => {
-      if (result === undefined) {
-        return;
-      }
-      trailerBackdropEl.classList.remove('trailer__hidden');
-      trailerModalEl.insertAdjacentHTML('afterbegin', result);
-    });
+function getId(evt) {
+  id = evt.target.closest('.gallery__card').id;
+  trailerBtnEl.addEventListener('click', onTrailerBtnClick);
+  return id;
+}
+
+let trailerBtnEl = document.querySelector('.trailer');
+
+function onTrailerBtnClick() {
+  fetchTrailerById(id).then(result => {
+    console.log(result);
+    if (result === undefined) {
+      return;
+    }
+    loaderShow();
+    trailerBackdropEl.classList.remove('trailer__hidden');
+    trailerModalEl.insertAdjacentHTML('afterbegin', result);
+    loaderHide();
+    trailerBackdropEl.addEventListener('click', onCloseTrailerModal);
+    document.addEventListener('keydown', onCloseTrailerModal);
+    // trailerBtnEl.removeEventListener('click', onTrailerBtnClick);
   });
 }
 
@@ -32,14 +45,16 @@ async function fetchTrailerById(filmId) {
     );
     const getLink = await getObj.key;
     const link =
-      await `<iframe width="1400" height="700" src='https://www.youtube.com/embed/${getLink}' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="trailer_video"></iframe>`;
+      await `<iframe class="iframe" width="1400" height="700" src='https://www.youtube.com/embed/${getLink}' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="trailer_video"></iframe>`;
     return link;
   } catch (error) {
     console.error(error);
   }
 }
 
-trailerBackdropEl.addEventListener('click', () => {
+function onCloseTrailerModal() {
   trailerModalEl.innerHTML = '';
   trailerBackdropEl.classList.add('trailer__hidden');
-});
+  trailerBackdropEl.removeEventListener('click', onCloseTrailerModal);
+  document.removeEventListener('keydown', onCloseTrailerModal);
+}
