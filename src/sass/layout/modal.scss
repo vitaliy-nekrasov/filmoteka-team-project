@@ -7,12 +7,22 @@
   background-color: rgba(0, 0, 0, 0.2);
 }
 .modal {
+  @include mq(mobile-only) {
+    width: 280px;
+    padding: 48px 20px;
+    padding-bottom: 40px;
+  }
+  @include mq(tablet) {
+    width: 704px;
+    padding: 40px 36px;
+    padding-right: 72px;
+  }
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 806px;
-  height: 558px;
+  padding: 40px 12px;
   background-color: white;
 }
 .button-modal__close {
@@ -27,14 +37,46 @@
 }
 
 .button-modal--flex {
+  @include mq(mobile-only) {
+    display: block;
+  }
   display: flex;
 }
 
 .button-modal__img {
+  @include mq(mobile-only) {
+    width: 240px;
+    height: 357px;
+    margin-bottom: 20px;
+  }
+  @include mq(tablet-only) {
+    width: 263px;
+    height: 374px;
+    margin-right: 68px;
+  }
+
   width: 375px;
   height: 478px;
-  margin: 40px 13px;
   object-fit: cover;
+  margin-right: 16px;
+}
+
+.modal__about--title {
+  @include mq(mobile-only) {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  display: block;
+  margin-bottom: 20px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.17;
+  color: #000000;
+  margin-bottom: 12px;
 }
 
 .modal__about--title--movie {
@@ -48,20 +90,10 @@
   margin-top: 8px;
 }
 
-.modal__about--title {
-  display: block;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 1.17;
-  color: #000000;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
-
 .modal__about--rating {
+  @include mq(mobile-only) {
+    margin-left: 41px;
+  }
   display: flex;
   justify-content: center;
   font-style: normal;
@@ -97,6 +129,9 @@
 }
 
 .modal__about--text--popularity {
+  @include mq(mobile-only) {
+    margin-left: 53px;
+  }
   display: flex;
   align-items: center;
   font-weight: 500;
@@ -124,6 +159,9 @@
 }
 
 .modal__about--text--original--title {
+  @include mq(mobile-only) {
+    margin-left: 39px;
+  }
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -137,9 +175,12 @@
   line-height: 1.67;
 
   color: #000000;
-  width: 391px;
+  margin-top: 8px;
 }
 .modal__about--text--genre {
+  @include mq(mobile-only) {
+    margin-left: 76px;
+  }
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -151,10 +192,16 @@
 .list__btn--add {
   display: flex;
   list-style: none;
-  margin-top: 20px;
+  margin-top: 35px;
 }
 
 .add__watched {
+  @include mq(mobile-only) {
+    width: 110px;
+  }
+  @include mq(tablet) {
+    width: 125px;
+  }
   width: 136px;
   height: 44px;
   background: #ff6b01;
@@ -166,6 +213,12 @@
   color: #ffffff;
 }
 .add_queue {
+  @include mq(mobile-only) {
+    width: 110px;
+  }
+  @include mq(tablet) {
+    width: 125px;
+  }
   width: 136px;
   height: 44px;
   background: #ffffff;
@@ -181,20 +234,28 @@
 }
 
 .imdb-btn {
+  @include mq(mobile-only) {
+    top: 460px;
+    right: 38px;
+  }
+
+  @include mq(tablet-only) {
+    top: 87px;
+    right: 95px;
+  }
   display: flex;
+  padding-top: 2px;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 80px;
-  right: 145px;
+  top: 87px;
+  right: 90px;
   width: 36px;
   height: 18px;
   background-color: black;
   color: #e7be00;
   border: 1px solid #e7be00;
   border-radius: 5px;
-  margin-top: 15px;
-  margin-left: 25px;
 
   font-weight: 500;
   font-size: 12px;
