@@ -82,7 +82,7 @@ function renderGalleryLib(movie) {
                <h2 class="gallery__subtitle">${title}</h2>
                <div class="gallery__info">
                   <p class="gallery__genres">${genresName}</p>
-                  <p class="gallery__year">${release_date}</p>
+                  <p class="gallery__year">${release_date.slice(0, 4)}</p>
                   <p class="gallery__vote-average">${vote_average}</p>
                </div>
             </a>
