@@ -16,6 +16,10 @@ ul {
    list-style: none
 }
 
+li {
+   list-style: none
+}
+
 a {
    color: currentColor;
    text-decoration: none
@@ -30,6 +34,10 @@ img {
 body {
    position: relative;
    font-family: 'Roboto', sans-serif;
+}
+
+main {
+   position: relative;
 }
 
 .btn {
