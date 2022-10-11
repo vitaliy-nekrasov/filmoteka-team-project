@@ -116,7 +116,7 @@ function getFilmById(id) {
   return electFilm;
 }
 
-function renderModalWindoq(filmEl, idInIMDB) {
+function renderModalWindoq(filmEl) {
   const {
     id,
     title,
