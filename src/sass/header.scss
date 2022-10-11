@@ -1,35 +1,42 @@
 .header {
-  background-image: url(../images/abstract-background-with-red-lines\ 1\ 320\ 2x.png);
+  background-image: url(../images/abstract-background-with-red-lines_1280.jpg);
   background-size: cover;
   padding-top: 15px;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
+  width: 100%;
+  
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    z-index: 100;
+    // opacity: 100;
+    }
 
   @media screen and (min-width: 768px) {
-    background-image: url(../images/abstract-background-with-red-lines\ 1\ 768\ 2x.png);
+    background-image: url(../images/abstract-background-with-red-lines_768.jpg);
     padding-top: 15px;
     padding-bottom: 80px;
   }
 
   @media screen and (min-width: 1280px) {
-    background-image: url(../images/abstract-background-with-red-lines\ 1\ \(2x\).png);
+    background-image: url(../images/abstract-background-with-red-lines_320.jpg);
    
   }
 }
 
 .header_lib {
-  background-image: url(../images/Rectangle\ 320\ 2x.png);
+  background-image: url(../images/Rectangle\ 320.jpg);
   background-size: cover;
   padding-top: 10px;
   padding-bottom: 25px;
 
   @media screen and (min-width: 768px) {
-    background-image: url(../images/Rectangle\ 768\ 2x.png);
+    background-image: url(../images/Rectangle_768.jpg);
     padding-top: 15px;
     padding-bottom: 80px;
   }
 
   @media screen and (min-width: 1280px) {
-    background-image: url(../images/Rectangle\ 1280\ 2x.png);
+    background-image: url(../images/Rectangle\ 1280\ 2x.jpg);
   }
 }
 
@@ -102,7 +109,12 @@
   text-align: center;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 41px;
+  margin-top: 15px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 41px;
+  }
+
 }
 
 .input__form {
@@ -223,13 +235,14 @@
   position: absolute;
   left: 0; right: 0;
   margin-top: 5px;
-  font-size: 70%;
-    line-height: 1;
+  font-size: 80%;
+    line-height: 1.1;
   color: #ff001b;
 
   @media screen and (min-width: 768px) {
     margin-top: 20px;
     font-size: 100%;
     line-height: 1.15;
+    color: #ff001b;
   }
 }
