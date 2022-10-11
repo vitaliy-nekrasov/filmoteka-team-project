@@ -30,6 +30,7 @@ function onRenderModal(e) {
   let electFilm = getFilmById(filmId);
   renderModalWindoq(electFilm);
   document.querySelector('.backdrop').classList.remove('display__none');
+  const imdbBtnEl = document.querySelector('.imdb-btn');
 
   imdbBtnEl.addEventListener('click', onGoIMDbPage);
   //Alex
@@ -239,7 +240,9 @@ function renderModalWindoq(filmEl) {
             <img class="button-modal__img" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${title} poster">
             <div class="modal__about--movie">
                 <h2 class="modal__about--title">${title}</h2>
-                <p class="modal__about--title--movie">Vote / Votes <span class="modal__about--rating">${vote_average}</span><span
+                <p class="modal__about--title--movie">Vote / Votes <span class="modal__about--rating">${Number.parseInt(
+                  vote_average
+                )}</span><span
 
                         class="modal__about--title--movie-slech">/</span> <span
                         class="modal__about--text--bleck">${vote_count}</span>

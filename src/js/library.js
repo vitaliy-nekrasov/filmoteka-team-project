@@ -1,6 +1,6 @@
 // import renderGalleryLib from './gallery-lib';
 const galleryLib = document.querySelector('.gallery-lib');
-const divContaunerText = document.querySelector('.div__text--decoration');
+const divContaunerText = document.querySelector('.container-lib');
 
 const watchedFilmsArLS = JSON.parse(localStorage.getItem('films-to-watched'));
 const queueFilmsArLS = JSON.parse(localStorage.getItem('films-to-queue'));
@@ -26,7 +26,7 @@ try {
   refs.watched.addEventListener('click', () => {
     refs.watched.classList.add('active');
     refs.queue.classList.remove('active');
-    renderGalleryLib(watchedFilmsArLS);
+    displaySorryMassege(watchedFilmsArLS);
   });
 } catch (eror) {
   console.log(eror);
@@ -36,14 +36,14 @@ try {
   refs.queue.addEventListener('click', () => {
     refs.queue.classList.add('active');
     refs.watched.classList.remove('active');
-    renderGalleryLib(queueFilmsArLS);
+    displaySorryMassege(queueFilmsArLS);
   });
 } catch (eror) {
   console.log(eror);
 }
 
 try {
-  renderGalleryLib(watchedFilmsArLS);
+  displaySorryMassege(watchedFilmsArLS);
 } catch (eror) {
   console.log(eror);
 }
@@ -83,7 +83,9 @@ function renderGalleryLib(movie) {
                <div class="gallery__info">
                   <p class="gallery__genres">${genresName}</p>
                   <p class="gallery__year">${release_date.slice(0, 4)}</p>
-                  <p class="gallery__vote-average">${vote_average}</p>
+                  <p class="gallery__vote-average">${Number.parseInt(
+                    vote_average
+                  )}</p>
                </div>
             </a>
          </li>`;
@@ -94,4 +96,14 @@ function renderGalleryLib(movie) {
     clearGallery();
     galleryLib.insertAdjacentHTML('beforeend', markupGalleryLib);
   } catch {}
+}
+
+function displaySorryMassege(filmArr) {
+  if (!filmArr) {
+    clearGallery();
+    divContaunerText.classList.remove('display__none');
+    return;
+  }
+  divContaunerText.classList.add('display__none');
+  renderGalleryLib(filmArr);
 }
