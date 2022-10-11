@@ -27,7 +27,6 @@ try {
     refs.watched.classList.add('active');
     refs.queue.classList.remove('active');
     renderGalleryLib(watchedFilmsArLS);
-
   });
 } catch (eror) {
   console.log(eror);
@@ -43,13 +42,14 @@ try {
   console.log(eror);
 }
 
-try { renderGalleryLib(watchedFilmsArLS) }
+try {
+  renderGalleryLib(watchedFilmsArLS);
+} catch (eror) {
+  console.log(eror);
+}
 
-
-if (galleryLib) {
-  function clearGallery() {
-    galleryLib.innerHTML = '';
-  }
+function clearGallery() {
+  galleryLib.innerHTML = '';
 }
 
 function renderGalleryLib(movie) {
@@ -95,9 +95,3 @@ function renderGalleryLib(movie) {
     galleryLib.insertAdjacentHTML('beforeend', markupGalleryLib);
   } catch {}
 }
-
-    
-
-
-
-

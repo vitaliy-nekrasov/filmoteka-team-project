@@ -27,21 +27,66 @@ function onRenderModal(e) {
   let electFilm = getFilmById(filmId);
   renderModalWindoq(electFilm);
   document.querySelector('.backdrop').classList.remove('display__none');
-
-  const addWatched = document.querySelector('.add__watched');
-  const addQueue = document.querySelector('.add_queue');
   const imdbBtnEl = document.querySelector('.imdb-btn');
 
   imdbBtnEl.addEventListener('click', onGoIMDbPage);
   //Alex
-  addWatched.addEventListener(
-    'click',
-    onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
-  );
-  addQueue.addEventListener(
-    'click',
-    onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
-  );
+  cheackBtn(electFilm);
+}
+
+function cheackBtn(electFilm) {
+  let watchedArrLS = JSON.parse(localStorage.getItem(LOCALSTORAGE_WATCHED));
+  let queveArrLS = JSON.parse(localStorage.getItem(LOCALSTORAGE_QUEUE));
+  const addWatched = document.querySelector('.add__watched');
+  const addQueue = document.querySelector('.add_queue');
+
+  for (valueFilm of watchedArrLS) {
+    if (valueFilm.id === electFilm.id) {
+      // window.alert(`This film has already been added ${textMessage}!`);
+      addWatched.textContent = 'remove from watched';
+      addWatched.dataset.inLibrary = 'true';
+      addWatched.removeEventListener(
+        'click',
+        onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+      );
+      // addWatched.addEventListener(
+      //   'click',
+      //   onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+      // );
+      break;
+    }
+  }
+
+  for (valueFilm of queveArrLS) {
+    if (valueFilm.id === electFilm.id) {
+      // window.alert(`This film has already been added ${textMessage}!`);
+      addQueue.textContent = 'remove from queve';
+      addQueue.dataset.inLibrary = 'true';
+      addQueue.removeEventListener(
+        'click',
+        onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+      );
+      // addQueue.addEventListener(
+      //   'click',
+      //   onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+      // );
+      break;
+    }
+  }
+
+  if (addWatched.dataset.inLibrary !== 'true') {
+    addWatched.addEventListener(
+      'click',
+      onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+    );
+  }
+
+  if (addQueue.dataset.inLibrary !== 'true') {
+    addQueue.addEventListener(
+      'click',
+      onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+    );
+  }
 }
 
 //Alex
@@ -73,6 +118,8 @@ async function onBtnAddClick(electFilm, currentLocalStorage, evt) {
   arrayAdd.push(electFilm);
   window.alert(`New film ${electFilm.title} added ${textMessage}!`);
   localStorage.setItem(currentLocalStorage, JSON.stringify(arrayAdd));
+
+  cheackBtn(electFilm);
 
   console.dir(arrayAdd);
 }
