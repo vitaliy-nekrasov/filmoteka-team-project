@@ -1,11 +1,16 @@
 const galleryLib = document.querySelector('.gallery-lib');
 const divContaunerText = document.querySelector('.div__text--decoration');
 
+if (galleryLib) {
+  function clearGallery() {
+    galleryLib.innerHTML = '';
+  }
+}
 
 function renderGalleryLib(movie) {
   const markupGalleryLib = movie
     .map(mov => {
-      const { title, genre_ids, release_date, vote_average, id, poster_path } =
+      const { title, genresName, release_date, vote_average, id, poster_path } =
         mov;
       return `<li class="gallery__item">
             <a class="gallery__card" href="#" id="${id}">
@@ -30,7 +35,7 @@ function renderGalleryLib(movie) {
                </picture>
                <h2 class="gallery__subtitle">${title}</h2>
                <div class="gallery__info">
-                  <p class="gallery__genres">${genre_ids}</p>
+                  <p class="gallery__genres">${genresName}</p>
                   <p class="gallery__year">${release_date}</p>
                   <p class="gallery__vote-average">${vote_average}</p>
                </div>
@@ -38,5 +43,9 @@ function renderGalleryLib(movie) {
          </li>`;
     })
     .join('');
-  galleryLib.insertAdjacentElement('beforebegin', markupGalleryLib);
+  //   console.log(markupGalleryLib);
+  try {clearGallery();
+  galleryLib.insertAdjacentHTML('beforeend', markupGalleryLib);}
 }
+
+export default renderGalleryLib;

@@ -43,7 +43,5 @@ function renderGalleryLib(movie) {
     .join('');
   galleryLib.insertAdjacentHTML('beforeend', markupGalleryLib);
 }
-// console.log(currentArrayFilms);
-// renderGalleryLib(currentArrayFilms);
 
 export default renderGalleryLib;

@@ -1,14 +1,19 @@
 import { fetchIMDbId } from './API';
 
-const listEl = document.querySelector('.gallery');
+const mainFilmGalleryEl = document.querySelector('.gallery');
+const libraryFilmGalleryEl = document.querySelector('.gallery-lib');
 const modalWindowEl = document.querySelector('.modal');
 const modalCloseBtnEl = document.querySelector('.button-modal__close');
 //Alex
 const LOCALSTORAGE_WATCHED = 'films-to-watched';
 const LOCALSTORAGE_QUEUE = 'films-to-queue';
 
-if (listEl) {
-  listEl.addEventListener('click', onRenderModal);
+if (mainFilmGalleryEl) {
+  mainFilmGalleryEl.addEventListener('click', onRenderModal);
+  modalCloseBtnEl.addEventListener('click', onCloseModal);
+}
+if (libraryFilmGalleryEl) {
+  libraryFilmGalleryEl.addEventListener('click', onRenderModal);
   modalCloseBtnEl.addEventListener('click', onCloseModal);
 }
 
