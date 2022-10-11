@@ -24,8 +24,7 @@ function onRenderModal(e) {
   renderModalWindoq(electFilm);
   document.querySelector('.backdrop').classList.remove('display__none');
 
-<<<<<<< Updated upstream
-=======
+
   imdbBtnEl.addEventListener('click', onGoIMDbPage);
   //Alex
   cheackBtn(electFilm);
@@ -34,23 +33,13 @@ function onRenderModal(e) {
 function cheackBtn(electFilm) {
   let watchedArrLS = JSON.parse(localStorage.getItem(LOCALSTORAGE_WATCHED));
   let queueArrLS = JSON.parse(localStorage.getItem(LOCALSTORAGE_QUEUE));
->>>>>>> Stashed changes
   const addWatched = document.querySelector('.add__watched');
   const addQueue = document.querySelector('.add_queue');
   const imdbBtnEl = document.querySelector('.imdb-btn');
 
-<<<<<<< Updated upstream
   imdbBtnEl.addEventListener('click', onGoIMDbPage);
   //Alex
-  addWatched.addEventListener(
-    'click',
-    onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
-  );
-  addQueue.addEventListener(
-    'click',
-    onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
-  );
-=======
+
   if (Array.isArray(watchedArrLS)) {
     for (let valueFilm of watchedArrLS) {
       if (valueFilm.id === electFilm.id) {
@@ -97,7 +86,6 @@ function cheackBtn(electFilm) {
       onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
     );
   }
->>>>>>> Stashed changes
 }
 
 //Alex
@@ -119,13 +107,11 @@ async function onBtnAddClick(electFilm, currentLocalStorage, evt) {
       ? 'to the watched'
       : 'to the queue';
 
-<<<<<<< Updated upstream
-  for (valueFilm of arrayAdd) {
-=======
+
+
   //это будет уже лишний код, когда все заработает
   //т.к. возможности добавить фильм 2 раза у нас априори не будет
   for (let valueFilm of arrayAdd) {
->>>>>>> Stashed changes
     if (valueFilm.id === electFilm.id) {
       //window.alert(`This film has already been added ${textMessage}!`);
       Notify.info(`This film has already been added ${textMessage}!`);
@@ -171,12 +157,10 @@ function onBtnRemoveClick(electFilm, currentLocalStorage, evt) {
 
   localStorage.setItem(currentLocalStorage, JSON.stringify(arrayAdd));
 
-<<<<<<< Updated upstream
-=======
+
   cheackBtn(electFilm);
 
   console.log('after remove');
->>>>>>> Stashed changes
   console.dir(arrayAdd);
 }
 
