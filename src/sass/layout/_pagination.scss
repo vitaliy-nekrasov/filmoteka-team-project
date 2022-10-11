@@ -1,9 +1,10 @@
 .pagination ul {
+  margin-bottom: 60px;
   justify-content: center;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  padding: 8px;
+  
 }
 
 .pagination ul li {
@@ -37,7 +38,8 @@
   cursor: default;
 }
 .pagination ul li.btn-skip {
-  padding: 0 12px;
+  width: 40px;
+  height: 40px;
   justify-content: center;
   background: #f7f7f7;
   border-radius: 5px;
@@ -69,4 +71,8 @@
 
 span {
   padding: 12px;
+}
+.svg-btn{
+   fill: currentColor;
+   justify-content: center;
 }

@@ -9,16 +9,14 @@ function createPagination(totalPages, page) {
   let beforePage = page - 1;
   let afterPage = page + 1;
   if (page > 1) {
-    liTag += `<li class="btn-skip prev" onclick="createPagination(totalPages, ${
-      page - 1
-    })"><span><i class="left"></i>
-    
+    liTag += `<li class="btn-skip prev" onclick="createPagination(totalPages, ${ page - 1})"><span>
+    <i class="left"></i>
     <svg class="svg-btn" width="16"  height="16">
-    <use href="images/svg-pag.svg#icon-arrowleft">
+    <use href="images/icons.svg#icon-arrowleft">
     </use>
   </svg>
-  
-  </span></li>`;
+  </span>
+  </li>`;
   }
 
   if (page > 2) {
@@ -63,14 +61,13 @@ function createPagination(totalPages, page) {
   }
 
   if (page < totalPages) {
-    liTag += `<li class="btn-skip next" onclick="createPagination(totalPages, ${
-      page + 1
-    })"><span> 
+    liTag += `<li class="btn-skip next" onclick="createPagination(totalPages, ${page + 1})"><span> 
+    <i class="right"></i>
     <svg class="svg-btn" width="16"  height="16">
-    <use href="images/svg-pag.svg#icon-arrowright">
+    <use href="images/icons.svg#icon-arrowright">
     </use>
   </svg> 
- <i class="right"></i></span></li>`;
+ </span></li>`;
   }
   element.innerHTML = liTag;
   return liTag;
