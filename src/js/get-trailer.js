@@ -3,8 +3,11 @@ import { loaderShow, loaderHide } from './loader';
 const listEl = document.querySelector('.gallery');
 const trailerModalEl = document.querySelector('.trailer__modal');
 const trailerBackdropEl = document.querySelector('.trailer__backdrop');
-listEl.addEventListener('click', getId);
+const trailerBtnEl = document.querySelector('.trailer');
 let id = undefined;
+listEl.addEventListener('click', getId);
+
+// GET FILM ID WHEN FILM-MODAL OPEN //
 
 function getId(evt) {
   id = evt.target.closest('.gallery__card').id;
@@ -12,23 +15,7 @@ function getId(evt) {
   return id;
 }
 
-let trailerBtnEl = document.querySelector('.trailer');
-
-function onTrailerBtnClick() {
-  fetchTrailerById(id).then(result => {
-    console.log(result);
-    if (result === undefined) {
-      return;
-    }
-    loaderShow();
-    trailerBackdropEl.classList.remove('trailer__hidden');
-    trailerModalEl.insertAdjacentHTML('afterbegin', result);
-    loaderHide();
-    trailerBackdropEl.addEventListener('click', onCloseTrailerModal);
-    document.addEventListener('keydown', onCloseTrailerModal);
-    // trailerBtnEl.removeEventListener('click', onTrailerBtnClick);
-  });
-}
+// GET TRAILER LINK AND GENERATE TRAILER MARKUP //
 
 async function fetchTrailerById(filmId) {
   try {
@@ -51,6 +38,24 @@ async function fetchTrailerById(filmId) {
     console.error(error);
   }
 }
+
+// ADD TRAILER MARKUP TO INDEX.HTML AND SHOW TRAILER-MODAL //
+
+function onTrailerBtnClick() {
+  fetchTrailerById(id).then(result => {
+    if (result === undefined) {
+      return;
+    }
+    loaderShow();
+    trailerBackdropEl.classList.remove('trailer__hidden');
+    trailerModalEl.insertAdjacentHTML('afterbegin', result);
+    loaderHide();
+    trailerBackdropEl.addEventListener('click', onCloseTrailerModal);
+    document.addEventListener('keydown', onCloseTrailerModal);
+  });
+}
+
+// CLOSE TRAILER-MODAL, REMOVE TRAILER MARKUP FROM INDEX.HTML AND REMOVE EVENT LISTENERS //
 
 function onCloseTrailerModal() {
   trailerModalEl.innerHTML = '';
