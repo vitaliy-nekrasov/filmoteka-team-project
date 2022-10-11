@@ -5,9 +5,10 @@ const refs = {
     error: document.querySelector('.error__message'),
     enLang: document.querySelector('.en'),
     ukLang: document.querySelector('.uk'),
+    header: document.querySelector('.header')
 }
 
-console.log(refs.enLang)
+// console.log(refs.enLang)
 
 refs.enLang.addEventListener('click', ()=>{
     refs.enLang.classList.add('activeLang');

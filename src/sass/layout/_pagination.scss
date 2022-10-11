@@ -1,0 +1,78 @@
+.pagination ul {
+  margin-bottom: 60px;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.pagination ul li {
+  color: #000000;
+  list-style: none;
+  line-height: 40px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+.pagination ul li.numb {
+  list-style: none;
+  height: 40px;
+  width: 40px;
+  margin: 0 3px;
+  line-height: 40px;
+  border-radius: 5px;
+}
+.pagination ul li.numb.first {
+  margin: 0px 3px 0 -5px;
+}
+.pagination ul li.numb.last {
+  margin: 0px -5px 0 3px;
+}
+.pagination ul li.dots {
+  align-items: center;
+  font-size: 12px;
+  cursor: default;
+}
+.pagination ul li.btn-skip {
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  background: #f7f7f7;
+  border-radius: 5px;
+}
+.pagination li.active,
+.pagination ul li.numb:hover,
+.pagination ul li:first-child:hover,
+.pagination ul li:last-child:hover {
+  color: #fff;
+  background: #ff6b08;
+}
+.prev {
+  margin-right: 12px;
+}
+.next {
+  margin-left: 12px;
+}
+@media screen and (max-width: 767px) {
+  .dots {
+    display: none;
+  }
+  .first {
+    display: none;
+  }
+  .last {
+    display: none;
+  }
+}
+
+span {
+  padding: 12px;
+}
+.svg-btn{
+   fill: currentColor;
+   justify-content: center;
+}

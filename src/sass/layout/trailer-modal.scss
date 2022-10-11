@@ -1,0 +1,54 @@
+.trailer__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  transition: opacity 250ms linear;
+}
+.trailer__modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.trailer__hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms linear;
+}
+iframe {
+  width: 320px;
+  height: 240px;
+  @include mq(tablet) {
+    width: 540px;
+    height: 380px;
+  }
+  @include mq(desktop) {
+    width: 806px;
+    height: 563px;
+  }
+}
+.trailer {
+  display: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  @include mq(desktop) {
+    display: inline-flex;
+    top: 45px;
+    left: 45px;
+  }
+  @include mq(tablet) {
+    display: inline-flex;
+    top: 45px;
+    left: 45px;
+  }
+}
+.trailer__icon {
+  fill: red;
+}
