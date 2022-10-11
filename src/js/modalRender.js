@@ -31,59 +31,11 @@ function onRenderModal(e) {
   renderModalWindoq(electFilm);
   document.querySelector('.backdrop').classList.remove('display__none');
 
-
-
   imdbBtnEl.addEventListener('click', onGoIMDbPage);
   //Alex
   cheackBtn(electFilm);
 }
-
-function cheackBtn(electFilm) {
-  let watchedArrLS = JSON.parse(localStorage.getItem(LOCALSTORAGE_WATCHED));
-  let queueArrLS = JSON.parse(localStorage.getItem(LOCALSTORAGE_QUEUE));
-  const addWatched = document.querySelector('.add__watched');
-  const addQueue = document.querySelector('.add_queue');
-
-  const imdbBtnEl = document.querySelector('.imdb-btn');
-
-  imdbBtnEl.addEventListener('click', onGoIMDbPage);
-  //Alex
-
-
-  if (Array.isArray(watchedArrLS)) {
-    for (let valueFilm of watchedArrLS) {
-      if (valueFilm.id === electFilm.id) {
-        addWatched.textContent = 'remove from watched';
-        addWatched.dataset.inLibrary = 'true';
-        addWatched.removeEventListener('click', onBtnAddClick);
-        //Alex
-        addWatched.addEventListener(
-          'click',
-          onBtnRemoveClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
-        );
-        break;
-      }
-    }
-  }
-
-  if (Array.isArray(queueArrLS)) {
-    for (let valueFilm of queueArrLS) {
-      if (valueFilm.id === electFilm.id) {
-        addQueue.textContent = 'remove from queve';
-        addQueue.dataset.inLibrary = 'true';
-        addQueue.removeEventListener('click', onBtnAddClick);
-        console.log('был removeEventListener');
-        //Alex
-        addQueue.addEventListener(
-          'click',
-          onBtnRemoveClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
-        );
-        break;
-      }
-    }
-
-  cheackBtn(electFilm);
-}
+//Alex
 
 function cheackBtn(electFilm) {
   let watchedArrLS = JSON.parse(localStorage.getItem(LOCALSTORAGE_WATCHED));
@@ -131,7 +83,6 @@ function cheackBtn(electFilm) {
     }
   } catch (error) {
     console.log(error);
-
   }
 
   if (addWatched.dataset.inLibrary !== 'true') {
@@ -167,9 +118,6 @@ async function onBtnAddClick(electFilm, currentLocalStorage, evt) {
     currentLocalStorage === LOCALSTORAGE_WATCHED
       ? 'to the watched'
       : 'to the queue';
-
-
-
 
   //это будет уже лишний код, когда все заработает
   //т.к. возможности добавить фильм 2 раза у нас априори не будет
@@ -218,8 +166,6 @@ function onBtnRemoveClick(electFilm, currentLocalStorage, evt) {
   }
 
   localStorage.setItem(currentLocalStorage, JSON.stringify(arrayAdd));
-
-
 
   cheackBtn(electFilm);
 

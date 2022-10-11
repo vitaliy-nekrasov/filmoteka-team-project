@@ -9,7 +9,9 @@ function createPagination(totalPages, page) {
   let beforePage = page - 1;
   let afterPage = page + 1;
   if (page > 1) {
-    liTag += `<li class="btn-skip prev" onclick="createPagination(totalPages, ${ page - 1})"><span>
+    liTag += `<li class="btn-skip prev" onclick="createPagination(totalPages, ${
+      page - 1
+    })"><span class="page-number-span">
     <i class="left"></i>
     <svg class="svg-btn" width="16"  height="16">
     <use href="images/icons.svg#icon-arrowleft">
@@ -20,9 +22,9 @@ function createPagination(totalPages, page) {
   }
 
   if (page > 2) {
-    liTag += `<li class="first numb" onclick="createPagination(totalPages, 1)"><span>1</span></li>`;
+    liTag += `<li class="first numb" onclick="createPagination(totalPages, 1)"><span class="page-number-span">1</span></li>`;
     if (page > 3) {
-      liTag += `<li class="dots"><span>...</span></li>`;
+      liTag += `<li class="dots"><span class="page-number-span">...</span></li>`;
     }
   }
 
@@ -50,18 +52,20 @@ function createPagination(totalPages, page) {
     } else {
       active = '';
     }
-    liTag += `<li class="numb ${active}" onclick="createPagination(totalPages, ${plength})"><span>${plength}</span></li>`;
+    liTag += `<li class="numb ${active}" onclick="createPagination(totalPages, ${plength})"><span class="page-number-span">${plength}</span> </li>`;
   }
 
   if (page < totalPages - 1) {
     if (page < totalPages - 2) {
-      liTag += `<li class="dots"><span>...</span></li>`;
+      liTag += `<li class="dots"><span class="page-number-span">...</span></li>`;
     }
-    liTag += `<li class="last numb" onclick="createPagination(totalPages, ${totalPages})"><span>${totalPages}</span></li>`;
+    liTag += `<li class="last numb" onclick="createPagination(totalPages, ${totalPages})"><span class="page-number-span">${totalPages}</span> </li>`;
   }
 
   if (page < totalPages) {
-    liTag += `<li class="btn-skip next" onclick="createPagination(totalPages, ${page + 1})"><span> 
+    liTag += `<li class="btn-skip next" onclick="createPagination(totalPages, ${
+      page + 1
+    })"><span class="page-number-span"> 
     <i class="right"></i>
     <svg class="svg-btn" width="16"  height="16">
     <use href="images/icons.svg#icon-arrowright">
