@@ -40,8 +40,13 @@ iframe {
   position: absolute;
   @include mq(desktop) {
     display: inline-flex;
-    top: 50px;
-    left: 20px;
+    top: 45px;
+    left: 45px;
+  }
+  @include mq(tablet) {
+    display: inline-flex;
+    top: 45px;
+    left: 45px;
   }
 }
 .trailer__icon {
