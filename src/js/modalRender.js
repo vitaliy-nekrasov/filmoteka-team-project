@@ -40,7 +40,7 @@ function cheackBtn(electFilm) {
   const addWatched = document.querySelector('.add__watched');
   const addQueue = document.querySelector('.add_queue');
 
-  for (valueFilm of watchedArrLS) {
+  for (let valueFilm of watchedArrLS) {
     if (valueFilm.id === electFilm.id) {
       // window.alert(`This film has already been added ${textMessage}!`);
       addWatched.textContent = 'remove from watched';
@@ -57,7 +57,7 @@ function cheackBtn(electFilm) {
     }
   }
 
-  for (valueFilm of queveArrLS) {
+  for (let valueFilm of queveArrLS) {
     if (valueFilm.id === electFilm.id) {
       // window.alert(`This film has already been added ${textMessage}!`);
       addQueue.textContent = 'remove from queve';
@@ -108,7 +108,7 @@ async function onBtnAddClick(electFilm, currentLocalStorage, evt) {
       ? 'to the watched'
       : 'to the queue';
 
-  for (valueFilm of arrayAdd) {
+  for (let valueFilm of arrayAdd) {
     if (valueFilm.id === electFilm.id) {
       window.alert(`This film has already been added ${textMessage}!`);
       return;
