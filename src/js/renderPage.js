@@ -182,7 +182,9 @@ function clearGallery() {
 // }
 
 // Очистка галереи
-element.addEventListener('click', onPageClick);
+try {
+  element.addEventListener('click', onPageClick);
+} catch {}
 
 function onPageClick(evt) {
   if (evt.target.nodeName !== 'SPAN') {
