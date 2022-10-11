@@ -12,9 +12,11 @@ if (mainFilmGalleryEl) {
   mainFilmGalleryEl.addEventListener('click', onRenderModal);
   modalCloseBtnEl.addEventListener('click', onCloseModal);
 }
-if (libraryFilmGalleryEl) {
+try {
   libraryFilmGalleryEl.addEventListener('click', onRenderModal);
   modalCloseBtnEl.addEventListener('click', onCloseModal);
+} catch (error) {
+  console.log(error);
 }
 
 function onRenderModal(e) {
@@ -40,38 +42,46 @@ function cheackBtn(electFilm) {
   const addWatched = document.querySelector('.add__watched');
   const addQueue = document.querySelector('.add_queue');
 
-  for (let valueFilm of watchedArrLS) {
-    if (valueFilm.id === electFilm.id) {
-      // window.alert(`This film has already been added ${textMessage}!`);
-      addWatched.textContent = 'remove from watched';
-      addWatched.dataset.inLibrary = 'true';
-      addWatched.removeEventListener(
-        'click',
-        onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
-      );
-      // addWatched.addEventListener(
-      //   'click',
-      //   onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
-      // );
-      break;
+  try {
+    for (let valueFilm of watchedArrLS) {
+      if (valueFilm.id === electFilm.id) {
+        // window.alert(`This film has already been added ${textMessage}!`);
+        addWatched.textContent = 'remove from watched';
+        addWatched.dataset.inLibrary = 'true';
+        addWatched.removeEventListener(
+          'click',
+          onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+        );
+        // addWatched.addEventListener(
+        //   'click',
+        //   onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+        // );
+        break;
+      }
     }
+  } catch (error) {
+    console.log(error);
   }
 
-  for (let valueFilm of queveArrLS) {
-    if (valueFilm.id === electFilm.id) {
-      // window.alert(`This film has already been added ${textMessage}!`);
-      addQueue.textContent = 'remove from queve';
-      addQueue.dataset.inLibrary = 'true';
-      addQueue.removeEventListener(
-        'click',
-        onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
-      );
-      // addQueue.addEventListener(
-      //   'click',
-      //   onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
-      // );
-      break;
+  try {
+    for (let valueFilm of queveArrLS) {
+      if (valueFilm.id === electFilm.id) {
+        // window.alert(`This film has already been added ${textMessage}!`);
+        addQueue.textContent = 'remove from queve';
+        addQueue.dataset.inLibrary = 'true';
+        addQueue.removeEventListener(
+          'click',
+          onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+        );
+        // addQueue.addEventListener(
+        //   'click',
+        //   onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+        // );
+        break;
+      }
     }
+  } catch (error) {
+    console.log(error);
   }
 
   if (addWatched.dataset.inLibrary !== 'true') {
