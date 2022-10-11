@@ -1,4 +1,7 @@
 {
+  "transformers": {
+  "*.hbs": ["parcel-transformer-hbs"]
+  },
   "extends": [
     "@parcel/config-default"
   ],

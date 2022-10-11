@@ -66,7 +66,7 @@
     width: 120px;
     height: 4px;
     border-radius: 2px;
-    background-color: #ffa500;
+    background-color: #ff6b01;
     transition: transform 250ms linear;
     transform: scale(0);
 }
@@ -82,34 +82,34 @@
 
 .goit__stud {
     padding-left: 4px;
-    color: #545454;
+    color:#545454;
 }
 
 .animate__heart {
     width: 14px;
     height: 13px;
-    margin: 0 5px;
-    animation: beat 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1) 250ms;
-    
+    margin: 0 10px;
+    animation: beat 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+
     @keyframes beat {
         0% {
             transform: scale(1);
         }
 
-        15% {
-            transform: scale(1.6);
+        14% {
+            transform: scale(1.8);
         }
 
-        26% {
-            transform: scale(1.4);
+        28% {
+            transform: scale(1.5);
         }
 
-        44% {
-            transform: scale(1.6);
+        42% {
+            transform: scale(1.8);
         }
 
-        75% {
-            transform: scale(1.4);
+        70% {
+            transform: scale(1.5);
         }
     }
 }
