@@ -1,4 +1,5 @@
 import { fetchIMDbId } from './API';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const mainFilmGalleryEl = document.querySelector('.gallery');
 const libraryFilmGalleryEl = document.querySelector('.gallery-lib');
@@ -29,10 +30,58 @@ function onRenderModal(e) {
   let electFilm = getFilmById(filmId);
   renderModalWindoq(electFilm);
   document.querySelector('.backdrop').classList.remove('display__none');
+
+
+
+  imdbBtnEl.addEventListener('click', onGoIMDbPage);
+  //Alex
+  cheackBtn(electFilm);
+}
+
+function cheackBtn(electFilm) {
+  let watchedArrLS = JSON.parse(localStorage.getItem(LOCALSTORAGE_WATCHED));
+  let queueArrLS = JSON.parse(localStorage.getItem(LOCALSTORAGE_QUEUE));
+  const addWatched = document.querySelector('.add__watched');
+  const addQueue = document.querySelector('.add_queue');
+
   const imdbBtnEl = document.querySelector('.imdb-btn');
 
   imdbBtnEl.addEventListener('click', onGoIMDbPage);
   //Alex
+
+
+  if (Array.isArray(watchedArrLS)) {
+    for (let valueFilm of watchedArrLS) {
+      if (valueFilm.id === electFilm.id) {
+        addWatched.textContent = 'remove from watched';
+        addWatched.dataset.inLibrary = 'true';
+        addWatched.removeEventListener('click', onBtnAddClick);
+        //Alex
+        addWatched.addEventListener(
+          'click',
+          onBtnRemoveClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+        );
+        break;
+      }
+    }
+  }
+
+  if (Array.isArray(queueArrLS)) {
+    for (let valueFilm of queueArrLS) {
+      if (valueFilm.id === electFilm.id) {
+        addQueue.textContent = 'remove from queve';
+        addQueue.dataset.inLibrary = 'true';
+        addQueue.removeEventListener('click', onBtnAddClick);
+        console.log('был removeEventListener');
+        //Alex
+        addQueue.addEventListener(
+          'click',
+          onBtnRemoveClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+        );
+        break;
+      }
+    }
+
   cheackBtn(electFilm);
 }
 
@@ -82,6 +131,7 @@ function cheackBtn(electFilm) {
     }
   } catch (error) {
     console.log(error);
+
   }
 
   if (addWatched.dataset.inLibrary !== 'true') {
@@ -118,17 +168,62 @@ async function onBtnAddClick(electFilm, currentLocalStorage, evt) {
       ? 'to the watched'
       : 'to the queue';
 
+
+
+
+  //это будет уже лишний код, когда все заработает
+  //т.к. возможности добавить фильм 2 раза у нас априори не будет
   for (let valueFilm of arrayAdd) {
     if (valueFilm.id === electFilm.id) {
-      window.alert(`This film has already been added ${textMessage}!`);
+      //window.alert(`This film has already been added ${textMessage}!`);
+      Notify.info(`This film has already been added ${textMessage}!`);
       return;
     }
   }
 
   arrayAdd.push(electFilm);
-  window.alert(`New film ${electFilm.title} added ${textMessage}!`);
+  //window.alert(`New film ${electFilm.title} added ${textMessage}!`);
+  Notify.success(`New film ${electFilm.title} added ${textMessage}!`);
   localStorage.setItem(currentLocalStorage, JSON.stringify(arrayAdd));
 
+  cheackBtn(electFilm);
+
+  console.dir(arrayAdd);
+}
+
+function onBtnRemoveClick(electFilm, currentLocalStorage, evt) {
+  evt.preventDefault();
+
+  let arrayAdd = localStorage.getItem(currentLocalStorage);
+  try {
+    arrayAdd = JSON.parse(arrayAdd);
+    if (!Array.isArray(arrayAdd)) {
+      arrayAdd = [];
+    }
+  } catch {
+    arrayAdd = [];
+  }
+
+  const textMessage =
+    currentLocalStorage === LOCALSTORAGE_WATCHED
+      ? 'in the watched'
+      : 'in the queue';
+
+  for (let valueFilm of arrayAdd) {
+    if (valueFilm.id === electFilm.id) {
+      arrayAdd.splice(arrayAdd.indexOf(valueFilm), 1);
+      //window.alert(`This film deleted successfully ${textMessage}!`);
+      Notify.success(`This film deleted successfully ${textMessage}!`);
+    }
+  }
+
+  localStorage.setItem(currentLocalStorage, JSON.stringify(arrayAdd));
+
+
+
+  cheackBtn(electFilm);
+
+  console.log('after remove');
   cheackBtn(electFilm);
 
   console.dir(arrayAdd);
@@ -151,6 +246,8 @@ function onCloseModal(e) {
   //Alex
   addWatched.removeEventListener('click', onBtnAddClick);
   addQueue.removeEventListener('click', onBtnAddClick);
+  addWatched.removeEventListener('click', onBtnRemoveClick);
+  addQueue.removeEventListener('click', onBtnRemoveClick);
 
   document.querySelector('.backdrop').classList.add('display__none');
   document.querySelector('.button-modal--flex').remove();
