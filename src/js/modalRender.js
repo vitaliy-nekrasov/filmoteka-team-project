@@ -1,65 +1,107 @@
-// const listEl = document.querySelector('.gallery');
-// listEl.addEventListener('click', e => {
-//   let filmId = e.target.closest('.gallery__card').id;
-// });
-
-import fetchIMDbId from './API';
+import { fetchIMDbId } from './API';
 
 const listEl = document.querySelector('.gallery');
-listEl.addEventListener('click', onRenderModal);
+const modalWindowEl = document.querySelector('.modal');
+const modalCloseBtnEl = document.querySelector('.button-modal__close');
+//Alex
+const LOCALSTORAGE_WATCHED = 'films-to-watched';
+const LOCALSTORAGE_QUEUE = 'films-to-queue';
 
-document.querySelector('.button-modal__close').addEventListener('click', e => {
-  document.querySelector('.backdrop').classList.add('display__none');
-  document.querySelector('.modal').lastChild.remove();
-  // console.log(document.querySelector('.modal').lastChild);
-  // очистить локал стор
-});
+if (listEl) {
+  listEl.addEventListener('click', onRenderModal);
+  modalCloseBtnEl.addEventListener('click', onCloseModal);
+}
 
 function onRenderModal(e) {
   if (e.target === e.currentTarget) {
-    // console.log('nahui');
     return;
   }
+  e.preventDefault();
 
   let filmId = e.target.closest('.gallery__card').id;
   let electFilm = getFilmById(filmId);
-  let idGenresOfElectFilm = electFilm.genre_ids;
-  let nameGenresOfElectFilm = getGenres(idGenresOfElectFilm);
-  let remakeElectFilm = remareFilmObj(electFilm);
-  // console.log(remakeElectFilm);
-
-  // \\\\\\\
-  // fetchIMDbId(onReadIdFromLS(filmId)).then(responce => {
-  //   localStorage.setItem('IMDb_id', JSON.stringify(responce.imdb_id));
-  // });
-  let idIMDb = JSON.parse(localStorage.getItem('IMDb_id'));
-  // // console.log(idIMDb);
-  // \\\\\\\
-
-  renderModalWindoq(remakeElectFilm, idIMDb);
+  renderModalWindoq(electFilm);
   document.querySelector('.backdrop').classList.remove('display__none');
 
-  // // console.log(nameGenresOfElectFilm);
-  // renderModalWindoq(electFilm, nameGenresOfElectFilm);
+  const addWatched = document.querySelector('.add__watched');
+  const addQueue = document.querySelector('.add_queue');
+  const imdbBtnEl = document.querySelector('.imdb-btn');
+
+  imdbBtnEl.addEventListener('click', onGoIMDbPage);
+  //Alex
+  addWatched.addEventListener(
+    'click',
+    onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+  );
+  addQueue.addEventListener(
+    'click',
+    onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+  );
 }
 
-function getGenres(genre_ids) {
-  let genres = '';
-  const genresLocalStorage = localStorage.getItem('Genres');
-  const gen = JSON.parse(genresLocalStorage);
+//Alex
+async function onBtnAddClick(electFilm, currentLocalStorage, evt) {
+  evt.preventDefault();
 
-  if (genre_ids.length !== 0) {
-    if (genre_ids.length > 3) {
-      genre_ids = genre_ids.slice(0, 3);
+  let arrayAdd = localStorage.getItem(currentLocalStorage);
+  try {
+    arrayAdd = JSON.parse(arrayAdd);
+    if (!Array.isArray(arrayAdd)) {
+      arrayAdd = [];
     }
-
-    Object.values(gen).forEach(value => {
-      if (genre_ids.includes(value.id)) {
-        genres = genres.concat(value.name, ', ');
-      }
-    });
+  } catch {
+    arrayAdd = [];
   }
-  return genres;
+
+  const textMessage =
+    currentLocalStorage === LOCALSTORAGE_WATCHED
+      ? 'to the watched'
+      : 'to the queue';
+
+  for (valueFilm of arrayAdd) {
+    if (valueFilm.id === electFilm.id) {
+      window.alert(`This film has already been added ${textMessage}!`);
+      return;
+    }
+  }
+
+  arrayAdd.push(electFilm);
+  window.alert(`New film ${electFilm.title} added ${textMessage}!`);
+  localStorage.setItem(currentLocalStorage, JSON.stringify(arrayAdd));
+
+  console.dir(arrayAdd);
+}
+
+async function onGoIMDbPage(e) {
+  let filmId = e.target.dataset.id;
+  console.log(e.target.dataset.id);
+  let idIMDb = await getIMDbId(filmId);
+  let getHref = `https://www.imdb.com/title/${idIMDb}`;
+  console.log(window.open(getHref));
+}
+
+function onCloseModal(e) {
+  const addWatched = document.querySelector('.add__watched');
+  const addQueue = document.querySelector('.add_queue');
+  const imdbBtnEl = document.querySelector('.imdb-btn');
+
+  imdbBtnEl.removeEventListener('click', onGoIMDbPage);
+  //Alex
+  addWatched.removeEventListener('click', onBtnAddClick);
+  addQueue.removeEventListener('click', onBtnAddClick);
+
+  document.querySelector('.backdrop').classList.add('display__none');
+  document.querySelector('.button-modal--flex').remove();
+  localStorage.removeItem('IMDb_id');
+}
+
+async function getIMDbId(filmId) {
+  await fetchIMDbId(filmId).then(responce => {
+    localStorage.setItem('IMDb_id', JSON.stringify(responce.imdb_id));
+  });
+
+  let idIMDb = await JSON.parse(localStorage.getItem('IMDb_id'));
+  return idIMDb;
 }
 
 function onReadCurrentArrayFilmLS() {
@@ -74,7 +116,7 @@ function getFilmById(id) {
   return electFilm;
 }
 
-function renderModalWindoq(filmEl, idInIMDB) {
+function renderModalWindoq(filmEl) {
   const {
     id,
     title,
@@ -86,18 +128,18 @@ function renderModalWindoq(filmEl, idInIMDB) {
     overview,
     genresName,
   } = filmEl;
-  document.querySelector('.modal').lastChild.remove();
+  // document.querySelector('.modal').lastChild.remove();
   let modalRenderCod = `    
         <div class="button-modal--flex">
             <img class="button-modal__img" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${title} poster">
             <div class="modal__about--movie">
                 <h2 class="modal__about--title">${title}</h2>
                 <p class="modal__about--title--movie">Vote / Votes <span class="modal__about--rating">${vote_average}</span><span
+
                         class="modal__about--title--movie-slech">/</span> <span
                         class="modal__about--text--bleck">${vote_count}</span>
-                </p>
-                <a target="_blank" class="imdb-btn" href="https://www.imdb.com/title/${idInIMDB}">IMDb</a>
-
+                        </p>
+                        <button class="imdb-btn" data-id="${id}" type="button">IMDb</button>
                 <p class="modal__about--title--movie">Popularity<span
                         class="modal__about--text--popularity">${popularity}</span>
                 <p class="modal__about--title--movie">Original Title<span class="modal__about--text--original--title">A
@@ -109,29 +151,14 @@ function renderModalWindoq(filmEl, idInIMDB) {
                 <p class="about__movie--text--content">${overview}</p>
                 <ul class="list__btn--add">
                     <li><button class="add__watched" data-id="${id}" type="button">add to Watched</button></li>
-                    <li><button class="aadd_queue" data-id="${id}" type="button">add to queue</button></li>
+                    <li><button class="add_queue" data-id="${id}" type="button">add to queue</button></li>
                 </ul>
 
             </div>
         </div>
     </div>`;
 
-  document
-    .querySelector('.modal')
-    .insertAdjacentHTML('beforeend', modalRenderCod);
-}
+  // <a target="_blank" class="imdb-btn" href="https://www.imdb.com/title/${idInIMDB}">IMDb</a>;
 
-function remareFilmObj(film) {
-  // console.log('film', film);
-  film.genresName = getGenres(film.genre_ids);
-  // console.log('film.genresName', film.genresName);
-  return film;
-}
-
-// remareFilsmObj(onReadCurrentArrayFilmLS());
-
-function remareFilsmObj(films) {
-  // console.log('films', films);
-  let remake = films.map(el => remareFilmObj(el));
-  // console.log('remake', remake);
+  modalWindowEl.insertAdjacentHTML('beforeend', modalRenderCod);
 }

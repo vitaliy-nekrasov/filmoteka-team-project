@@ -34,6 +34,7 @@
   width: 375px;
   height: 478px;
   margin: 40px 13px;
+  object-fit: cover;
 }
 
 .modal__about--title--movie {
@@ -164,7 +165,7 @@
   text-transform: uppercase;
   color: #ffffff;
 }
-.aadd_queue {
+.add_queue {
   width: 136px;
   height: 44px;
   background: #ffffff;

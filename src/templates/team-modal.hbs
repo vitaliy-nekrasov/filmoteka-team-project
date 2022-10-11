@@ -1,0 +1,16 @@
+<div class="students-container">
+    <h2 class="team__container__title">IT Legends Team</h2>
+    <ul class="students-list">
+        {{#each this}}
+        <li class="students-item">
+            <div class="students-photo photo-{{id}}"></div>
+            <div class="students-content">
+                <p class="students-name">{{name}}</p>
+                <p class="students-role">{{role}}</p>
+                <a class="students-linkedin link" href="{{urlLinkedin}}" target="_blank"></a>
+                <a class="students-github link" href="{{urlGithub}}" target="_blank"></a>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</div>

@@ -9,9 +9,12 @@ import renderGalleryLib from './renderMainGallery';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.form');
+const error = document.querySelector('.error__message');
 
-form.addEventListener('input', inputFilterFilm);
-form.addEventListener('submit', onSubmitFilterFilm);
+if (form) {
+  form.addEventListener('input', inputFilterFilm);
+  form.addEventListener('submit', onSubmitFilterFilm);
+}
 
 let page = 1;
 let searchNameFilm = '';
@@ -68,12 +71,16 @@ function getCurrentArrFilmsLS(arrayFilms) {
     currentArrFilmLS.push(card);
   });
   // console.log('currentArrFilmLS', currentArrFilmLS);
+  if (currentArrFilmLS.length == 0) {
+    error.style.display = 'block';
+    return JSON.parse(localStorage.getItem('currentArrayFilm'));
+  }
   let arrayFilmsWithGenderName = remareFilsmObj(currentArrFilmLS);
   localStorage.setItem(
     'currentArrayFilm',
     JSON.stringify(arrayFilmsWithGenderName)
   );
-  console.log('LS', arrayFilmsWithGenderName);
+  // console.log('LS', arrayFilmsWithGenderName);
   return arrayFilmsWithGenderName;
 }
 
