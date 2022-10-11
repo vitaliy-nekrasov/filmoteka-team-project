@@ -6,6 +6,7 @@ import {
 } from './API.js';
 
 import renderGalleryLib from './renderMainGallery';
+import { loaderShow, loaderHide } from './loader.js';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.form');
@@ -181,3 +182,22 @@ function clearGallery() {
 // }
 
 // Очистка галереи
+element.addEventListener('click', onPageClick);
+
+function onPageClick(evt) {
+  if (evt.target.nodeName !== 'SPAN') {
+    return;
+  }
+  let pageNumber = evt.target.textContent;
+  page = pageNumber;
+  clearGallery();
+  fetchTrending(page)
+    .then(responce => {
+      loaderShow();
+      renderFilmoteka(responce);
+      loaderHide();
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}

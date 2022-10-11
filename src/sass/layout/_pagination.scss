@@ -1,14 +1,12 @@
-
-.pagination ul{
+.pagination ul {
   justify-content: center;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   padding: 8px;
-  
 }
 
-.pagination ul li{
+.pagination ul li {
   color: #000000;
   list-style: none;
   line-height: 40px;
@@ -19,7 +17,7 @@
   user-select: none;
   transition: all 0.3s ease;
 }
-.pagination ul li.numb{
+.pagination ul li.numb {
   list-style: none;
   height: 40px;
   width: 40px;
@@ -27,47 +25,48 @@
   line-height: 40px;
   border-radius: 5px;
 }
-.pagination ul li.numb.first{
-  
+.pagination ul li.numb.first {
   margin: 0px 3px 0 -5px;
 }
-.pagination ul li.numb.last{
-  
+.pagination ul li.numb.last {
   margin: 0px -5px 0 3px;
 }
-.pagination ul li.dots{
-  
-align-items: center;
+.pagination ul li.dots {
+  align-items: center;
   font-size: 12px;
   cursor: default;
 }
-.pagination ul li.btn-skip{
+.pagination ul li.btn-skip {
   padding: 0 12px;
   justify-content: center;
-  background: #F7F7F7;
+  background: #f7f7f7;
   border-radius: 5px;
 }
 .pagination li.active,
 .pagination ul li.numb:hover,
 .pagination ul li:first-child:hover,
-.pagination ul li:last-child:hover{
+.pagination ul li:last-child:hover {
   color: #fff;
-  background: #FF6B08;
+  background: #ff6b08;
 }
-.prev{
+.prev {
   margin-right: 12px;
 }
-.next { 
-margin-left: 12px;
+.next {
+  margin-left: 12px;
 }
-@media screen and ( max-width: 767px)
-  {
-     .dots {
-      display: none;
-     }
-     .first {
-      display: none;
-     }
-     .last{display: none;}
+@media screen and (max-width: 767px) {
+  .dots {
+    display: none;
   }
- 
+  .first {
+    display: none;
+  }
+  .last {
+    display: none;
+  }
+}
+
+span {
+  padding: 12px;
+}

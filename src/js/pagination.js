@@ -1,6 +1,6 @@
 const element = document.querySelector('.pagination ul');
 let totalPages = 20;
-let page = 15;
+let page = 1;
 
 element.innerHTML = createPagination(totalPages, page);
 function createPagination(totalPages, page) {
