@@ -27,7 +27,6 @@ try {
     refs.watched.classList.add('active');
     refs.queue.classList.remove('active');
     renderGalleryLib(watchedFilmsArLS);
-
   });
 } catch (eror) {
   console.log(eror);
@@ -43,13 +42,14 @@ try {
   console.log(eror);
 }
 
-try { renderGalleryLib(watchedFilmsArLS) }
+try {
+  renderGalleryLib(watchedFilmsArLS);
+} catch (eror) {
+  console.log(eror);
+}
 
-
-if (galleryLib) {
-  function clearGallery() {
-    galleryLib.innerHTML = '';
-  }
+function clearGallery() {
+  galleryLib.innerHTML = '';
 }
 
 function renderGalleryLib(movie) {
@@ -82,7 +82,7 @@ function renderGalleryLib(movie) {
                <h2 class="gallery__subtitle">${title}</h2>
                <div class="gallery__info">
                   <p class="gallery__genres">${genresName}</p>
-                  <p class="gallery__year">${release_date}</p>
+                  <p class="gallery__year">${release_date.slice(0, 4)}</p>
                   <p class="gallery__vote-average">${vote_average}</p>
                </div>
             </a>
@@ -95,9 +95,3 @@ function renderGalleryLib(movie) {
     galleryLib.insertAdjacentHTML('beforeend', markupGalleryLib);
   } catch {}
 }
-
-    
-
-
-
-
