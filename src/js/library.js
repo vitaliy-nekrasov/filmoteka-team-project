@@ -114,7 +114,7 @@ function renderOneCard(film) {
 }
 
 function displaySorryMassege(filmArr) {
-  if (!filmArr) {
+  if (filmArr.length === 0) {
     clearGallery();
     divContaunerText.classList.remove('display__none');
     return;
@@ -122,3 +122,8 @@ function displaySorryMassege(filmArr) {
   divContaunerText.classList.add('display__none');
   renderGalleryLib(filmArr);
 }
+
+export default displaySorryMassege;
+
+// https://st2.depositphotos.com/3994049/8290/v/950/depositphotos_82902580-stock-illustration-retro-movie-projector-vector-detailed.jpg
+// https://raw.githubusercontent.com/Musiyan98/filmoteka_by_ITLegend/294f7580f993e56cfcb9868583f8a3dff47f1830/src/images/universalPoster.svg
