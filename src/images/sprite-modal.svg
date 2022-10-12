@@ -1,0 +1,11 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-slesh" viewBox="0 0 12 20">
+<path d="M10.848 0.938l-6.645 18.527h-2.215l6.656-18.527h2.203z"></path>
+</symbol>
+<symbol id="icon-close" viewBox="0 0 20 20">
+<path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.3333" d="M5.333 5.333l9.333 9.333"></path>
+<path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.3333" d="M5.333 14.667l9.333-9.333"></path>
+</symbol>
+</defs>
+</svg>

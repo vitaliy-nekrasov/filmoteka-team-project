@@ -311,8 +311,8 @@ function renderModalWindoq(filmEl) {
 
                         class="modal__about--title--movie-slech">/</span> <span
                         class="modal__about--text--bleck">${vote_count}</span>
-                        </p>
                         <button class="imdb-btn" data-id="${id}" type="button">IMDb</button>
+                        </p>
                 <p class="modal__about--title--movie">Popularity<span
                         class="modal__about--text--popularity">${popularity}</span>
                 <p class="modal__about--title--movie">Original Title<span class="modal__about--text--original--title">A
