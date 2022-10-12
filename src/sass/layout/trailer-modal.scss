@@ -39,16 +39,19 @@ iframe {
   background-color: transparent;
   position: absolute;
   @include mq(desktop) {
-    display: inline-flex;
+    display: inline;
     top: 45px;
     left: 45px;
   }
   @include mq(tablet) {
-    display: inline-flex;
+    display: inline;
     top: 45px;
     left: 45px;
   }
 }
 .trailer__icon {
   fill: red;
+}
+.hide {
+  display: none;
 }
