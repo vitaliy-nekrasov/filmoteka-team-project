@@ -11,6 +11,7 @@ listEl.addEventListener('click', getId);
 
 function getId(evt) {
   id = evt.target.closest('.gallery__card').id;
+  checkTrailer(id);
   trailerBtnEl.addEventListener('click', onTrailerBtnClick);
   return id;
 }
@@ -27,8 +28,8 @@ async function fetchTrailerById(filmId) {
       return;
     }
     const result = await response.json();
-    const getObj = await result.results.find(
-      obj => obj.name === 'Official Trailer'
+    const getObj = await result.results.find(obj =>
+      obj.name.includes('Trailer')
     );
     const getLink = await getObj.key;
     const link =
@@ -62,4 +63,27 @@ function onCloseTrailerModal() {
   trailerBackdropEl.classList.add('trailer__hidden');
   trailerBackdropEl.removeEventListener('click', onCloseTrailerModal);
   document.removeEventListener('keydown', onCloseTrailerModal);
+}
+
+// CHECK TRAILER FUNCTION, IF TRAILER NOT FOUND - HIDE TRAILER BUTTON
+
+async function checkTrailer(filmId) {
+  try {
+    const API_KEY = '1c5c067e324c39f9223ad13ef9891a0a';
+    const URL = 'https://api.themoviedb.org/3/movie/';
+
+    const response = await fetch(`${URL}${filmId}/videos?api_key=${API_KEY}`);
+    if (!response.ok) {
+      return;
+    }
+    const result = await response.json();
+    if (result.results.length === 0) {
+      trailerBtnEl.classList.add('hide');
+    } else {
+      trailerBtnEl.classList.remove('hide');
+    }
+    return;
+  } catch (error) {
+    console.error(error);
+  }
 }
