@@ -54,11 +54,33 @@ function clearGallery() {
 
 function renderGalleryLib(movie) {
   console.log(movie);
-  const markupGalleryLib = movie
-    .map(mov => {
-      const { title, genresName, release_date, vote_average, id, poster_path } =
-        mov;
-      return `<li class="gallery__item">
+  const markupGalleryLib = movie.map(mov => renderOneCard(mov)).join('');
+  try {
+    clearGallery();
+    galleryLib.insertAdjacentHTML('beforeend', markupGalleryLib);
+  } catch {}
+}
+
+function renderOneCard(film) {
+  const { title, genresName, release_date, vote_average, id, poster_path } =
+    film;
+  if (poster_path === null) {
+    return `<li class="gallery__item">
+          <a class="gallery__card" href="#" id="${id}">
+            <img class="gallery__foto" src="https://st2.depositphotos.com/3994049/8290/v/950/depositphotos_82902580-stock-illustration-retro-movie-projector-vector-detailed.jpg" width="450"
+                height="294" alt="${title} poster" loading="lazy" />
+              <h2 class="gallery__subtitle">${title}</h2>
+              <div class="gallery__info">
+                <p class="gallery__genres">${genresName}</p>
+                <p class="gallery__year">${release_date.slice(0, 4)}</p>
+                <p class="gallery__vote-average">${Number.parseInt(
+                  vote_average
+                )}</p>
+              </div>
+          </a>
+        </li>`;
+  }
+  return `<li class="gallery__item">
             <a class="gallery__card" href="#" id="${id}">
                <picture>
                   <source media="(min-width: 1280px)" srcset="
@@ -89,13 +111,6 @@ function renderGalleryLib(movie) {
                </div>
             </a>
          </li>`;
-    })
-    .join('');
-  //   console.log(markupGalleryLib);
-  try {
-    clearGallery();
-    galleryLib.insertAdjacentHTML('beforeend', markupGalleryLib);
-  } catch {}
 }
 
 function displaySorryMassege(filmArr) {
