@@ -55,10 +55,15 @@ function cheackBtn(electFilm) {
   const addWatched = document.querySelector('.add__watched');
   const addQueue = document.querySelector('.add_queue');
 
-  addWatched.addEventListener(
-    'click',
-    onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
-  );
+  addWatched.textContent = 'add to Watched';
+  if (!addWatched.dataset.add) {
+    addWatched.addEventListener(
+      'click',
+      onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+    );
+    addWatched.dataset.add = 'true';
+  }
+
   try {
     for (let valueFilm of watchedArrLS) {
       if (valueFilm.id === electFilm.id) {
@@ -77,11 +82,14 @@ function cheackBtn(electFilm) {
     console.log(error);
   }
 
-  addQueue.addEventListener(
-    'click',
-    onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
-  );
-
+  addQueue.textContent = 'add to Queue';
+  if (!addQueue.dataset.add) {
+    addQueue.addEventListener(
+      'click',
+      onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+    );
+    addQueue.dataset.add = 'true';
+  }
   try {
     for (let valueFilm of queveArrLS) {
       if (valueFilm.id === electFilm.id) {
@@ -173,7 +181,19 @@ function onBtnRemoveClick(electFilm, currentLocalStorage, evt) {
 
   console.log('after remove');
   // cheackBtn(electFilm);
-  displaySorryMassege(JSON.parse(localStorage.getItem(currentLocalStorage)));
+  if (
+    document.querySelector('.watched').dataset.active === 'true' &&
+    currentLocalStorage === LOCALSTORAGE_WATCHED
+  ) {
+    displaySorryMassege(JSON.parse(localStorage.getItem(currentLocalStorage)));
+  }
+
+  if (
+    document.querySelector('.queue').dataset.active === 'true' &&
+    currentLocalStorage == LOCALSTORAGE_QUEUE
+  ) {
+    displaySorryMassege(JSON.parse(localStorage.getItem(currentLocalStorage)));
+  }
 
   console.dir(arrayAdd);
 }

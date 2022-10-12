@@ -26,6 +26,8 @@ try {
   refs.watched.addEventListener('click', () => {
     refs.watched.classList.add('active');
     refs.queue.classList.remove('active');
+    refs.watched.dataset.active = true;
+    refs.queue.dataset.active = false;
     displaySorryMassege(JSON.parse(localStorage.getItem('films-to-watched')));
   });
 } catch (eror) {
@@ -36,6 +38,8 @@ try {
   refs.queue.addEventListener('click', () => {
     refs.queue.classList.add('active');
     refs.watched.classList.remove('active');
+    refs.queue.dataset.active = true;
+    refs.watched.dataset.active = false;
     displaySorryMassege(JSON.parse(localStorage.getItem('films-to-queue')));
   });
 } catch (eror) {
