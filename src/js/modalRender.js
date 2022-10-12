@@ -325,6 +325,7 @@ function renderModalWindoq(filmEl) {
                 <ul class="list__btn--add">
                     <li class="watched-item"><button class="add__watched" data-id="${id}" type="button">add to Watched</button></li>
                     <li class="queue-item"><button class="add_queue" data-id="${id}" type="button">add to queue</button></li>
+                    <li class="queue-item"><button class="btn__remove" data-id="${id}" type="button">Remove</button></li>
                 </ul>
 
             </div>
