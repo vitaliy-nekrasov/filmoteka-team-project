@@ -2,8 +2,8 @@
 const galleryLib = document.querySelector('.gallery-lib');
 const divContaunerText = document.querySelector('.container-lib');
 
-const watchedFilmsArLS = JSON.parse(localStorage.getItem('films-to-watched'));
-const queueFilmsArLS = JSON.parse(localStorage.getItem('films-to-queue'));
+// const JSON.parse(localStorage.getItem('films-to-watched')) = JSON.parse(localStorage.getItem('films-to-watched'));
+// const JSON.parse(localStorage.getItem('films-to-queue')) = JSON.parse(localStorage.getItem('films-to-queue'));
 
 const refs = {
   watched: document.querySelector('.watched'),
@@ -26,7 +26,7 @@ try {
   refs.watched.addEventListener('click', () => {
     refs.watched.classList.add('active');
     refs.queue.classList.remove('active');
-    displaySorryMassege(watchedFilmsArLS);
+    displaySorryMassege(JSON.parse(localStorage.getItem('films-to-watched')));
   });
 } catch (eror) {
   console.log(eror);
@@ -36,14 +36,14 @@ try {
   refs.queue.addEventListener('click', () => {
     refs.queue.classList.add('active');
     refs.watched.classList.remove('active');
-    displaySorryMassege(queueFilmsArLS);
+    displaySorryMassege(JSON.parse(localStorage.getItem('films-to-queue')));
   });
 } catch (eror) {
   console.log(eror);
 }
 
 try {
-  displaySorryMassege(watchedFilmsArLS);
+  displaySorryMassege(JSON.parse(localStorage.getItem('films-to-watched')));
 } catch (eror) {
   console.log(eror);
 }
