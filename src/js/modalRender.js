@@ -1,5 +1,6 @@
 import { fetchIMDbId } from './API';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import displaySorryMassege from './library';
 
 const mainFilmGalleryEl = document.querySelector('.gallery');
 const libraryFilmGalleryEl = document.querySelector('.gallery-lib');
@@ -29,22 +30,14 @@ function onRenderModal(e) {
   let filmId = e.target.closest('.gallery__card').id;
   let electFilm = getFilmById(filmId);
   try {
-    console.log(electFilm);
-
     renderModalWindoq(electFilm);
     if (!electFilm.poster_path) {
       document.querySelector('.button-modal__img').src =
         'https://st2.depositphotos.com/3994049/8290/v/950/depositphotos_82902580-stock-illustration-retro-movie-projector-vector-detailed.jpg';
     }
     console.log(electFilm.poster_path);
-  } catch (electFilm) {
-    console.log(electFilm);
-    if (!electFilm.poster_path) {
-      // electFilm.poster_path = '';
-      renderModalWindoq(electFilm);
-      document.querySelector('.button-modal__img').src =
-        'https://st2.depositphotos.com/3994049/8290/v/950/depositphotos_82902580-stock-illustration-retro-movie-projector-vector-detailed.jpg';
-    }
+  } catch (error) {
+    console.log(error);
   }
 
   document.querySelector('.backdrop').classList.remove('display__none');
@@ -62,60 +55,49 @@ function cheackBtn(electFilm) {
   const addWatched = document.querySelector('.add__watched');
   const addQueue = document.querySelector('.add_queue');
 
+  addWatched.addEventListener(
+    'click',
+    onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+  );
   try {
     for (let valueFilm of watchedArrLS) {
       if (valueFilm.id === electFilm.id) {
-        // window.alert(`This film has already been added ${textMessage}!`);
-        addWatched.textContent = 'remove from watched';
-        addWatched.dataset.inLibrary = 'true';
-        addWatched.removeEventListener(
-          'click',
-          onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
-        );
-        // addWatched.addEventListener(
-        //   'click',
-        //   onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
-        // );
+        addWatched.remove();
+        addRemoveWathedBtn(electFilm.id);
+        document
+          .querySelector('.add__watched')
+          .addEventListener(
+            'click',
+            onBtnRemoveClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+          );
         break;
       }
     }
   } catch (error) {
     console.log(error);
   }
+
+  addQueue.addEventListener(
+    'click',
+    onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+  );
 
   try {
     for (let valueFilm of queveArrLS) {
       if (valueFilm.id === electFilm.id) {
-        // window.alert(`This film has already been added ${textMessage}!`);
-        addQueue.textContent = 'remove from queve';
-        addQueue.dataset.inLibrary = 'true';
-        addQueue.removeEventListener(
-          'click',
-          onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
-        );
-        // addQueue.addEventListener(
-        //   'click',
-        //   onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
-        // );
+        addQueue.remove();
+        addRemoveQueueBtn(electFilm.id);
+        document
+          .querySelector('.add_queue')
+          .addEventListener(
+            'click',
+            onBtnRemoveClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+          );
         break;
       }
     }
   } catch (error) {
     console.log(error);
-  }
-
-  if (addWatched.dataset.inLibrary !== 'true') {
-    addWatched.addEventListener(
-      'click',
-      onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
-    );
-  }
-
-  if (addQueue.dataset.inLibrary !== 'true') {
-    addQueue.addEventListener(
-      'click',
-      onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
-    );
   }
 }
 
@@ -160,6 +142,7 @@ async function onBtnAddClick(electFilm, currentLocalStorage, evt) {
 
 function onBtnRemoveClick(electFilm, currentLocalStorage, evt) {
   evt.preventDefault();
+  console.log('hi');
 
   let arrayAdd = localStorage.getItem(currentLocalStorage);
   try {
@@ -189,9 +172,29 @@ function onBtnRemoveClick(electFilm, currentLocalStorage, evt) {
   cheackBtn(electFilm);
 
   console.log('after remove');
-  cheackBtn(electFilm);
+  // cheackBtn(electFilm);
+  displaySorryMassege(JSON.parse(localStorage.getItem(currentLocalStorage)));
 
   console.dir(arrayAdd);
+}
+
+function addRemoveWathedBtn(id) {
+  let btn = document.createElement('button');
+  btn.type = 'button';
+  btn.classList.add('add__watched');
+  btn.dataset.id = `${id}`;
+  btn.textContent = 'remove from Watched';
+  document.querySelector('.watched-item').appendChild(btn);
+}
+
+function addRemoveQueueBtn(id) {
+  let btn = document.createElement('button');
+  btn.type = 'button';
+  btn.classList.add('add_queue');
+  btn.dataset.id = `${id}`;
+  btn.textContent = 'remove from Queue';
+  document.querySelector('.queue-item').appendChild(btn);
+  // ;
 }
 
 async function onGoIMDbPage(e) {
@@ -288,8 +291,8 @@ function renderModalWindoq(filmEl) {
                 <p class="about__movie--text">About</p>
                 <p class="about__movie--text--content">${overview}</p>
                 <ul class="list__btn--add">
-                    <li><button class="add__watched" data-id="${id}" type="button">add to Watched</button></li>
-                    <li><button class="add_queue" data-id="${id}" type="button">add to queue</button></li>
+                    <li class="watched-item"><button class="add__watched" data-id="${id}" type="button">add to Watched</button></li>
+                    <li class="queue-item"><button class="add_queue" data-id="${id}" type="button">add to queue</button></li>
                 </ul>
 
             </div>
