@@ -41,6 +41,12 @@ function onRenderModal(e) {
   }
 
   document.querySelector('.backdrop').classList.remove('display__none');
+  document.querySelector('.backdrop').addEventListener('click', e => {
+    if (e.target === e.currentTarget) {
+      onCloseModal();
+    }
+  });
+  document.addEventListener('keydown', onKeyDownCloseModal);
   const imdbBtnEl = document.querySelector('.imdb-btn');
 
   imdbBtnEl.addEventListener('click', onGoIMDbPage);
@@ -48,6 +54,12 @@ function onRenderModal(e) {
   cheackBtn(electFilm);
 }
 //Alex
+function onKeyDownCloseModal(e) {
+  if (e.code === 'Escape') {
+    document.removeEventListener('keydown', onKeyDownCloseModal);
+    onCloseModal();
+  }
+}
 
 function cheackBtn(electFilm) {
   let watchedArrLS = JSON.parse(localStorage.getItem(LOCALSTORAGE_WATCHED));
