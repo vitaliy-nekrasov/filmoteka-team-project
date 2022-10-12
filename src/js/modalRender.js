@@ -28,7 +28,25 @@ function onRenderModal(e) {
 
   let filmId = e.target.closest('.gallery__card').id;
   let electFilm = getFilmById(filmId);
-  renderModalWindoq(electFilm);
+  try {
+    console.log(electFilm);
+
+    renderModalWindoq(electFilm);
+    if (!electFilm.poster_path) {
+      document.querySelector('.button-modal__img').src =
+        'https://st2.depositphotos.com/3994049/8290/v/950/depositphotos_82902580-stock-illustration-retro-movie-projector-vector-detailed.jpg';
+    }
+    console.log(electFilm.poster_path);
+  } catch (electFilm) {
+    console.log(electFilm);
+    if (!electFilm.poster_path) {
+      // electFilm.poster_path = '';
+      renderModalWindoq(electFilm);
+      document.querySelector('.button-modal__img').src =
+        'https://st2.depositphotos.com/3994049/8290/v/950/depositphotos_82902580-stock-illustration-retro-movie-projector-vector-detailed.jpg';
+    }
+  }
+
   document.querySelector('.backdrop').classList.remove('display__none');
   const imdbBtnEl = document.querySelector('.imdb-btn');
 
@@ -210,16 +228,28 @@ async function getIMDbId(filmId) {
   return idIMDb;
 }
 
-function onReadCurrentArrayFilmLS() {
-  let filmReadLocalStorage = localStorage.getItem('currentArrayFilm');
+function onReadCurrentArrayFilmLS(arr) {
+  let filmReadLocalStorage = localStorage.getItem(arr);
   let currentFilmReadLS = JSON.parse(filmReadLocalStorage);
   return currentFilmReadLS;
 }
 
 function getFilmById(id) {
-  let arrayOfFilms = onReadCurrentArrayFilmLS();
+  let arrayOfFilms = onReadCurrentArrayFilmLS('currentArrayFilm');
   let electFilm = arrayOfFilms.find(el => el.id === Number(id));
-  return electFilm;
+  if (electFilm) {
+    return electFilm;
+  }
+  arrayOfFilms = onReadCurrentArrayFilmLS(LOCALSTORAGE_WATCHED);
+  electFilm = arrayOfFilms.find(el => el.id === Number(id));
+  if (electFilm) {
+    return electFilm;
+  }
+  arrayOfFilms = onReadCurrentArrayFilmLS(LOCALSTORAGE_QUEUE);
+  electFilm = arrayOfFilms.find(el => el.id === Number(id));
+  if (electFilm) {
+    return electFilm;
+  }
 }
 
 function renderModalWindoq(filmEl) {
