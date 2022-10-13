@@ -111,9 +111,7 @@ function renderOneCard(film) {
                <div class="gallery__info">
                   <p class="gallery__genres">${genresName}</p>
                   <p class="gallery__year">${release_date.slice(0, 4)}</p>
-                  <p class="gallery__vote-average">${Number.parseInt(
-                    vote_average
-                  )}</p>
+                  <p class="gallery__vote-average">${vote_average}</p>
                </div>
             </a>
          </li>`;
