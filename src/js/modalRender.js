@@ -270,20 +270,17 @@ function onReadCurrentArrayFilmLS(arr) {
 }
 
 function getFilmById(id) {
-  let arrayOfFilms = onReadCurrentArrayFilmLS('currentArrayFilm');
-  let electFilm = arrayOfFilms.find(el => el.id === Number(id));
-  if (electFilm) {
-    return electFilm;
-  }
-  arrayOfFilms = onReadCurrentArrayFilmLS(LOCALSTORAGE_WATCHED);
-  electFilm = arrayOfFilms.find(el => el.id === Number(id));
-  if (electFilm) {
-    return electFilm;
-  }
-  arrayOfFilms = onReadCurrentArrayFilmLS(LOCALSTORAGE_QUEUE);
-  electFilm = arrayOfFilms.find(el => el.id === Number(id));
-  if (electFilm) {
-    return electFilm;
+  let arr = ['currentArrayFilm', LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE];
+  for (elem of arr) {
+    try {
+      let arrayOfFilms = onReadCurrentArrayFilmLS(elem);
+      let electFilm = arrayOfFilms.find(el => el.id === Number(id));
+      if (electFilm) {
+        return electFilm;
+      }
+    } catch {
+      continue;
+    }
   }
 }
 
