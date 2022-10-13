@@ -119,7 +119,7 @@
   @media screen and (max-width: 768px) {
     position: absolute;
     top: 35px;
-    left:45%;
+    left:42%;
     transform:translate(-50%, -50%);
     transition: width 0.4s ease-in-out;
     }
@@ -267,11 +267,13 @@ display: block;
   font-size: 80%;
     line-height: 1.1;
   color: #ff001b;
+  width: 140%;
 
   @media screen and (min-width: 768px) {
     margin-top: 20px;
     font-size: 100%;
     line-height: 1.15;
     color: #ff001b;
+    width: 100%;
   }
 }
