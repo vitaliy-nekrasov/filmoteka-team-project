@@ -44,6 +44,9 @@ async function getTrailerMarkup() {
     const getTrailerObj = await obj.results.find(obj =>
       obj.name.includes('Trailer')
     );
+    if (getTrailerObj === undefined) {
+      return;
+    }
     const getLink = await getTrailerObj.key;
     const markup =
       await `<iframe class="youtube" width="1400" height="700" src='https://www.youtube.com/embed/${getLink}' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="trailer_video"></iframe>`;
