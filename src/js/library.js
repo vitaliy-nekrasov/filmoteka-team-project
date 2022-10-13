@@ -1,6 +1,8 @@
 // import renderGalleryLib from './gallery-lib';
 const galleryLib = document.querySelector('.gallery-lib');
 const divContaunerText = document.querySelector('.container-lib');
+const bodyEl = document.querySelector('.body__lib');
+const mainEl = document.querySelector('.main__lib');
 
 // const JSON.parse(localStorage.getItem('films-to-watched')) = JSON.parse(localStorage.getItem('films-to-watched'));
 // const JSON.parse(localStorage.getItem('films-to-queue')) = JSON.parse(localStorage.getItem('films-to-queue'));
@@ -121,22 +123,14 @@ function displaySorryMassege(filmArr) {
   if (!filmArr || filmArr.length === 0) {
     clearGallery();
     divContaunerText.classList.remove('display__none');
-    // document.querySelector('footer').style.position = 'static';
-    // document.querySelector('footer').style.bottom = '0';
-    // document.querySelector('footer').style.width = '100%';
-    // document.querySelector('main').style.justifyContent = 'center';
-    // document.querySelector('main').style.marginBottom = '0';
-    document.querySelector('main').style.height = '100%';
-    document.querySelector('main').style.display = 'flex';
-    document.querySelector('main').style.flexDirection = 'column';
-    document.querySelector('main').style.justifyContent = 'center';
-    document.querySelector('body').style.display = 'flex';
-    document.querySelector('body').style.flexDirection = 'column';
-    document.querySelector('body').style.height = '100vh';
     galleryLib.classList.add('display__none');
+    bodyEl.classList.add('body__lib--active');
+    mainEl.classList.add('main__lib--active');
     return;
   }
   divContaunerText.classList.add('display__none');
+  bodyEl.classList.remove('body__lib--active');
+  mainEl.classList.remove('main__lib--active');
   galleryLib.classList.remove('display__none');
   renderGalleryLib(filmArr);
 }
