@@ -6,7 +6,6 @@ const mainFilmGalleryEl = document.querySelector('.gallery');
 const libraryFilmGalleryEl = document.querySelector('.gallery-lib');
 const modalWindowEl = document.querySelector('.modal');
 const modalCloseBtnEl = document.querySelector('.button-modal__close');
-//Alex
 const LOCALSTORAGE_WATCHED = 'films-to-watched';
 const LOCALSTORAGE_QUEUE = 'films-to-queue';
 
@@ -35,7 +34,6 @@ function onRenderModal(e) {
       document.querySelector('.button-modal__img').src =
         'https://st2.depositphotos.com/3994049/8290/v/950/depositphotos_82902580-stock-illustration-retro-movie-projector-vector-detailed.jpg';
     }
-    // console.log(electFilm.poster_path);
   } catch (error) {
     console.log(error);
   }
@@ -50,10 +48,9 @@ function onRenderModal(e) {
   const imdbBtnEl = document.querySelector('.imdb-btn');
 
   imdbBtnEl.addEventListener('click', onGoIMDbPage);
-  //Alex
   cheackBtn(electFilm);
 }
-//Alex
+
 function onKeyDownCloseModal(e) {
   if (e.code === 'Escape') {
     document.removeEventListener('keydown', onKeyDownCloseModal);
@@ -123,7 +120,6 @@ function cheackBtn(electFilm) {
   }
 }
 
-//Alex
 async function onBtnAddClick(electFilm, currentLocalStorage, evt) {
   evt.preventDefault();
 
@@ -142,29 +138,15 @@ async function onBtnAddClick(electFilm, currentLocalStorage, evt) {
       ? 'to the watched'
       : 'to the queue';
 
-  //это будет уже лишний код, когда все заработает
-  //т.к. возможности добавить фильм 2 раза у нас априори не будет
-  for (let valueFilm of arrayAdd) {
-    if (valueFilm.id === electFilm.id) {
-      //window.alert(`This film has already been added ${textMessage}!`);
-      Notify.info(`This film has already been added ${textMessage}!`);
-      return;
-    }
-  }
-
   arrayAdd.push(electFilm);
-  //window.alert(`New film ${electFilm.title} added ${textMessage}!`);
   Notify.success(`New film ${electFilm.title} added ${textMessage}!`);
   localStorage.setItem(currentLocalStorage, JSON.stringify(arrayAdd));
 
   cheackBtn(electFilm);
-
-  console.dir(arrayAdd);
 }
 
 function onBtnRemoveClick(electFilm, currentLocalStorage, evt) {
   evt.preventDefault();
-  console.log('hi');
 
   let arrayAdd = localStorage.getItem(currentLocalStorage);
   try {
@@ -184,8 +166,7 @@ function onBtnRemoveClick(electFilm, currentLocalStorage, evt) {
   for (let valueFilm of arrayAdd) {
     if (valueFilm.id === electFilm.id) {
       arrayAdd.splice(arrayAdd.indexOf(valueFilm), 1);
-      //window.alert(`This film deleted successfully ${textMessage}!`);
-      Notify.success(`This film deleted successfully ${textMessage}!`);
+      Notify.info(`This film deleted successfully ${textMessage}!`);
     }
   }
 
@@ -193,8 +174,6 @@ function onBtnRemoveClick(electFilm, currentLocalStorage, evt) {
 
   cheackBtn(electFilm);
 
-  console.log('after remove');
-  // cheackBtn(electFilm);
   if (
     document.querySelector('.watched').dataset.active === 'true' &&
     currentLocalStorage === LOCALSTORAGE_WATCHED
@@ -208,8 +187,6 @@ function onBtnRemoveClick(electFilm, currentLocalStorage, evt) {
   ) {
     displaySorryMassege(JSON.parse(localStorage.getItem(currentLocalStorage)));
   }
-
-  console.dir(arrayAdd);
 }
 
 function addRemoveWathedBtn(id) {
@@ -230,15 +207,14 @@ function addRemoveQueueBtn(id) {
   btn.dataset.id = `${id}`;
   btn.textContent = 'remove from Queue';
   document.querySelector('.queue-item').appendChild(btn);
-  // ;
 }
 
 async function onGoIMDbPage(e) {
   let filmId = e.target.dataset.id;
-  console.log(e.target.dataset.id);
+  //console.log(e.target.dataset.id);
   let idIMDb = await getIMDbId(filmId);
   let getHref = `https://www.imdb.com/title/${idIMDb}`;
-  console.log(window.open(getHref));
+  //console.log(window.open(getHref));
 }
 
 function onCloseModal(e) {
@@ -247,7 +223,6 @@ function onCloseModal(e) {
   const imdbBtnEl = document.querySelector('.imdb-btn');
 
   imdbBtnEl.removeEventListener('click', onGoIMDbPage);
-  //Alex
   addWatched.removeEventListener('click', onBtnAddClick);
   addQueue.removeEventListener('click', onBtnAddClick);
   addWatched.removeEventListener('click', onBtnRemoveClick);
