@@ -5,10 +5,10 @@ const refs = {
     error: document.querySelector('.error__message'),
     enLang: document.querySelector('.en'),
     ukLang: document.querySelector('.uk'),
-    header: document.querySelector('.header')
+    header: document.querySelector('.header'),
+    main: document.querySelector('main'),
+    languageBox: document.querySelector('.language_box')
 }
-
-// console.log(refs.enLang)
 
 refs.enLang.addEventListener('click', ()=>{
     refs.enLang.classList.add('activeLang');
@@ -35,3 +35,12 @@ if (formValue == ''){
 }
     e.currentTarget.reset();
 }
+
+// document.addEventListener('scroll', onManeHide)
+
+// function onManeHide (){
+// refs.languageBox.style.display = 'none';
+// refs.formEl.style.display = 'none';
+// refs.header.style.paddingBottom = '10px'
+// }
+
