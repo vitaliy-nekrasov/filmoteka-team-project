@@ -7,17 +7,19 @@ import {
 
 import renderGalleryLib from './renderMainGallery';
 import { loaderShow, loaderHide } from './loader.js';
+import createPagination from './pagination';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.form');
 const error = document.querySelector('.error__message');
+const pagginationListEl = document.querySelector('.pagination__list');
 
 if (form) {
   form.addEventListener('input', inputFilterFilm);
   form.addEventListener('submit', onSubmitFilterFilm);
 }
 
-let page = 1;
+// let page = 1;
 let searchNameFilm = '';
 
 let currentArrFilmLS = [];
@@ -42,25 +44,58 @@ function inputFilterFilm(event) {
 function onSubmitFilterFilm(event) {
   event.preventDefault();
   clearGallery();
-  fetchSearchFilm(searchNameFilm, page).then(responce => {
-    renderFilmoteka(responce);
-  });
+
+  pagginationListEl.removeEventListener('click', onRenderPageNumber);
+  pagginationListEl.addEventListener('click', onRenderPageNumberByWord);
+
+  getFilmByName(searchNameFilm, 1);
 }
 
-fetchTrending(page)
-  .then(responce => {
-    renderFilmoteka(responce);
-  })
-  .catch(error => {
-    console.log(error);
-  });
+function onRenderPageNumberByWord(evt) {
+  console.log('film by name');
+  if (!evt.target.closest('.page-number-span')) {
+    return;
+  }
+  let pageNumber = evt.target.closest('.page-number-span').dataset.page;
+  console.log(evt.target.closest('.page-number-span').dataset.page);
+  page = pageNumber;
+  clearGallery();
+  getFilmByName(searchNameFilm, Number(page));
+}
 
-function renderFilmoteka(films) {
+function getFilmByName(searchNameFilm, page) {
+  fetchSearchFilm(searchNameFilm, page)
+    .then(responce => {
+      loaderShow();
+      renderFilmoteka(responce, page);
+      loaderHide();
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
+function getPopularFilmArr(page) {
+  fetchTrending(page)
+    .then(responce => {
+      loaderShow();
+      renderFilmoteka(responce, page);
+      loaderHide();
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
+getPopularFilmArr(1);
+
+function renderFilmoteka(films, page) {
   const arrayFilms = films.results;
   const totalFilms = films.total_results;
   const totalPage = films.total_pages;
   let updateCurrentArrFilmsLS = getCurrentArrFilmsLS(arrayFilms);
   renderGalleryLib(updateCurrentArrFilmsLS);
+  createPagination(totalPage, page);
 }
 
 // \\\\\\\\\\\\\\\\\\\\
@@ -190,23 +225,17 @@ function clearGallery() {
 
 // Очистка галереи
 try {
-  element.addEventListener('click', onPageClick);
+  pagginationListEl.addEventListener('click', onRenderPageNumber);
 } catch {}
 
-function onPageClick(evt) {
-  if (evt.target.nodeName !== 'SPAN') {
+function onRenderPageNumber(evt) {
+  console.log('популярні фільми');
+  if (!evt.target.closest('.page-number-span')) {
     return;
   }
-  let pageNumber = evt.target.textContent;
+  let pageNumber = evt.target.closest('.page-number-span').dataset.page;
+  console.log(evt.target.closest('.page-number-span').dataset.page);
   page = pageNumber;
   clearGallery();
-  fetchTrending(page)
-    .then(responce => {
-      loaderShow();
-      renderFilmoteka(responce);
-      loaderHide();
-    })
-    .catch(error => {
-      console.log(error);
-    });
+  getPopularFilmArr(Number(page));
 }
