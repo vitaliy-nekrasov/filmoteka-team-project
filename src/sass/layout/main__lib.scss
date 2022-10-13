@@ -44,3 +44,16 @@
 .display__none {
   display: none;
 }
+
+.body__lib--active {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.main__lib--active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
+}
