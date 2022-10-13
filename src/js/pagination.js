@@ -11,11 +11,10 @@ function createPagination(totalPages, page) {
   if (page > 1) {
     liTag += `<li class="btn-skip prev" onclick="createPagination(totalPages, ${
       page - 1
-    })"><span class="page-number-span">
-    <i class="left"></i>
-    <svg class="svg-btn" width="16"  height="16">
-    <use href="images/icons.svg#icon-arrowleft">
-    </use>
+    })"><span class="page-number-span span-svg">
+    <svg class="svg-btn" version="1.1" width="16"  height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+   <title>arrow-left</title>
+    <path d="M3.828 9l6.071-6.071-1.414-1.414-8.485 8.485 8.485 8.485 1.414-1.414-6.071-6.071h16.172v-2h-16.172z" ></path>
   </svg>
   </span>
   </li>`;
@@ -65,12 +64,11 @@ function createPagination(totalPages, page) {
   if (page < totalPages) {
     liTag += `<li class="btn-skip next" onclick="createPagination(totalPages, ${
       page + 1
-    })"><span class="page-number-span"> 
-    <i class="right"></i>
-    <svg class="svg-btn" width="16"  height="16">
-    <use href="images/icons.svg#icon-arrowright">
-    </use>
-  </svg> 
+    })"><span class="page-number-span span-svg"> 
+    <svg class="svg-btn" version="1.1" width="16"  height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+   <title>arrow-right</title>
+    <path d="M16.172 9l-6.071-6.071 1.414-1.414 8.485 8.485-8.485 8.485-1.414-1.414 6.071-6.071h-16.172v-2z"></path>
+  </svg>
  </span></li>`;
   }
   element.innerHTML = liTag;
