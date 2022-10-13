@@ -58,7 +58,7 @@ function onRenderPageNumberByWord(evt) {
   }
   let pageNumber = evt.target.closest('.page-number-span').dataset.page;
   console.log(evt.target.closest('.page-number-span').dataset.page);
-  page = pageNumber;
+  let page = pageNumber;
   clearGallery();
   getFilmByName(searchNameFilm, Number(page));
 }
@@ -235,7 +235,7 @@ function onRenderPageNumber(evt) {
   }
   let pageNumber = evt.target.closest('.page-number-span').dataset.page;
   console.log(evt.target.closest('.page-number-span').dataset.page);
-  page = pageNumber;
+  let page = pageNumber;
   clearGallery();
   getPopularFilmArr(Number(page));
 }
