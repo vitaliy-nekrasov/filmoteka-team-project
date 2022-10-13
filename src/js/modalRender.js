@@ -275,7 +275,7 @@ function onReadCurrentArrayFilmLS(arr) {
 
 function getFilmById(id) {
   let arr = ['currentArrayFilm', LOCALSTORAGE_WATCHED, LOCALSTORAGE_QUEUE];
-  for (elem of arr) {
+  for (let elem of arr) {
     try {
       let arrayOfFilms = onReadCurrentArrayFilmLS(elem);
       let electFilm = arrayOfFilms.find(el => el.id === Number(id));
