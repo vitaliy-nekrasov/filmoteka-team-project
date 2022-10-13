@@ -118,12 +118,26 @@ function renderOneCard(film) {
 }
 
 function displaySorryMassege(filmArr) {
-  if (filmArr.length === 0) {
+  if (!filmArr || filmArr.length === 0) {
     clearGallery();
     divContaunerText.classList.remove('display__none');
+    // document.querySelector('footer').style.position = 'static';
+    // document.querySelector('footer').style.bottom = '0';
+    // document.querySelector('footer').style.width = '100%';
+    // document.querySelector('main').style.justifyContent = 'center';
+    // document.querySelector('main').style.marginBottom = '0';
+    document.querySelector('main').style.height = '100%';
+    document.querySelector('main').style.display = 'flex';
+    document.querySelector('main').style.flexDirection = 'column';
+    document.querySelector('main').style.justifyContent = 'center';
+    document.querySelector('body').style.display = 'flex';
+    document.querySelector('body').style.flexDirection = 'column';
+    document.querySelector('body').style.height = '100vh';
+    galleryLib.classList.add('display__none');
     return;
   }
   divContaunerText.classList.add('display__none');
+  galleryLib.classList.remove('display__none');
   renderGalleryLib(filmArr);
 }
 
