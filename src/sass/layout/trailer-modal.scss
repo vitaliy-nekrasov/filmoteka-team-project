@@ -20,7 +20,7 @@
   pointer-events: none;
   transition: opacity 250ms linear;
 }
-iframe {
+.youtube {
   width: 320px;
   height: 240px;
   @include mq(tablet) {
@@ -33,21 +33,21 @@ iframe {
   }
 }
 .trailer {
-  display: none;
+  display: inline;
   margin: 0;
   padding: 0;
   border: none;
   background-color: transparent;
   position: absolute;
-  @include mq(desktop) {
-    display: inline;
+  top: 50px;
+  left: 25px;
+  @include mq(tablet) {
     top: 45px;
     left: 45px;
   }
-  @include mq(tablet) {
-    display: inline;
+  @include mq(desktop) {
     top: 45px;
-    left: 45px;
+    left: 25px;
   }
 }
 .trailer__icon {
