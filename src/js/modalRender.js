@@ -35,7 +35,7 @@ function onRenderModal(e) {
       document.querySelector('.button-modal__img').src =
         'https://st2.depositphotos.com/3994049/8290/v/950/depositphotos_82902580-stock-illustration-retro-movie-projector-vector-detailed.jpg';
     }
-    console.log(electFilm.poster_path);
+    // console.log(electFilm.poster_path);
   } catch (error) {
     console.log(error);
   }
@@ -74,6 +74,7 @@ function cheackBtn(electFilm) {
       onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
     );
     addWatched.dataset.add = 'true';
+    addWatched.classList.remove('btn__remove');
   }
 
   try {
@@ -101,6 +102,7 @@ function cheackBtn(electFilm) {
       onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
     );
     addQueue.dataset.add = 'true';
+    addQueue.classList.remove('btn__remove');
   }
   try {
     for (let valueFilm of queveArrLS) {
@@ -113,7 +115,7 @@ function cheackBtn(electFilm) {
             'click',
             onBtnRemoveClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
           );
-        break;
+        return;
       }
     }
   } catch (error) {
@@ -214,6 +216,7 @@ function addRemoveWathedBtn(id) {
   let btn = document.createElement('button');
   btn.type = 'button';
   btn.classList.add('add__watched');
+  btn.classList.add('btn__remove');
   btn.dataset.id = `${id}`;
   btn.textContent = 'remove from Watched';
   document.querySelector('.watched-item').appendChild(btn);
@@ -223,6 +226,7 @@ function addRemoveQueueBtn(id) {
   let btn = document.createElement('button');
   btn.type = 'button';
   btn.classList.add('add_queue');
+  btn.classList.add('btn__remove');
   btn.dataset.id = `${id}`;
   btn.textContent = 'remove from Queue';
   document.querySelector('.queue-item').appendChild(btn);
@@ -302,9 +306,7 @@ function renderModalWindoq(filmEl) {
             <img class="button-modal__img" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${title} poster">
             <div class="modal__about--movie">
                 <h2 class="modal__about--title">${title}</h2>
-                <p class="modal__about--title--movie">Vote / Votes <span class="modal__about--rating">${Number.parseInt(
-                  vote_average
-                )}</span><span
+                <p class="modal__about--title--movie">Vote / Votes <span class="modal__about--rating">${vote_average}</span><span
 
                         class="modal__about--title--movie-slech">/</span> <span
                         class="modal__about--text--bleck">${vote_count}</span>
@@ -322,12 +324,13 @@ function renderModalWindoq(filmEl) {
                 <ul class="list__btn--add">
                     <li class="watched-item"><button class="add__watched" data-id="${id}" type="button">add to Watched</button></li>
                     <li class="queue-item"><button class="add_queue" data-id="${id}" type="button">add to queue</button></li>
-                    <li class="queue-item"><button class="btn__remove" data-id="${id}" type="button">Remove</button></li>
                 </ul>
 
             </div>
         </div>
     </div>`;
+
+  // <li class="queue-item"><button class="btn__remove" data-id="${id}" type="button">Remove</button></li>
 
   // <a target="_blank" class="imdb-btn" href="https://www.imdb.com/title/${idInIMDB}">IMDb</a>;
 

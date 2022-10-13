@@ -90,9 +90,16 @@ function remareFilsmObj(films) {
 }
 
 function remareFilmObj(film) {
-  // // console.log('film', film);
   film.genresName = getGenres(film.genre_ids);
-  // console.log('film.genresName', film.genresName);
+  let vote = String(film.vote_average);
+  if (vote.length === 1) {
+    film.vote_average = vote.padEnd(3, '.0');
+    return film;
+  }
+  if (vote.length >= 4) {
+    film.vote_average = vote.slice(0, 3);
+    return film;
+  }
   return film;
 }
 
