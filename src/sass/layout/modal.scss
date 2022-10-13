@@ -47,23 +47,22 @@
 }
 
 .button-modal__img {
-    @include mq(mobile-only) {
-      max-width: 240px;
-      height: 317px;
-      margin-bottom: 20px;
+  width: 375px;
+  height: 478px;
+  object-fit: cover;
+  margin-right: 16px;
 
-    }
   @media screen and (max-width: 1023px) {
     width: 263px;
     height: 374px;
     margin-right: 68px;
   }
-  
 
-  width: 375px;
-  height: 478px;
-  object-fit: cover;
-  margin-right: 16px;
+    @include mq(mobile-only) {
+      max-width: 240px;
+      height: 317px;
+      margin-bottom: 20px;
+    }
 }
 
 .modal__about--title {
