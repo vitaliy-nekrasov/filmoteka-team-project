@@ -48,8 +48,8 @@
 
 .button-modal__img {
   @include mq(mobile-only) {
-    width: 240px;
-    height: 357px;
+    width: 200px;
+    height: 317px;
     margin-bottom: 20px;
   }
   @media screen and (max-width: 1023px) {
