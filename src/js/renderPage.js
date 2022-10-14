@@ -53,11 +53,11 @@ function onSubmitFilterFilm(event) {
 
 function onRenderPageNumberByWord(evt) {
   console.log('film by name');
-  if (!evt.target.closest('.page-number-span')) {
+  if (!evt.target.closest('.numb')) {
     return;
   }
-  let pageNumber = evt.target.closest('.page-number-span').dataset.page;
-  console.log(evt.target.closest('.page-number-span').dataset.page);
+  let pageNumber = evt.target.closest('.numb').dataset.page;
+  console.log(evt.target.closest('.numb').dataset.page);
   let page = pageNumber;
   clearGallery();
   getFilmByName(searchNameFilm, Number(page));
