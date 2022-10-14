@@ -12,7 +12,7 @@ import createPagination from './pagination';
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.form');
 const error = document.querySelector('.error__message');
-const pagginationListEl = document.querySelector('.pagination__list');
+const pagginationListEl = document.querySelector('.pagination__list--main');
 
 if (form) {
   form.addEventListener('input', inputFilterFilm);

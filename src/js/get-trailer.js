@@ -9,7 +9,11 @@ const API_KEY = '1c5c067e324c39f9223ad13ef9891a0a';
 const URL = 'https://api.themoviedb.org/3/movie/';
 let id = undefined;
 
-listEl.addEventListener('click', getId);
+try {
+  listEl.addEventListener('click', getId);
+} catch (eror) {
+  console.log(eror);
+}
 
 // GET FILM ID WHEN FILM-MODAL OPEN //
 

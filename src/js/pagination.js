@@ -6,6 +6,7 @@ let page = 1;
 function createPagination(totalPages, page) {
   let liTag = '';
   let active;
+  page = Number(page);
   let beforePage = page - 1;
   let afterPage = page + 1;
   if (page > 1) {
