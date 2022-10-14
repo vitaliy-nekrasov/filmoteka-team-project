@@ -26,6 +26,9 @@ function onRenderModal(e) {
   }
   e.preventDefault();
 
+  document.querySelector('body').scroll = 'no';
+  document.querySelector('body').classList.add('no-scroll');
+
   let filmId = e.target.closest('.gallery__card').id;
   let electFilm = getFilmById(filmId);
   try {
@@ -231,6 +234,8 @@ function onCloseModal(e) {
   document.querySelector('.backdrop').classList.add('display__none');
   document.querySelector('.button-modal--flex').remove();
   localStorage.removeItem('IMDb_id');
+  document.querySelector('body').scroll = 'yes';
+  document.querySelector('body').classList.remove('no-scroll');
 }
 
 async function getIMDbId(filmId) {
