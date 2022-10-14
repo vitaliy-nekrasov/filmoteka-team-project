@@ -214,7 +214,7 @@ async function onGoIMDbPage(e) {
   //console.log(e.target.dataset.id);
   let idIMDb = await getIMDbId(filmId);
   let getHref = `https://www.imdb.com/title/${idIMDb}`;
-  //console.log(window.open(getHref));
+  console.log(window.open(getHref));
 }
 
 function onCloseModal(e) {
