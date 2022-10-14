@@ -10,8 +10,7 @@
 .modal {
   @media screen and (max-width: 767px) {
     width: 320px;
-    padding: 20px;
-    padding-top: 30px;
+    padding: 26px 20px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -30,10 +29,10 @@
 
 .button-modal__close {
   @include mq(mobile-only) {
-    top: 0;
-    right: 7px;
-    width: 20px;
-    height: 20px;
+    top: 2px;
+    right: 1px;
+    width: 25px;
+    height: 25px;
   }
   position: absolute;
   top: 8px;
@@ -87,7 +86,7 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 23px;
-    width: 240px;
+    width: 280px;
   }
 
   display: block;
@@ -102,7 +101,7 @@
 
 .modal__about--title--movie {
   @include mq(mobile-only) {
-    width: 240px;
+    width: 280px;
   }
   position: relative;
   display: flex;
@@ -202,7 +201,7 @@
 .about__movie--text--content {
   @include mq(mobile-only) {
     overflow-y: scroll;
-    height: 115px;
+    height: 85px;
   }
   font-weight: 500;
   font-size: 12px;
@@ -228,6 +227,8 @@
   list-style: none;
   margin-top: 35px;
   position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
 .add__watched {
