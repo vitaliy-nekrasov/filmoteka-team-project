@@ -1,4 +1,5 @@
 import { loaderShow, loaderHide } from './loader';
+import Notiflix from 'notiflix';
 
 const listEl = document.querySelector('.gallery');
 const trailerModalEl = document.querySelector('.trailer__modal');
@@ -41,10 +42,12 @@ async function fetchTrailerById(filmId) {
 async function getTrailerMarkup() {
   try {
     const obj = await fetchTrailerById(id);
-    const getTrailerObj = await obj.results.find(obj =>
-      obj.name.includes('Trailer')
+    const getTrailerObj = await obj.results.find(
+      obj => obj.name.includes('Trailer') || obj.type.includes('Trailer')
     );
     if (getTrailerObj === undefined) {
+      trailerBtnEl.classList.add('hide');
+      Notiflix.Notify.failure('Sorry, trailer not found');
       return;
     }
     const getLink = await getTrailerObj.key;
