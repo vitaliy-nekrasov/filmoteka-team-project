@@ -36,6 +36,7 @@
   cursor: default;
 }
 .pagination ul li.btn-skip {
+  padding: 12px;
   width: 40px;
   height: 40px;
   justify-content: center;
@@ -67,9 +68,6 @@
   }
 }
 
-.page-number-span {
-  padding: 12px;
-}
 .svg-btn{
    fill: currentColor;
    
