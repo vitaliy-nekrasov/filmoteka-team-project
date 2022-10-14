@@ -39,13 +39,14 @@
   border: none;
   background-color: transparent;
   position: absolute;
-  top: 50px;
+  top: 25px;
   left: 25px;
+
   @include mq(tablet) {
     top: 45px;
     left: 45px;
   }
-  @include mq(desktop) {
+  @media screen and (min-width: 1024px) {
     top: 45px;
     left: 25px;
   }
