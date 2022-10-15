@@ -1,5 +1,5 @@
 .pagination ul {
-  margin-bottom: 60px;
+  padding-bottom: 60px;
   justify-content: center;
   width: 100%;
   display: flex; 
@@ -24,12 +24,7 @@
   line-height: 40px;
   border-radius: 5px;
 }
-.pagination ul li.numb.first {
-  margin: 0px 3px 0 -5px;
-}
-.pagination ul li.numb.last {
-  margin: 0px -5px 0 3px;
-}
+
 .pagination ul li.dots {
   align-items: center;
   font-size: 12px;
@@ -51,10 +46,10 @@
   background: #ff6b08;
 }
 .prev {
-  margin-right: 12px;
+  margin-right: 3px;
 }
 .next {
-  margin-left: 12px;
+  margin-left: 3px;
 }
 @media screen and (max-width: 767px) {
   .dots {
