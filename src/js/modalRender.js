@@ -32,7 +32,12 @@ function onRenderModal(e) {
   let filmId = e.target.closest('.gallery__card').id;
   let electFilm = getFilmById(filmId);
   try {
-    renderModalWindoq(electFilm);
+    if (localStorage.getItem('current-lang') === 'english') {
+      renderModalWindowEng(electFilm);
+    }
+    if (localStorage.getItem('current-lang') === 'ukrainian') {
+      renderModalWindowUA(electFilm);
+    }
     if (!electFilm.poster_path) {
       document.querySelector('.button-modal__img').src =
         'https://st2.depositphotos.com/3994049/8290/v/950/depositphotos_82902580-stock-illustration-retro-movie-projector-vector-detailed.jpg';
@@ -268,7 +273,7 @@ function getFilmById(id) {
   }
 }
 
-function renderModalWindoq(filmEl) {
+function renderModalWindowEng(filmEl) {
   const {
     id,
     title,
@@ -316,3 +321,54 @@ function renderModalWindoq(filmEl) {
 
   modalWindowEl.insertAdjacentHTML('beforeend', modalRenderCod);
 }
+
+function renderModalWindowUA(filmEl) {
+  const {
+    id,
+    title,
+    original_title,
+    poster_path,
+    popularity,
+    vote_average,
+    vote_count,
+    overview,
+    genresName,
+  } = filmEl;
+  // document.querySelector('.modal').lastChild.remove();
+  let modalRenderCod = `    
+        <div class="button-modal--flex">
+            <img class="button-modal__img" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${title} poster">
+            <div class="modal__about--movie">
+                <h2 class="modal__about--title">${title}</h2>
+                <p class="modal__about--title--movie">Оцінка / голоси <span class="modal__about--rating" data-digits-counter>${vote_average}</span><span
+
+                        class="modal__about--title--movie-slech">/</span> <span
+                        class="modal__about--text--bleck" data-digits-counter>${vote_count}</span>
+                        <button class="imdb-btn" data-id="${id}" type="button">IMDb</button>
+                        </p>
+                <p class="modal__about--title--movie">Популярність<span
+                        class="modal__about--text--popularity" data-digits-counter>${popularity}</span>
+                <p class="modal__about--title--movie">Оригінальна назва<span class="modal__about--text--original--title">A
+                        ${original_title}</span>
+                <p class="modal__about--title--movie">Жанри<span class="modal__about--text--genre">${genresName}</span>
+                </p>
+                </p>
+                <p class="about__movie--text">Сюжет</p>
+                <p class="about__movie--text--content">${overview}</p>
+                <ul class="list__btn--add">
+                    <li class="watched-item"><button class="add__watched" data-id="${id}" type="button">до Переглянутих</button></li>
+                    <li class="queue-item"><button class="add_queue" data-id="${id}" type="button">До черги</button></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>`;
+
+  // <li class="queue-item"><button class="btn__remove" data-id="${id}" type="button">Remove</button></li>
+
+  // <a target="_blank" class="imdb-btn" href="https://www.imdb.com/title/${idInIMDB}">IMDb</a>;
+
+  modalWindowEl.insertAdjacentHTML('beforeend', modalRenderCod);
+}
+
+// if (currentLang === 'ukrainian') english {

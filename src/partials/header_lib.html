@@ -1,4 +1,4 @@
-<section class="header_lib">
+<header class="header_lib">
   <div class="container box">
     <div class="title_box">
       <div class="switcher">
@@ -20,10 +20,10 @@
 
       <div class="language_box">
         <li class="language__item">
-          <button type="button" class="change__language en">En</button>
+          <button type="button" data-lang="english" class="change__language en">En</button>
         </li>
         <li class="language__item">
-          <button type="button" class="change__language uk">Укр</button>
+          <button type="button" data-lang="ukrainian" class="change__language uk">Укр</button>
         </li>
       </div>
     </div>
@@ -35,8 +35,9 @@
       </a>
       <nav class="navigation">
         <ul class="navigation__list">
-          <li class="navigation__item home"><a class="navigation__link" href="index.html">Home</a></li>
-          <li class="navigation__item"><a class="navigation__link current" href="library.html">my library</a></li>
+          <li class="navigation__item home"><a class="navigation__link" href="index.html" id="home">Home</a></li>
+          <li class="navigation__item"><a class="navigation__link current" href="library.html" id="library">my
+              library</a></li>
         </ul>
       </nav>
     </div>
@@ -49,3 +50,4 @@
       </li>
     </ul>
   </div>
+</header>

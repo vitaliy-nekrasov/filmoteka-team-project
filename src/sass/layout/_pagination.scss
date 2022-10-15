@@ -23,6 +23,7 @@
   margin: 0 3px;
   line-height: 40px;
   border-radius: 5px;
+  color: var(--color-text-main);
 }
 
 .pagination ul li.dots {
@@ -35,7 +36,7 @@
   width: 40px;
   height: 40px;
   justify-content: center;
-  background: #f7f7f7;
+  background: var(--color-bg-footer);
   border-radius: 5px;
 }
 .pagination li.active,
