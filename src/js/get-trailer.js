@@ -2,6 +2,7 @@ import { loaderShow, loaderHide } from './loader';
 import Notiflix from 'notiflix';
 
 const listEl = document.querySelector('.gallery');
+const libraryListEl = document.querySelector('.gallery-lib');
 const trailerModalEl = document.querySelector('.trailer__modal');
 const trailerBackdropEl = document.querySelector('.trailer__backdrop');
 const trailerBtnEl = document.querySelector('.trailer');
@@ -11,8 +12,14 @@ let id = undefined;
 
 try {
   listEl.addEventListener('click', getId);
-} catch (eror) {
-  console.log(eror);
+} catch (error) {
+  console.log(error);
+}
+
+try {
+  libraryListEl.addEventListener('click', getId);
+} catch (error) {
+  console.log(error);
 }
 
 // GET FILM ID WHEN FILM-MODAL OPEN //
