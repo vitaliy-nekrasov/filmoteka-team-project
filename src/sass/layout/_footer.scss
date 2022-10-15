@@ -9,7 +9,7 @@
 
 .footer {
     margin: 30px 0 0 0;
-    background-color: #f7f7f7;
+    background-color: var(--color-bg-footer);
 }
 
 .footer__block {
@@ -21,7 +21,7 @@
     font-size: 14px;
     line-height: 1.2;
     letter-spacing: 0.02em;
-    color: #545454;
+    color: var(--color-text-footer);
 
     @media screen and (min-width: 768px) {
         display: flex;
@@ -82,7 +82,7 @@
 
 .goit__stud {
     padding-left: 4px;
-    color:#545454;
+    color: var(--color-text-footer);
 }
 
 .animate__heart {
@@ -119,5 +119,5 @@ button {
     border: none;
     cursor: pointer;
     color: #ff6b01;
-    background-color: #f7f7f7;
+    background-color:var(--color-bg-footer);
 }
