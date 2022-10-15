@@ -15,8 +15,9 @@
   @media screen and (max-width: 767px) {
     width: 285px;
     padding: 40px 20px;
+    max-height: 80vh;
     // padding-top: 46px;
-    height: 500px;
+    height: 700px;
     overflow-x: scroll;
     // border-top: var(--color-bg-main) 10px solid;
   }
