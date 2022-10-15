@@ -32,17 +32,31 @@ function getId(evt) {
   return id;
 }
 
-// GET OBJECT WITH TRAILER FROM API //
+// GET OBJECT WITH TRAILER FROM API IN DIFFERENT LANGUAGES //
 
 async function fetchTrailerById(filmId) {
   try {
-    const response = await fetch(`${URL}${filmId}/videos?api_key=${API_KEY}`);
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    const result = await response.json();
+    if (localStorage.getItem('current-lang') === 'english') {
+      const response = await fetch(`${URL}${filmId}/videos?api_key=${API_KEY}`);
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      const result = await response.json();
 
-    return result;
+      return result;
+    }
+
+    if (localStorage.getItem('current-lang') === 'ukrainian') {
+      const response = await fetch(
+        `${URL}${filmId}/videos?api_key=${API_KEY}&language=uk`
+      );
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      const result = await response.json();
+
+      return result;
+    }
   } catch (error) {
     console.log(error);
   }
