@@ -13,3 +13,4 @@ import './js/pagination';
 import './js/headerButton';
 import './js/switcher';
 import './js/counter';
+import './js/chengeLang';
