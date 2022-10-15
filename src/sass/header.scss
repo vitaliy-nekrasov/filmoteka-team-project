@@ -345,3 +345,10 @@ input:checked+.slider:before {
   font-size: 16px;
   line-height: 24px;
 }
+
+#dark {
+  fill: var(--color-theme-svg-dark);
+}
+#light {
+  fill: var(--color-theme-svg-light);
+}
