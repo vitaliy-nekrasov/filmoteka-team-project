@@ -124,14 +124,6 @@
     transition: width 0.4s ease-in-out;
  }
 
-  // @media (min-width: 320px) and (max-width: 768px) {
-  //   position: absolute;
-  //   top: 35px;
-  //   left:42%;
-  //   transform:translate(-50%, -50%);
-  //   transition: width 0.4s ease-in-out;
-  //   }
-
   @media screen and (min-width: 768px) {
     margin-top: 41px;
   }
@@ -335,6 +327,8 @@ input:checked+.slider:before {
 .switcher {
   display: flex;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .switcher-theme-name {
@@ -346,9 +340,22 @@ input:checked+.slider:before {
   line-height: 24px;
 }
 
-#dark {
+
+.dark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
   fill: var(--color-theme-svg-dark);
 }
-#light {
+.light {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
   fill: var(--color-theme-svg-light);
+}
+.title_box {
+  display: flex;
+  justify-content:flex-end;
 }
