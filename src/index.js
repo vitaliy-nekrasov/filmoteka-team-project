@@ -11,3 +11,4 @@ import './js/renderPage';
 import './js/get-trailer';
 import './js/pagination';
 import './js/headerButton';
+import './js/counter';
