@@ -32,7 +32,12 @@ function onRenderModal(e) {
   let filmId = e.target.closest('.gallery__card').id;
   let electFilm = getFilmById(filmId);
   try {
-    renderModalWindowEng(electFilm);
+    if (localStorage.getItem('current-lang') === 'english') {
+      renderModalWindowEng(electFilm);
+    }
+    if (localStorage.getItem('current-lang') === 'ukrainian') {
+      renderModalWindowUA(electFilm);
+    }
     if (!electFilm.poster_path) {
       document.querySelector('.button-modal__img').src =
         'https://st2.depositphotos.com/3994049/8290/v/950/depositphotos_82902580-stock-illustration-retro-movie-projector-vector-detailed.jpg';
@@ -365,3 +370,5 @@ function renderModalWindowUA(filmEl) {
 
   modalWindowEl.insertAdjacentHTML('beforeend', modalRenderCod);
 }
+
+// if (currentLang === 'ukrainian') english {

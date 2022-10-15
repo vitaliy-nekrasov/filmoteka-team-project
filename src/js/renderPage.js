@@ -1,14 +1,13 @@
-import {
-  fetchSearchFilm,
-  fetchTrending,
-  fetchGenres,
-  fetchIMDbId,
-} from './API.js';
+// if (localStorage.getItem('current-lang') === 'ukrainian')
+import { fetchSearchFilm, fetchTrending, fetchGenres } from './API.js';
+import { fetchTrendingUa, fetchSearchFilmUa, fetchGenresUa } from './API_UA.js';
 
 import renderGalleryLib from './renderMainGallery';
 import { loaderShow, loaderHide } from './loader.js';
 import createPagination from './pagination';
 
+const selectEnLangEl = document.querySelector('.en');
+const selectUaLangEl = document.querySelector('.uk');
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.form');
 const error = document.querySelector('.error__message');
@@ -30,6 +29,12 @@ let currentFilmReadLS = [];
 fetchGenres().then(responce => {
   localStorage.setItem('Genres', JSON.stringify(responce.genres));
 });
+
+if (localStorage.getItem('current-lang') === 'ukrainian') {
+  fetchGenresUa().then(responce => {
+    localStorage.setItem('Genres', JSON.stringify(responce.genres));
+  });
+}
 
 // Чтение перед загрузкой стартовой страницы сохраненного массива жанров фильмов
 
@@ -67,6 +72,18 @@ function onRenderPageNumberByWord(evt) {
 }
 
 function getFilmByName(searchNameFilm, page) {
+  if (localStorage.getItem('current-lang') === 'ukrainian') {
+    fetchSearchFilmUa(searchNameFilm, page)
+      .then(responce => {
+        loaderShow();
+        renderFilmoteka(responce, page);
+        loaderHide();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    return;
+  }
   fetchSearchFilm(searchNameFilm, page)
     .then(responce => {
       loaderShow();
@@ -79,6 +96,19 @@ function getFilmByName(searchNameFilm, page) {
 }
 
 function getPopularFilmArr(page) {
+  if (localStorage.getItem('current-lang') === 'ukrainian') {
+    fetchTrendingUa(page)
+      .then(responce => {
+        loaderShow();
+        renderFilmoteka(responce, page);
+        loaderHide();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    return;
+  }
+
   fetchTrending(page)
     .then(responce => {
       loaderShow();

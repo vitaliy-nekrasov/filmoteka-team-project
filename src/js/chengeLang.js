@@ -4,52 +4,99 @@ const selectUaLangEl = document.querySelector('.uk');
 let currentLang = localStorage.getItem('current-lang');
 if (currentLang === null) {
   currentLang = 'english';
+  // ukrainian;
 }
+
 console.log(currentLang);
 
 selectEnLangEl.addEventListener('click', onChangeLang);
 selectUaLangEl.addEventListener('click', onChangeLang);
 
-const refs = {
-  title: document.querySelector('.logo'),
-  home: document.querySelector('#home'),
-  library: document.querySelector('#library'),
-  watched: document.querySelector('.watched'),
-  queue: document.querySelector('.queue'),
-  error: document.querySelector('.error__message'),
-  placeholder: document.querySelector('.input__form').placeholder,
-  Rights: document.querySelector('.footer__content'),
-  Developed: document.querySelector('.footer__develop'),
-  by: document.querySelector('.footer__before-students'),
-  students: document.querySelector('.students'),
-};
-const engRender = {
-  title: 'Filmoteka',
-  home: 'Home',
-  library: 'my library',
-  watched: 'watched',
-  queue: 'queue',
-  error:
-    'Search result not successful. Enter the correct movie name and try again',
-  placeholder: 'Movie search',
-  rights: '© 2022 | All Rights Reserved |',
-  developed: 'Developed with',
-  by: 'by',
-  students: 'Students',
-};
-const ukrRender = {
-  title: 'Фільмотека',
-  home: 'Home',
-  library: 'Бібліотека',
-  watched: 'Переглянуті',
-  queue: 'Черга',
-  error: 'Нічого не знайдено',
-  placeholder: 'Пошук фільму',
-  rights: '© 2022 | Всі права захищені |',
-  developed: 'Розроблено з',
-  by: 'Студентами',
-  students: '',
-};
+const languageVariable = [
+  {
+    title: 'title',
+    refsEl: document.querySelector('.logo'),
+    eng: 'Filmoteka',
+    ukr: 'Фільмотека',
+  },
+
+  {
+    title: 'home',
+    refsEl: document.querySelector('#home'),
+    eng: 'Home',
+    ukr: 'Головна',
+  },
+
+  {
+    title: 'library',
+    refsEl: document.querySelector('#library'),
+    eng: 'my library',
+    ukr: 'Бібліотека',
+  },
+
+  {
+    title: 'watched',
+    refsEl: document.querySelector('.watched'),
+    eng: 'watched',
+    ukr: 'Переглянуті',
+  },
+
+  {
+    title: 'queue',
+    refsEl: document.querySelector('.queue'),
+    eng: 'queue',
+    ukr: 'Черга',
+  },
+
+  {
+    title: 'error',
+    refsEl: document.querySelector('.error__message'),
+    eng: 'Search result not successful. Enter the correct movie name and try again',
+    ukr: 'Нічого не знайдено! Змініть запит і спробуйте ще раз',
+  },
+
+  {
+    title: 'rights',
+    refsEl: document.querySelector('.footer__content'),
+    eng: '© 2022 | All Rights Reserved |',
+    ukr: '© 2022 | Всі права захищені |',
+  },
+
+  {
+    title: 'developed',
+    refsEl: document.querySelector('.footer__developer'),
+    eng: 'Developed with',
+    ukr: 'Створено з',
+  },
+
+  {
+    title: 'by',
+    refsEl: document.querySelector('.footer__before-students'),
+    eng: 'by',
+    ukr: 'Студентами',
+  },
+
+  {
+    title: 'students',
+    refsEl: document.querySelector('.students'),
+    eng: 'Students',
+    ukr: '',
+  },
+];
+
+if (currentLang === 'ukrainian') {
+  console.log('ukrainian if');
+  languageVariable.map(el => {
+    try {
+      changeStringLangOnUa(el);
+    } catch (error) {
+      console.log(error);
+    }
+  });
+  try {
+    document.querySelector('.input__form').placeholder = 'Пошук фільму';
+  } catch {}
+}
 
 function onChangeLang(e) {
   let targetLang = e.target.dataset.lang;
@@ -61,18 +108,43 @@ function onChangeLang(e) {
   console.log('!=');
   localStorage.setItem('current-lang', targetLang);
   currentLang = targetLang;
-  // ukrainian;
-  // english;
-}
 
-function cheakF() {
-  console.log(engRender);
-  for (let i = 0; i < engRender.length; i++) {
-    console.log(engRender[i]);
+  if (currentLang === 'ukrainian') {
+    console.log('ukrainian if');
+    languageVariable.map(el => {
+      try {
+        changeStringLangOnUa(el);
+      } catch (error) {
+        console.log(error);
+      }
+    });
+    try {
+      document.querySelector('.input__form').placeholder = 'Пошук фільму';
+    } catch {}
   }
-  let str = engRender.toString();
-  console.log(str);
-  console.log(engRender.toString());
+  if (currentLang === 'english') {
+    console.log('english if');
+
+    languageVariable.map(el => {
+      try {
+        changeStringLangOnEng(el);
+      } catch (error) {
+        console.log(error);
+      }
+    });
+    try {
+      document.querySelector('.input__form').placeholder = 'Movie search';
+    } catch {}
+  }
+
+  document.location.reload();
 }
 
-cheakF();
+function changeStringLangOnUa(el) {
+  console.log(el.refsEl);
+  el.refsEl.textContent = el.ukr;
+}
+function changeStringLangOnEng(el) {
+  el.refsEl.textContent = el.eng;
+  console.log(el.refsEl);
+}

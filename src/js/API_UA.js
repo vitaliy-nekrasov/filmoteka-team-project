@@ -1,7 +1,7 @@
 const API_KEY = '1c5c067e324c39f9223ad13ef9891a0a';
 const language = 'uk';
 
-async function fetchTrending(page) {
+async function fetchTrendingUa(page) {
   try {
     const URL = 'https://api.themoviedb.org/3/trending/movie/week';
 
@@ -15,7 +15,7 @@ async function fetchTrending(page) {
   }
 }
 
-async function fetchSearchFilm(query, page) {
+async function fetchSearchFilmUa(query, page) {
   try {
     const URL = 'https://api.themoviedb.org/3/search/movie';
 
@@ -29,7 +29,7 @@ async function fetchSearchFilm(query, page) {
   }
 }
 
-async function fetchGenres() {
+async function fetchGenresUa() {
   try {
     const URL = 'https://api.themoviedb.org/3/genre/movie/list';
 
@@ -43,17 +43,4 @@ async function fetchGenres() {
   }
 }
 
-async function fetchIMDbId(filmoId) {
-  try {
-    console.log(filmoId);
-    const URL = 'https://api.themoviedb.org/3/movie/';
-
-    const response = await fetch(`${URL}${filmoId}?api_key=${API_KEY}`);
-    return response.json();
-  } catch (error) {
-    // обработка ошибки получения данных с бэкэнда
-    console.error(error);
-  }
-}
-
-export { fetchTrending, fetchSearchFilm, fetchGenres, fetchIMDbId };
+export { fetchTrendingUa, fetchSearchFilmUa, fetchGenresUa };
