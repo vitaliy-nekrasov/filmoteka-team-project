@@ -43,6 +43,9 @@ function inputFilterFilm(event) {
 
 function onSubmitFilterFilm(event) {
   event.preventDefault();
+  if (!searchNameFilm) {
+    return;
+  }
   clearGallery();
 
   pagginationListEl.removeEventListener('click', onRenderPageNumber);
