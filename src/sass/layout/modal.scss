@@ -8,16 +8,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 100;
 }
 .modal {
   @media screen and (max-width: 767px) {
-    width: 280px;
+    width: 285px;
     padding: 40px 20px;
-    padding-top: 46px;
-    height: 700px;
+    // padding-top: 46px;
+    height: 500px;
     overflow-x: scroll;
+    // border-top: var(--color-bg-main) 10px solid;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -31,7 +32,8 @@
   transform: translate(-50%, -50%);
   width: 806px;
   padding: 40px 12px;
-  background-color: white;
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
 }
 
 .button-modal__close {
@@ -48,7 +50,12 @@
   height: 30px;
   display: block;
   background-color: transparent;
-  color: black;
+  // color: black;
+  color: var(--color-text-main);
+}
+
+.button-modal__close--svg {
+  padding-bottom: 3px;
   &:hover,
   &:focus {
     fill: #ff6b01;
@@ -102,7 +109,7 @@
   font-weight: 500;
   font-size: 30px;
   line-height: 1.17;
-  color: #000000;
+  // color: var(--color-text-main);
   margin-bottom: 12px;
 }
 
@@ -116,7 +123,7 @@
   font-size: 12px;
   line-height: 1.33;
 
-  color: #8c8c8c;
+  color: var(--color-text-footer);
   margin-top: 8px;
 }
 
@@ -134,7 +141,7 @@
   align-items: center;
   text-transform: uppercase;
 
-  color: #ffffff;
+  // color: var(--color-bg-main);
 
   background: #ff6b01;
   border-radius: 5px;
@@ -154,13 +161,13 @@
   text-align: center;
   text-transform: uppercase;
 
-  background: #f7f7f7;
+  background: var(--color-bg-footer);
   border-radius: 5px;
   width: 36px;
   height: 18px;
   padding-top: 3px;
 
-  color: #000000;
+  // color: var(--color-text-main);
 }
 
 .modal__about--text--popularity {
@@ -176,7 +183,7 @@
   text-align: center;
   text-transform: uppercase;
 
-  color: #000000;
+  // color: var(--color-text-main);
   margin-left: 97px;
 }
 
@@ -187,7 +194,7 @@
   align-items: center;
   text-transform: uppercase;
 
-  color: #000000;
+  // color: #000000;
 
   margin-top: 20px;
   margin-bottom: 8px;
@@ -203,14 +210,14 @@
   line-height: 1.33;
   align-items: center;
   margin-left: 83px;
-  color: #000000;
+  // color: #000000;
 }
 .about__movie--text--content {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
 
-  color: #000000;
+  // color: #000000;
   margin-top: 8px;
 }
 .modal__about--text--genre {
@@ -222,7 +229,7 @@
   line-height: 1.33;
   margin-left: 120px;
 
-  color: #000000;
+  // color: #000000;
 }
 
 .list__btn--add {
@@ -258,8 +265,8 @@
   font-size: 12px;
   line-height: 1.33;
   text-transform: uppercase;
-  color: #000000;
-  border: 1px solid black;
+  // color: #000000;
+  border: 1px solid var(--color-text-main);
 
   &:hover,
   &:focus {
@@ -268,7 +275,7 @@
     background: #ff6b01;
     border: 1px solid #ff6b01;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    color: #f7f7f7;
+    color: var(--color-bg-footer);
   }
 }
 .add_queue {
@@ -289,7 +296,7 @@
   line-height: 1.33;
   text-transform: uppercase;
 
-  color: #000000;
+  // color: #000000;
 
   &:hover,
   &:focus {
@@ -298,8 +305,8 @@
     background: #ff6b01;
     border: 1px solid #ff6b01;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    color: #f7f7f7;
-  }
+    color: var(--color-bg-footer);
+    }
 }
 
 .btn__remove {
@@ -321,7 +328,7 @@
   line-height: 1.33;
   text-transform: uppercase;
 
-  color: white;
+  color: #ffffff;
 
   &:hover,
   &:focus {
