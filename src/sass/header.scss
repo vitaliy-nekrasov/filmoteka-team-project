@@ -335,7 +335,7 @@ input:checked+.slider:before {
   background: none;
   outline: none;
   border: none;
-  color:#fff;
+  // color:#fff;
   font-size: 16px;
   line-height: 24px;
 }
@@ -345,14 +345,14 @@ input:checked+.slider:before {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 5px;
+  margin-left: 5px;
   fill: var(--color-theme-svg-dark);
 }
 .light {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 5px;
+  margin-right: 5px;
   fill: var(--color-theme-svg-light);
 }
 .title_box {
