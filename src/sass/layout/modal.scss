@@ -57,6 +57,7 @@
 
 .button-modal__close--svg {
   padding-bottom: 3px;
+  fill: var(--color-text-main);
   &:hover,
   &:focus {
     fill: #ff6b01;
