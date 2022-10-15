@@ -1,5 +1,24 @@
 <header class="header" id="header">
   <div class="container box">
+
+    <div class="title_box">
+      <div class="switcher">
+        <button class="switcher-theme-name dark">
+          <svg class="dark_theme" width="15px" height="15px">
+            <use href="/src/images/symbol-defs.svg#icon-moon-fill"></use>
+          </svg>
+        </button>
+        <label class="switch">
+          <input type="checkbox" id="theme-switch">
+          <span class="slider round"></span>
+        </label>
+        <button class="switcher-theme-name light">
+          <svg class="icon_theme" width="18px" height="18px">
+            <use href="/src/images/symbol-defs.svg#icon-sun"></use>
+          </svg>
+        </button>
+      </div>
+
     <div class="language_box">
       <li class="language__item">
         <button type="button" class="change__language en">En</button>
@@ -7,6 +26,7 @@
       <li class="language__item">
         <button type="button" class="change__language uk">Укр</button>
       </li>
+    </div>
     </div>
     <div class="link__box">
       <a href="/src/index.html" class="logo__box">
@@ -26,16 +46,4 @@
       <button type="submit" class="submit"></button>
       <p class="error__message">Search result not successful. Enter the correct movie name and try again</p>
     </form>
-    <div class="switcher">
-      <button class="switcher-theme-name">
-        Light
-      </button>
-      <label class="switch">
-        <input type="checkbox" id="theme-switch">
-        <span class="slider round"></span>
-      </label>
-      <button class="switcher-theme-name">
-        Dark
-      </button>
-    </div>
 </header>

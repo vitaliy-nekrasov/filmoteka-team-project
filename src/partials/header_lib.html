@@ -1,5 +1,23 @@
 <section class="header_lib">
   <div class="container box">
+    <div class="title_box">
+      <div class="switcher">
+        <button class="switcher-theme-name dark">
+          <svg class="dark_theme" width="15px" height="15px">
+            <use href="/src/images/symbol-defs.svg#icon-moon-fill"></use>
+          </svg>
+        </button>
+        <label class="switch">
+          <input type="checkbox" id="theme-switch">
+          <span class="slider round"></span>
+        </label>
+        <button class="switcher-theme-name light">
+          <svg class="icon_theme" width="18px" height="18px">
+            <use href="/src/images/symbol-defs.svg#icon-sun"></use>
+          </svg>
+        </button>
+      </div>
+
     <div class="language_box">
       <li class="language__item">
         <button type="button" class="change__language en">En</button>
@@ -8,6 +26,7 @@
         <button type="button" class="change__language uk">Укр</button>
       </li>
     </div>
+  </div>
     <div class="link__box">
       <a href="index.html" class="logo__box">
         <img src="./images/film.svg" class="image__logo" , alt="logo">
@@ -29,16 +48,5 @@
         <button class="button_action queue">queue</button>
       </li>
     </ul>
-    <div class="switcher">
-      <button class="switcher-theme-name">
-        Light
-      </button>
-      <label class="switch">
-        <input type="checkbox" id="theme-switch">
-        <span class="slider round"></span>
-      </label>
-      <button class="switcher-theme-name">
-        Dark
-      </button>
-    </div>
+
   </div>
