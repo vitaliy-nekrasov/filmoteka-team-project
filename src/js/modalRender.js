@@ -286,14 +286,14 @@ function renderModalWindoq(filmEl) {
             <img class="button-modal__img" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${title} poster">
             <div class="modal__about--movie">
                 <h2 class="modal__about--title">${title}</h2>
-                <p class="modal__about--title--movie">Vote / Votes <span class="modal__about--rating">${vote_average}</span><span
+                <p class="modal__about--title--movie">Vote / Votes <span class="modal__about--rating" data-digits-counter>${vote_average}</span><span
 
                         class="modal__about--title--movie-slech">/</span> <span
-                        class="modal__about--text--bleck">${vote_count}</span>
+                        class="modal__about--text--bleck" data-digits-counter>${vote_count}</span>
                         <button class="imdb-btn" data-id="${id}" type="button">IMDb</button>
                         </p>
                 <p class="modal__about--title--movie">Popularity<span
-                        class="modal__about--text--popularity">${popularity}</span>
+                        class="modal__about--text--popularity" data-digits-counter>${popularity}</span>
                 <p class="modal__about--title--movie">Original Title<span class="modal__about--text--original--title">A
                         ${original_title}</span>
                 <p class="modal__about--title--movie">Genre<span class="modal__about--text--genre">${genresName}</span>
