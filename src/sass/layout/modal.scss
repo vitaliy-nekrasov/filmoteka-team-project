@@ -1,5 +1,5 @@
 .no-scroll {
-  overflow: hidden
+  overflow: hidden;
 }
 
 .backdrop {
@@ -13,9 +13,11 @@
 }
 .modal {
   @media screen and (max-width: 767px) {
-    width: 320px;
-    padding: 26px 20px;
-    padding-bottom: 20px;
+    width: 280px;
+    padding: 40px 20px;
+    padding-top: 46px;
+    height: 800px;
+    overflow-x: scroll;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -34,8 +36,8 @@
 
 .button-modal__close {
   @include mq(mobile-only) {
-    top: 2px;
-    right: 1px;
+    top: 8px;
+    right: 8px;
     width: 25px;
     height: 25px;
   }
@@ -47,16 +49,16 @@
   display: block;
   background-color: transparent;
   color: black;
-}
-
-.button-modal__close--svg {
-  padding-bottom: 3px;
   &:hover,
   &:focus {
     fill: #ff6b01;
     transform: scale(0.9);
     transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
+}
+
+.button-modal__close--svg {
+  padding-bottom: 3px;
 }
 
 .button-modal--flex {
@@ -70,6 +72,7 @@
   width: 375px;
   height: 478px;
   margin-right: 16px;
+  object-fit: cover;
 
   @media screen and (max-width: 1023px) {
     width: 264px;
@@ -78,8 +81,8 @@
   }
 
   @include mq(mobile-only) {
-    width: 320px;
-    height: 327px;
+    width: 240px;
+    height: 357px;
     margin-bottom: 20px;
   }
 }
@@ -90,7 +93,7 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 23px;
-    width: 280px;
+    width: 240px;
   }
 
   display: block;
@@ -105,7 +108,7 @@
 
 .modal__about--title--movie {
   @include mq(mobile-only) {
-    width: 280px;
+    width: 240px;
   }
   position: relative;
   display: flex;
@@ -203,10 +206,6 @@
   color: #000000;
 }
 .about__movie--text--content {
-  @include mq(mobile-only) {
-    overflow-y: scroll;
-    height: 85px;
-  }
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
