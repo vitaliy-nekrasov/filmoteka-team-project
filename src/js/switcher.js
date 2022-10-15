@@ -7,6 +7,8 @@ const darkTheme = {
   footerText: '#D2D2D2',
   bgdGallary: '#292C35',
   bgdFooter: '#242424',
+  light: '#F7F7F7',
+  dark: '#FF6B08',
 };
 
 const lightTheme = {
@@ -14,6 +16,8 @@ const lightTheme = {
   footerText: '#545454',
   bgdGallary: '#fff',
   bgdFooter: '#F7F7F7',
+  light: '#FF6B08',
+  dark: '#F7F7F7',
 };
 
 let currentTheme = localStorage.getItem('current-theme');
@@ -40,6 +44,8 @@ function switchTheme() {
     element.style.setProperty('--color-bg-footer', lightTheme.bgdFooter);
     element.style.setProperty('--color-text-footer', lightTheme.footerText);
 
+    element.style.setProperty('--color-theme-svg-light', lightTheme.light);
+    element.style.setProperty('--color-theme-svg-dark', lightTheme.dark);
     // aboutMeContainer.classList.add('about--light');
     // factsContainer.classList.add('codex--light');
     localStorage.setItem('current-theme', 'light');
@@ -49,6 +55,9 @@ function switchTheme() {
     element.style.setProperty('--color-text-main', darkTheme.mainText);
     element.style.setProperty('--color-bg-footer', darkTheme.bgdFooter);
     element.style.setProperty('--color-text-footer', darkTheme.footerText);
+
+    element.style.setProperty('--color-theme-svg-light', darkTheme.light);
+    element.style.setProperty('--color-theme-svg-dark', darkTheme.dark);
 
     // aboutMeContainer.classList.remove('about--light');
     // factsContainer.classList.remove('codex--light');
@@ -63,4 +72,7 @@ function startColor() {
   element.style.setProperty('--color-text-main', darkTheme.mainText);
   element.style.setProperty('--color-bg-footer', darkTheme.bgdFooter);
   element.style.setProperty('--color-text-footer', darkTheme.footerText);
+
+  element.style.setProperty('--color-theme-svg-light', darkTheme.light);
+  element.style.setProperty('--color-theme-svg-dark', darkTheme.dark);
 }
