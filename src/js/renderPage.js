@@ -163,6 +163,16 @@ function remareFilsmObj(films) {
 function remareFilmObj(film) {
   film.genresName = getGenres(film.genre_ids);
   let vote = String(film.vote_average);
+
+  let popularity = String(film.popularity);
+  let indexOfDot = popularity.indexOf('.');
+  if (indexOfDot === -1) {
+    popularity += '.0';
+  } else {
+    popularity = popularity.slice(0, indexOfDot + 2);
+  }
+  film.popularity = popularity;
+
   if (vote.length === 1) {
     film.vote_average = vote.padEnd(3, '.0');
     return film;
