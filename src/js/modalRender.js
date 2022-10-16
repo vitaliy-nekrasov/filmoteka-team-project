@@ -388,7 +388,7 @@ function renderModalWindowUA(filmEl) {
                 </p>
                 </p>
                 <p class="about__movie--text-uk">Сюжет</p>
-                <p class="about__movie--text--content-uk">${overview}</p>
+                <p class="about__movie--text--content">${overview}</p>
                 <ul class="list__btn--add-uk">
                     <li class="watched-item-uk"><button class="add__watched-uk" data-id="${id}" type="button">до Переглянутих</button></li>
                     <li class="queue-item-uk"><button class="add_queue-uk" data-id="${id}" type="button">До черги</button></li>
