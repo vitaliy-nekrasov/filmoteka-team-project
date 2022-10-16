@@ -6,7 +6,7 @@
 }
 
 .pagination ul li {
-  color: #000000;
+  color: var(--color-text-main);
   list-style: none;
   line-height: 40px;
   text-align: center;
@@ -23,7 +23,7 @@
   margin: 0 3px;
   line-height: 40px;
   border-radius: 5px;
-  color: var(--color-text-main);
+  
 }
 
 .pagination ul li.dots {
@@ -43,8 +43,8 @@
 .pagination ul li.numb:hover,
 .pagination ul li:first-child:hover,
 .pagination ul li:last-child:hover {
-  color: #fff;
-  background: #ff6b08;
+  color: var(--color-bg-main);
+  background: var(--pagination-color);
 }
 .prev {
   margin-right: 3px;
