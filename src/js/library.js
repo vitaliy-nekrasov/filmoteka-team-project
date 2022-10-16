@@ -3,6 +3,8 @@ import createPagination from './pagination';
 
 const galleryLib = document.querySelector('.gallery-lib');
 const divContaunerText = document.querySelector('.container-lib');
+const noMovieTextEng = document.querySelector('.no-movie__eng');
+const noMovieTextUkr = document.querySelector('.no-movie__ukr');
 const bodyEl = document.querySelector('.body__lib');
 const mainEl = document.querySelector('.main__lib');
 const pagginationListEl = document.querySelector('.pagination__list--lib');
@@ -144,13 +146,21 @@ function renderOneCard(film) {
 function displaySorryMassege(filmArr, page = 1) {
   if (!filmArr || filmArr.length === 0) {
     clearGallery();
-    divContaunerText.classList.remove('display__none');
+    if (localStorage.getItem('current-lang') === 'english') {
+      noMovieTextEng.classList.remove('display__none');
+    }
+    if (localStorage.getItem('current-lang') === 'ukrainian') {
+      noMovieTextUkr.classList.remove('display__none');
+    }
+    // divContaunerText.classList.remove('display__none');
     galleryLib.classList.add('display__none');
     bodyEl.classList.add('body__lib--active');
     mainEl.classList.add('main__lib--active');
     return;
   }
-  divContaunerText.classList.add('display__none');
+  noMovieTextEng.classList.add('display__none');
+  noMovieTextUkr.classList.add('display__none');
+  // divContaunerText.classList.add('display__none');
   bodyEl.classList.remove('body__lib--active');
   mainEl.classList.remove('main__lib--active');
   galleryLib.classList.remove('display__none');
@@ -158,7 +168,11 @@ function displaySorryMassege(filmArr, page = 1) {
     createPaginationInLibrary(filmArr, (page = 1));
     return;
   }
-  renderGalleryLib(filmArr);
+  if (filmArr.length <= 20) {
+    renderGalleryLib(filmArr);
+    document.querySelector('.pagination__list').innerHTML = '';
+    return;
+  }
 }
 
 function createPaginationInLibrary(filmArr, page = 1) {

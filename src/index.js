@@ -1,4 +1,5 @@
 import './js/loader';
+import './js/chengeLang';
 import './js/header';
 // import './js/library';
 import './js/renderPage';
@@ -13,4 +14,3 @@ import './js/pagination';
 import './js/headerButton';
 import './js/switcher';
 import './js/counter';
-import './js/chengeLang';
