@@ -67,7 +67,7 @@ function createPagination(totalPages, page) {
   if (totalPages < 7) {
     for (let i = 1; i <= totalPages; i++) {
       if (i === page) {
-        liTag += `<li class="numb ${active}" data-page="${i}"><span  class="page-number-span">${i}</span> </li>`;
+        liTag += `<li class="numb active" data-page="${i}"><span  class="page-number-span">${i}</span> </li>`;
         continue;
       }
       liTag += `<li class="numb" data-page="${i}"><span  class="page-number-span">${i}</span> </li>`;
