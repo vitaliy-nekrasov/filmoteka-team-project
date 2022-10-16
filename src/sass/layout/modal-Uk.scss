@@ -70,14 +70,14 @@
   padding-bottom: 3px;
 }
 
-.button-modal--flex {
+.button-modal--flex-uk {
   @include mq(mobile-only) {
     display: block;
   }
   display: flex;
 }
 
-.button-modal__img {
+.button-modal__img-uk {
   width: 375px;
   height: 478px;
   margin-right: 16px;
@@ -96,7 +96,7 @@
   }
 }
 
-.modal__about--title {
+.modal__about--title-uk {
   @include mq(mobile-only) {
     font-style: normal;
     font-weight: 500;
@@ -111,13 +111,13 @@
   font-weight: 500;
   font-size: 30px;
   line-height: 1.17;
-  // color: var(--color-text-main);
+  color: var(--color-text-main);
   margin-bottom: 12px;
 }
 
-.modal__about--title--movie {
+.modal__about--title--movie-uk {
   @include mq(mobile-only) {
-    width: 240px;
+    width: 280px;
   }
   position: relative;
   display: flex;
@@ -129,7 +129,7 @@
   margin-top: 8px;
 }
 
-.modal__about--rating {
+.modal__about--rating-uk {
   @media screen and (max-width: 1023px) {
     margin-left: 41px;
   }
@@ -154,7 +154,7 @@
   margin-left: 85px;
 }
 
-.modal__about--text--bleck {
+.modal__about--text--bleck-uk {
   display: block;
   align-items: center;
   font-weight: 500;
@@ -172,7 +172,7 @@
   color: var(--color-text-main);
 }
 
-.modal__about--text--popularity {
+.modal__about--text--popularity-uk {
   @media screen and (max-width: 1023px) {
     margin-left: 53px;
   }
@@ -186,7 +186,7 @@
   text-transform: uppercase;
 
   color: var(--color-text-main);
-  margin-left: 97px;
+  margin-left: 96px;
 }
 
 .about__movie--text {
@@ -202,19 +202,19 @@
   margin-bottom: 8px;
 }
 
-.modal__about--text--original--title {
+.modal__about--text--original--title-uk {
   @media screen and (max-width: 1023px) {
-    margin-left: 39px;
+    margin-left: 25px;
     width: 130px;
   }
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
   align-items: center;
-  margin-left: 83px;
+  margin-left: 70px;
   color: #000000;
 }
-.about__movie--text--content {
+.about__movie--text--content-uk {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
@@ -222,19 +222,32 @@
   color: #000000;
   margin-top: 8px;
 }
-.modal__about--text--genre {
+.modal__about--text--genre-uk {
   @media screen and (max-width: 1023px) {
-    margin-left: 76px;
+    margin-left: 92px;
   }
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  margin-left: 120px;
+  margin-left: 136px;
 
   color: #000000;
 }
 
-.list__btn--add {
+.about__movie--text-uk {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  align-items: center;
+  text-transform: uppercase;
+
+  color: #000000;
+
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.list__btn--add-uk {
   @include mq(mobile-only) {
     display: flex;
     justify-content: center;
@@ -252,7 +265,7 @@
   }
 }
 
-.add__watched {
+.add__watched-uk {
   @include mq(mobile-only) {
     width: 110px;
   }
@@ -280,7 +293,7 @@
     color: var(--color-bg-footer);
   }
 }
-.add_queue {
+.add_queue-uk {
   @include mq(mobile-only) {
     width: 110px;
   }
@@ -297,9 +310,8 @@
   font-size: 12px;
   line-height: 1.33;
   text-transform: uppercase;
-  color: #000000;
 
-  // color: #000000;
+  color: #000000;
 
   &:hover,
   &:focus {
@@ -312,7 +324,7 @@
   }
 }
 
-.btn__remove {
+.btn__remove-uk {
   @include mq(mobile-only) {
     width: 110px;
   }
@@ -340,7 +352,7 @@
   }
 }
 
-.imdb-btn {
+.imdb-btn-uk {
   display: flex;
   padding-top: 1px;
   justify-content: center;
@@ -367,7 +379,7 @@
   outline: 2px solid #e7be00;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.modal__about--title--movie-slech {
+.modal__about--title--movie-slech-uk {
   font-size: 13px;
   padding: 0 3px;
 }
