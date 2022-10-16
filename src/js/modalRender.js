@@ -288,7 +288,24 @@ function renderModalWindowEng(filmEl) {
   // document.querySelector('.modal').lastChild.remove();
   let modalRenderCod = `    
         <div class="button-modal--flex">
-            <img class="button-modal__img" src="https://image.tmdb.org/t/p/original${poster_path}" alt="${title} poster">
+                <picture class='button-modal__img-uk'>
+                  <source media="(min-width: 1280px)" srcset="
+                              https://image.tmdb.org/t/p/w342${poster_path}    1x,
+                              https://image.tmdb.org/t/p/w780${poster_path} 2x,
+                              https://image.tmdb.org/t/p/original${poster_path} 3x
+                           " type="image/jpg" />
+                  <source media="(min-width: 768px)" srcset="
+                              https://image.tmdb.org/t/p/w342${poster_path}    1x,
+                              https://image.tmdb.org/t/p/w500${poster_path} 2x,
+                              https://image.tmdb.org/t/p/w780${poster_path} 3x
+                           " type="image/jpg" />
+                  <source media="(max-width: 767px)" srcset="
+                              https://image.tmdb.org/t/p/w342${poster_path}    1x,
+                              https://image.tmdb.org/t/p/w500${poster_path} 2x,
+                              https://image.tmdb.org/t/p/w780${poster_path} 3x
+                           " type="image/jpg" />
+                  <img class="button-modal__img" src="https://image.tmdb.org/t/p/w342${poster_path}" alt="${title} poster" loading="lazy" />
+               </picture>
             <div class="modal__about--movie">
                 <h2 class="modal__about--title">${title}</h2>
                 <p class="modal__about--title--movie">Vote / Votes <span class="modal__about--rating" data-digits-counter>${vote_average}</span><span
@@ -340,7 +357,7 @@ function renderModalWindowUA(filmEl) {
         <picture class='button-modal__img-uk'>
                   <source media="(min-width: 1280px)" srcset="
                               https://image.tmdb.org/t/p/w342${poster_path}    1x,
-                              https://image.tmdb.org/t/p/780${poster_path} 2x,
+                              https://image.tmdb.org/t/p/w780${poster_path} 2x,
                               https://image.tmdb.org/t/p/original${poster_path} 3x
                            " type="image/jpg" />
                   <source media="(min-width: 768px)" srcset="
