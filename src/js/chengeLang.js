@@ -3,8 +3,8 @@ const selectUaLangEl = document.querySelector('.uk');
 
 let currentLang = localStorage.getItem('current-lang');
 if (currentLang === null) {
-  currentLang = 'english';
-  // ukrainian;
+  localStorage.setItem('current-lang', 'english');
+  currentLang = localStorage.getItem('current-lang');
 }
 
 console.log(currentLang);
