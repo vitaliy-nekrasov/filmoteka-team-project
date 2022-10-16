@@ -116,21 +116,21 @@ function renderOneCard(film) {
             <a class="gallery__card" href="#" id="${id}">
                <picture>
                   <source media="(min-width: 1280px)" srcset="
-                              https://image.tmdb.org/t/p/w500${poster_path}    1x,
-                              https://image.tmdb.org/t/p/original${poster_path} 2x,
+                              https://image.tmdb.org/t/p/w342${poster_path}    1x,
+                              https://image.tmdb.org/t/p/780${poster_path} 2x,
                               https://image.tmdb.org/t/p/original${poster_path} 3x
                            " type="image/jpg" />
                   <source media="(min-width: 768px)" srcset="
                               https://image.tmdb.org/t/p/w342${poster_path}    1x,
-                              https://image.tmdb.org/t/p/w780${poster_path} 2x,
+                              https://image.tmdb.org/t/p/w500${poster_path} 2x,
                               https://image.tmdb.org/t/p/original${poster_path} 3x
                            " type="image/jpg" />
                   <source media="(max-width: 767px)" srcset="
                               https://image.tmdb.org/t/p/w342${poster_path}    1x,
-                              https://image.tmdb.org/t/p/w780${poster_path} 2x,
-                              https://image.tmdb.org/t/p/original${poster_path} 3x
+                              https://image.tmdb.org/t/p/w500${poster_path} 2x,
+                              https://image.tmdb.org/t/p/w780${poster_path} 3x
                            " type="image/jpg" />
-                  <img class="gallery__foto" src="https://image.tmdb.org/t/p/w500${poster_path}" width="450"
+                  <img class="gallery__foto" src="https://image.tmdb.org/t/p/w342${poster_path}" width="450"
                      height="294" alt="${title} poster" loading="lazy" />
                </picture>
                <h2 class="gallery__subtitle">${title}</h2>
