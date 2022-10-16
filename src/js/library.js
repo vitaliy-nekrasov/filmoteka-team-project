@@ -117,7 +117,7 @@ function renderOneCard(film) {
                <picture>
                   <source media="(min-width: 1280px)" srcset="
                               https://image.tmdb.org/t/p/w342${poster_path}    1x,
-                              https://image.tmdb.org/t/p/780${poster_path} 2x,
+                              https://image.tmdb.org/t/p/w780${poster_path} 2x,
                               https://image.tmdb.org/t/p/original${poster_path} 3x
                            " type="image/jpg" />
                   <source media="(min-width: 768px)" srcset="
