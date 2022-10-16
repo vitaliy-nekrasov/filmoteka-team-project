@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+html {
+  scroll-behavior: smooth;
+}
 
 h1,
 h2,
@@ -7,79 +10,81 @@ h4,
 h5,
 h6,
 p {
-   margin: 0;
+  margin: 0;
 }
 
 ul {
-   margin: 0;
-   padding: 0;
-   list-style: none
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 li {
-   list-style: none
+  list-style: none;
 }
 
 a {
-   color: currentColor;
-   text-decoration: none
+  color: currentColor;
+  text-decoration: none;
 }
 
 img {
-   display: block;
-   max-width: 100%;
-   height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 body {
-   position: relative;
-   font-family: 'Roboto', sans-serif;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-main);
 }
 
 main {
-   position: relative;
+  position: relative;
 }
 
 .btn {
-   cursor: pointer;
-   border: none;
+  cursor: pointer;
+  border: none;
 }
 .section {
-   padding-top: 60px;
-   padding-bottom: 60px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .container {
-   padding-left: 20px;
-   padding-right: 20px;
-   margin: 0 auto;
-   min-width: 320px;
-   width: 100vw;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+  min-width: 320px;
+  width: 100vw;
 
-   @media screen and (min-width: 420px) {
-      width: 420px;
-   }
+  @media screen and (min-width: 420px) {
+    width: 420px;
+  }
 
-   @include mq(tablet) {
-      width: 768px;
-      padding-left: 32px;
-      padding-right: 32px;
-   }
-   
-   @include mq(desktop) {
-      width: 1280px;
-   }
-} 
+  @include mq(tablet) {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include mq(desktop) {
+    width: 1280px;
+  }
+}
 
 .visually-hidden {
-   position: absolute;
-   white-space: nowrap;
-   width: 1px;
-   height: 1px;
-   overflow: hidden;
-   border: 0;
-   padding: 0;
-   clip: rect(0 0 0 0);
-   clip-path: inset(50%);
-   margin: -1px;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
 }

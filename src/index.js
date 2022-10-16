@@ -1,8 +1,9 @@
 import './js/loader';
+import './js/chengeLang';
 import './js/header';
-import './js/library';
+// import './js/library';
 import './js/renderPage';
-import './js/gallery-lib';
+// import './js/gallery-lib';
 import './js/team';
 import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import './js/modalRender';
@@ -11,3 +12,5 @@ import './js/renderPage';
 import './js/get-trailer';
 import './js/pagination';
 import './js/headerButton';
+import './js/switcher';
+import './js/counter';

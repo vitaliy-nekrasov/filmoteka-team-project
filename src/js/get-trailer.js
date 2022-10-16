@@ -1,48 +1,93 @@
 import { loaderShow, loaderHide } from './loader';
+import Notiflix from 'notiflix';
 
 const listEl = document.querySelector('.gallery');
+const libraryListEl = document.querySelector('.gallery-lib');
 const trailerModalEl = document.querySelector('.trailer__modal');
 const trailerBackdropEl = document.querySelector('.trailer__backdrop');
 const trailerBtnEl = document.querySelector('.trailer');
+const API_KEY = '1c5c067e324c39f9223ad13ef9891a0a';
+const URL = 'https://api.themoviedb.org/3/movie/';
 let id = undefined;
-listEl.addEventListener('click', getId);
+
+try {
+  listEl.addEventListener('click', getId);
+} catch (error) {
+  console.log(error);
+}
+
+try {
+  libraryListEl.addEventListener('click', getId);
+} catch (error) {
+  console.log(error);
+}
 
 // GET FILM ID WHEN FILM-MODAL OPEN //
 
 function getId(evt) {
+  trailerBtnEl.classList.add('hide');
   id = evt.target.closest('.gallery__card').id;
+  checkTrailer();
   trailerBtnEl.addEventListener('click', onTrailerBtnClick);
   return id;
 }
 
-// GET TRAILER LINK AND GENERATE TRAILER MARKUP //
+// GET OBJECT WITH TRAILER FROM API IN DIFFERENT LANGUAGES //
 
 async function fetchTrailerById(filmId) {
   try {
-    const API_KEY = '1c5c067e324c39f9223ad13ef9891a0a';
-    const URL = 'https://api.themoviedb.org/3/movie/';
+    if (localStorage.getItem('current-lang') === 'english') {
+      const response = await fetch(`${URL}${filmId}/videos?api_key=${API_KEY}`);
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      const result = await response.json();
 
-    const response = await fetch(`${URL}${filmId}/videos?api_key=${API_KEY}`);
-    if (!response.ok) {
-      return;
+      return result;
     }
-    const result = await response.json();
-    const getObj = await result.results.find(
-      obj => obj.name === 'Official Trailer'
-    );
-    const getLink = await getObj.key;
-    const link =
-      await `<iframe class="iframe" width="1400" height="700" src='https://www.youtube.com/embed/${getLink}' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="trailer_video"></iframe>`;
-    return link;
+
+    if (localStorage.getItem('current-lang') === 'ukrainian') {
+      const response = await fetch(
+        `${URL}${filmId}/videos?api_key=${API_KEY}&language=uk`
+      );
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      const result = await response.json();
+
+      return result;
+    }
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 }
 
-// ADD TRAILER MARKUP TO INDEX.HTML AND SHOW TRAILER-MODAL //
+// GET TRAILER MARKUP  //
+
+async function getTrailerMarkup() {
+  try {
+    const obj = await fetchTrailerById(id);
+    const getTrailerObj = await obj.results.find(
+      obj => obj.name.includes('Trailer') || obj.type.includes('Trailer')
+    );
+    if (getTrailerObj === undefined) {
+      trailerBtnEl.classList.add('hide');
+      Notiflix.Notify.failure('Sorry, trailer not found');
+      return;
+    }
+    const getLink = await getTrailerObj.key;
+    const markup =
+      await `<iframe class="youtube" width="1400" height="700" src='https://www.youtube.com/embed/${getLink}' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="trailer_video"></iframe>`;
+    return markup;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ADD TRAILER MARKUP AND ADD LISTENERS FOR CLOSE TRAILER MODAL
 
 function onTrailerBtnClick() {
-  fetchTrailerById(id).then(result => {
+  getTrailerMarkup().then(result => {
     if (result === undefined) {
       return;
     }
@@ -62,4 +107,14 @@ function onCloseTrailerModal() {
   trailerBackdropEl.classList.add('trailer__hidden');
   trailerBackdropEl.removeEventListener('click', onCloseTrailerModal);
   document.removeEventListener('keydown', onCloseTrailerModal);
+}
+
+// CHECK TRAILER FUNCTION, IF TRAILER NOT FOUND, AND SHOW TRAILER BUTTON IF TRAILER FOUND
+
+function checkTrailer() {
+  fetchTrailerById(id).then(result => {
+    if (result.results.length > 0) {
+      trailerBtnEl.classList.remove('hide');
+    }
+  });
 }

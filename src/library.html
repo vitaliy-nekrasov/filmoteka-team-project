@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html lang="ru">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- <meta name="description"
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta name="description"
     content=""> -->
-  <title>library</title>
-  <link rel="shortcut icon" href="/src/images/main_icon.svg" />
-  <link rel="stylesheet" href="./sass/index.scss" />
-</head>
+    <title>library</title>
+    <link rel="shortcut icon" href="/src/images/main_icon.svg" />
+    <link rel="stylesheet" href="./sass/index.scss" />
+  </head>
 
-<body>
-  <include src="./partials/header_lib.html"></include>
+  <body class="body__lib">
+    <include src="./partials/header_lib.html"></include>
 
-  <main>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <!-- <include src="./partials/example.html"></include> -->
-    <include src="./partials/main_library.html"></include>
-    <include src="./partials/film-gallery-lib.html"></include>
-  </main>
-  <include src="./partials/footer.html"></include>
+    <main class="main__lib">
+      <!-- ❗️❗️❗️ Add partials like so for every page -->
+      <!-- <include src="./partials/example.html"></include> -->
+      <include src="./partials/main_library.html"></include>
+      <include src="./partials/pagination-lib.html"></include>
 
-  <include src="./partials/loader.html"></include>
-  <script type="module" src="./index.js"></script>
-  <script type="module" src="./js/library.js"></script>
-</body>
-
+      <include src="./partials/modal.html"></include>
+    </main>
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/trailer-modal.html"></include>
+    <include src="./partials/loader.html"></include>
+    <script src="./js/pagination.js" type="module"></script>
+    <script type="module" src="./js/library.js"></script>
+    <script type="module" src="./index.js"></script>
+  </body>
 </html>

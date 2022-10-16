@@ -7,6 +7,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   opacity: 1;
   transition: opacity 250ms linear;
+  z-index: 101;
 }
 .trailer__modal {
   position: absolute;
@@ -19,7 +20,7 @@
   pointer-events: none;
   transition: opacity 250ms linear;
 }
-iframe {
+.youtube {
   width: 320px;
   height: 240px;
   @include mq(tablet) {
@@ -32,18 +33,27 @@ iframe {
   }
 }
 .trailer {
-  display: none;
+  display: inline;
   margin: 0;
   padding: 0;
   border: none;
   background-color: transparent;
   position: absolute;
-  @include mq(desktop) {
-    display: inline-flex;
-    top: 50px;
-    left: 20px;
+  top: 45px;
+  left: 25px;
+
+  @include mq(tablet) {
+    top: 45px;
+    left: 45px;
+  }
+  @media screen and (min-width: 1024px) {
+    top: 45px;
+    left: 25px;
   }
 }
 .trailer__icon {
   fill: red;
+}
+.hide {
+  display: none;
 }
