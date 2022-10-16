@@ -336,8 +336,8 @@ function renderModalWindowUA(filmEl) {
   } = filmEl;
   // document.querySelector('.modal').lastChild.remove();
   let modalRenderCod = `    
-        <div class="button-modal--flex">
-        <picture>
+        <div class="button-modal--flex-uk">
+        <picture class='button-modal__img-uk'>
                   <source media="(min-width: 1280px)" srcset="
                               https://image.tmdb.org/t/p/w342${poster_path}    1x,
                               https://image.tmdb.org/t/p/780${poster_path} 2x,
@@ -353,28 +353,28 @@ function renderModalWindowUA(filmEl) {
                               https://image.tmdb.org/t/p/w500${poster_path} 2x,
                               https://image.tmdb.org/t/p/w780${poster_path} 3x
                            " type="image/jpg" />
-                  <img class="button-modal__img" src="https://image.tmdb.org/t/p/w342${poster_path}" alt="${title} poster" loading="lazy" />
+                  <img class="button-modal__img-uk" src="https://image.tmdb.org/t/p/w342${poster_path}" alt="${title} poster" loading="lazy" />
                </picture>
-            <div class="modal__about--movie">
-                <h2 class="modal__about--title">${title}</h2>
-                <p class="modal__about--title--movie">Оцінка / голоси <span class="modal__about--rating" data-digits-counter>${vote_average}</span><span
+            <div class="modal__about--movie-uk">
+                <h2 class="modal__about--title-uk">${title}</h2>
+                <p class="modal__about--title--movie-uk">Оцінка / голоси <span class="modal__about--rating-uk" data-digits-counter>${vote_average}</span><span
 
-                        class="modal__about--title--movie-slech">/</span> <span
-                        class="modal__about--text--bleck" data-digits-counter>${vote_count}</span>
-                        <button class="imdb-btn" data-id="${id}" type="button">IMDb</button>
+                        class="modal__about--title--movie-slech-uk">/</span> <span
+                        class="modal__about--text--bleck-uk" data-digits-counter>${vote_count}</span>
+                        <button class="imdb-btn-uk" data-id="${id}" type="button">IMDb</button>
                         </p>
-                <p class="modal__about--title--movie">Популярність<span
-                        class="modal__about--text--popularity" data-digits-counter>${popularity}</span>
-                <p class="modal__about--title--movie">Оригінальна назва<span class="modal__about--text--original--title">A
+                <p class="modal__about--title--movie-uk">Популярність<span
+                        class="modal__about--text--popularity-uk" data-digits-counter>${popularity}</span>
+                <p class="modal__about--title--movie-uk">Оригінальна назва<span class="modal__about--text--original--title-uk">A
                         ${original_title}</span>
-                <p class="modal__about--title--movie">Жанри<span class="modal__about--text--genre">${genresName}</span>
+                <p class="modal__about--title--movie-uk">Жанри<span class="modal__about--text--genre-uk">${genresName}</span>
                 </p>
                 </p>
-                <p class="about__movie--text">Сюжет</p>
-                <p class="about__movie--text--content">${overview}</p>
-                <ul class="list__btn--add">
-                    <li class="watched-item"><button class="add__watched" data-id="${id}" type="button">до Переглянутих</button></li>
-                    <li class="queue-item"><button class="add_queue" data-id="${id}" type="button">До черги</button></li>
+                <p class="about__movie--text-uk">Сюжет</p>
+                <p class="about__movie--text--content-uk">${overview}</p>
+                <ul class="list__btn--add-uk">
+                    <li class="watched-item-uk"><button class="add__watched-uk" data-id="${id}" type="button">до Переглянутих</button></li>
+                    <li class="queue-item-uk"><button class="add_queue-uk" data-id="${id}" type="button">До черги</button></li>
                 </ul>
 
             </div>
