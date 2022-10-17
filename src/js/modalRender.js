@@ -56,7 +56,12 @@ function onRenderModal(e) {
   const imdbBtnEl = document.querySelector('.imdb-btn');
 
   imdbBtnEl.addEventListener('click', onGoIMDbPage);
-  cheackBtn(electFilm);
+  if (localStorage.getItem('current-lang') === 'english') {
+    cheackBtn(electFilm);
+  }
+  if (localStorage.getItem('current-lang') === 'ukrainian') {
+    cheackBtnUA(electFilm);
+  }
 }
 
 function onKeyDownCloseModal(e) {
@@ -128,6 +133,68 @@ function cheackBtn(electFilm) {
   }
 }
 
+function cheackBtnUA(electFilm) {
+  let watchedArrLS = JSON.parse(localStorage.getItem(LOCALSTORAGE_WATCHED));
+  let queveArrLS = JSON.parse(localStorage.getItem(LOCALSTORAGE_QUEUE));
+  const addWatched = document.querySelector('.add__watched');
+  const addQueue = document.querySelector('.add_queue');
+
+  addWatched.textContent = 'до Переглянутих';
+  if (!addWatched.dataset.add) {
+    addWatched.addEventListener(
+      'click',
+      onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+    );
+    addWatched.dataset.add = 'true';
+    addWatched.classList.remove('btn__remove');
+  }
+
+  try {
+    for (let valueFilm of watchedArrLS) {
+      if (valueFilm.id === electFilm.id) {
+        addWatched.remove();
+        addRemoveWathedBtn(electFilm.id);
+        document
+          .querySelector('.add__watched')
+          .addEventListener(
+            'click',
+            onBtnRemoveClick.bind(this, electFilm, LOCALSTORAGE_WATCHED)
+          );
+        break;
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  console.log(addQueue);
+  addQueue.textContent = 'До черги';
+  if (!addQueue.dataset.add) {
+    addQueue.addEventListener(
+      'click',
+      onBtnAddClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+    );
+    addQueue.dataset.add = 'true';
+    addQueue.classList.remove('btn__remove');
+  }
+  try {
+    for (let valueFilm of queveArrLS) {
+      if (valueFilm.id === electFilm.id) {
+        addQueue.remove();
+        addRemoveQueueBtn(electFilm.id);
+        document
+          .querySelector('.add_queue')
+          .addEventListener(
+            'click',
+            onBtnRemoveClick.bind(this, electFilm, LOCALSTORAGE_QUEUE)
+          );
+        return;
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function onBtnAddClick(electFilm, currentLocalStorage, evt) {
   evt.preventDefault();
 
@@ -150,7 +217,12 @@ async function onBtnAddClick(electFilm, currentLocalStorage, evt) {
   Notify.success(`New film ${electFilm.title} added ${textMessage}!`);
   localStorage.setItem(currentLocalStorage, JSON.stringify(arrayAdd));
 
-  cheackBtn(electFilm);
+  if (localStorage.getItem('current-lang') === 'english') {
+    cheackBtn(electFilm);
+  }
+  if (localStorage.getItem('current-lang') === 'ukrainian') {
+    cheackBtnUA(electFilm);
+  }
 }
 
 function onBtnRemoveClick(electFilm, currentLocalStorage, evt) {
@@ -180,7 +252,12 @@ function onBtnRemoveClick(electFilm, currentLocalStorage, evt) {
 
   localStorage.setItem(currentLocalStorage, JSON.stringify(arrayAdd));
 
-  cheackBtn(electFilm);
+  if (localStorage.getItem('current-lang') === 'english') {
+    cheackBtn(electFilm);
+  }
+  if (localStorage.getItem('current-lang') === 'ukrainian') {
+    cheackBtnUA(electFilm);
+  }
 
   if (
     document.querySelector('.watched').dataset.active === 'true' &&
@@ -202,8 +279,13 @@ function addRemoveWathedBtn(id) {
   btn.type = 'button';
   btn.classList.add('add__watched');
   btn.classList.add('btn__remove');
+  if (localStorage.getItem('current-lang') === 'english') {
+    btn.textContent = 'remove from Watched';
+  }
+  if (localStorage.getItem('current-lang') === 'ukrainian') {
+    btn.textContent = 'видалити з переглянутих';
+  }
   btn.dataset.id = `${id}`;
-  btn.textContent = 'remove from Watched';
   document.querySelector('.watched-item').appendChild(btn);
 }
 
@@ -213,7 +295,12 @@ function addRemoveQueueBtn(id) {
   btn.classList.add('add_queue');
   btn.classList.add('btn__remove');
   btn.dataset.id = `${id}`;
-  btn.textContent = 'remove from Queue';
+  if (localStorage.getItem('current-lang') === 'english') {
+    btn.textContent = 'remove from Queue';
+  }
+  if (localStorage.getItem('current-lang') === 'ukrainian') {
+    btn.textContent = 'видалити з черги';
+  }
   document.querySelector('.queue-item').appendChild(btn);
 }
 
@@ -353,8 +440,8 @@ function renderModalWindowUA(filmEl) {
   } = filmEl;
   // document.querySelector('.modal').lastChild.remove();
   let modalRenderCod = `    
-        <div class="button-modal--flex-uk">
-        <picture class='button-modal__img-uk'>
+        <div class="button-modal--flex">
+        <picture class='button-modal__img'>
                   <source media="(min-width: 1280px)" srcset="
                               https://image.tmdb.org/t/p/w342${poster_path}    1x,
                               https://image.tmdb.org/t/p/w780${poster_path} 2x,
@@ -370,7 +457,7 @@ function renderModalWindowUA(filmEl) {
                               https://image.tmdb.org/t/p/w500${poster_path} 2x,
                               https://image.tmdb.org/t/p/w780${poster_path} 3x
                            " type="image/jpg" />
-                  <img class="button-modal__img-uk" src="https://image.tmdb.org/t/p/w342${poster_path}" alt="${title} poster" loading="lazy" />
+                  <img class="button-modal__img" src="https://image.tmdb.org/t/p/w342${poster_path}" alt="${title} poster" loading="lazy" />
                </picture>
             <div class="modal__about--movie-uk">
                 <h2 class="modal__about--title-uk">${title}</h2>
@@ -378,7 +465,7 @@ function renderModalWindowUA(filmEl) {
 
                         class="modal__about--title--movie-slech-uk">/</span> <span
                         class="modal__about--text--bleck-uk" data-digits-counter>${vote_count}</span>
-                        <button class="imdb-btn-uk" data-id="${id}" type="button">IMDb</button>
+                        <button class="imdb-btn" data-id="${id}" type="button">IMDb</button>
                         </p>
                 <p class="modal__about--title--movie-uk">Популярність<span
                         class="modal__about--text--popularity-uk" data-digits-counter>${popularity}</span>
@@ -387,11 +474,11 @@ function renderModalWindowUA(filmEl) {
                 <p class="modal__about--title--movie-uk">Жанри<span class="modal__about--text--genre-uk">${genresName}</span>
                 </p>
                 </p>
-                <p class="about__movie--text-uk">Сюжет</p>
+                <p class="about__movie--text">Сюжет</p>
                 <p class="about__movie--text--content">${overview}</p>
-                <ul class="list__btn--add-uk">
-                    <li class="watched-item-uk"><button class="add__watched-uk" data-id="${id}" type="button">до Переглянутих</button></li>
-                    <li class="queue-item-uk"><button class="add_queue-uk" data-id="${id}" type="button">До черги</button></li>
+                <ul class="list__btn--add">
+                    <li class="watched-item watched-item-uk"><button class="add__watched add__watched-uk" data-id="${id}" type="button">до Переглянутих</button></li>
+                    <li class="queue-item queue-item-uk"><button class="add_queue add_queue-uk" data-id="${id}" type="button">До черги</button></li>
                 </ul>
 
             </div>
