@@ -188,6 +188,10 @@
   @include mq(mobile-only) {
     display: none;
   }
+  @media screen and (max-width: 1023px) {
+    bottom: 75px;
+    right: -10px;
+  }
   background-color: transparent;
   position: fixed;
   bottom: 75px;
@@ -307,4 +311,10 @@
 
 .svg__arrow {
   fill: #ff6b01;
+  width: 75px;
+  height: 75px;
+  @media screen and (max-width: 1023px) {
+    width: 35px;
+    height: 35px;
+  }
 }
