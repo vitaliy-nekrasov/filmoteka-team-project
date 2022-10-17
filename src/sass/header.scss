@@ -118,9 +118,9 @@
 
   @include mq (mobile-only) {
     position: absolute;
-    top: 35px;
-    left:42%;
-    transform:translate(-50%, -50%);
+    top: 20px;
+    // left:43%;
+    // transform:translate(-50%, -50%);
     transition: width 0.4s ease-in-out;
  }
 
@@ -140,7 +140,7 @@ display: block;
 .input__form {
   outline: none;
   position: relative;
-  width: 80%;
+  width: 60%;
   color: white;
   background-color: rgb(0, 0, 0, 0.01);
   border-top: none;
@@ -336,7 +336,6 @@ input:checked+.slider:before {
   background: none;
   outline: none;
   border: none;
-  // color:#fff;
   font-size: 16px;
   line-height: 24px;
 }
