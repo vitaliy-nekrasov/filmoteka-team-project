@@ -23,9 +23,9 @@ function onBtnStorage(currentLocalStorage, evt) {
   const savedData = localStorage.getItem(currentLocalStorage);
   try {
     const parsedData = JSON.parse(savedData);
-    console.log(parsedData);
+    // console.log(parsedData);
   } catch {
-    console.log('Не получилось распарсить JSON');
-    console.log(savedData);
+    // console.log('Не получилось распарсить JSON');
+    // console.log(savedData);
   }
 }

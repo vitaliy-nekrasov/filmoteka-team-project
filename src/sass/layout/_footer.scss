@@ -63,7 +63,7 @@
     display: block;
     position: absolute;
     margin-top: 20px;
-    width: 120px;
+    width: 150px;
     height: 4px;
     border-radius: 2px;
     background-color: #ff6b01;
@@ -92,8 +92,8 @@
 .animate__heart {
     width: 14px;
     height: 13px;
-    margin: 0 10px;
-    animation: beat 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0 5px;
+    animation: beat 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
 
     @keyframes beat {
         0% {

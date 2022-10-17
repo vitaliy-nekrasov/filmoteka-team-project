@@ -11,7 +11,7 @@ async function fetchTrendingUa(page) {
     return response.json();
   } catch (error) {
     // обработка ошибки получения данных с бэкэнда
-    console.error(error);
+    // console.error(error);
   }
 }
 
@@ -25,7 +25,7 @@ async function fetchSearchFilmUa(query, page) {
     return response.json();
   } catch (error) {
     // обработка ошибки получения данных с бэкэнда
-    console.error(error);
+    // console.error(error);
   }
 }
 
@@ -39,7 +39,7 @@ async function fetchGenresUa() {
     return response.json();
   } catch (error) {
     // обработка ошибки получения данных с бэкэнда
-    console.error(error);
+    // console.error(error);
   }
 }
 

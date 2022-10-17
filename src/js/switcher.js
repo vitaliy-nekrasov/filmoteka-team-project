@@ -24,7 +24,7 @@ let currentTheme = localStorage.getItem('current-theme');
 if (currentTheme === null) {
   currentTheme = 'light';
 }
-console.log(currentTheme);
+// console.log(currentTheme);
 
 const element = document.documentElement;
 
@@ -38,7 +38,6 @@ function switchTheme() {
   // const factsContainer = document.querySelector('.codex');
 
   if (currentTheme === 'dark') {
-    console.log('hi');
     element.style.setProperty('--color-bg-main', lightTheme.bgdGallary);
     element.style.setProperty('--color-text-main', lightTheme.mainText);
     element.style.setProperty('--color-bg-footer', lightTheme.bgdFooter);
