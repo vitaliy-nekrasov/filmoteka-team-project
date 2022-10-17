@@ -60,12 +60,12 @@ function onSubmitFilterFilm(event) {
 }
 
 function onRenderPageNumberByWord(evt) {
-  console.log('film by name');
+  // console.log('film by name');
   if (!evt.target.closest('.numb')) {
     return;
   }
   let pageNumber = evt.target.closest('.numb').dataset.page;
-  console.log(evt.target.closest('.numb').dataset.page);
+  // console.log(evt.target.closest('.numb').dataset.page);
   let page = pageNumber;
   clearGallery();
   getFilmByName(searchNameFilm, Number(page));
@@ -80,7 +80,7 @@ function getFilmByName(searchNameFilm, page) {
         loaderHide();
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
       });
     return;
   }
@@ -91,7 +91,7 @@ function getFilmByName(searchNameFilm, page) {
       loaderHide();
     })
     .catch(error => {
-      console.log(error);
+      // console.log(error);
     });
 }
 
@@ -104,7 +104,7 @@ function getPopularFilmArr(page) {
         loaderHide();
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
       });
     return;
   }
@@ -116,7 +116,7 @@ function getPopularFilmArr(page) {
       loaderHide();
     })
     .catch(error => {
-      console.log(error);
+      // console.log(error);
     });
 }
 
@@ -216,12 +216,12 @@ try {
 } catch {}
 
 function onRenderPageNumber(evt) {
-  console.log('популярні фільми');
+  // console.log('популярні фільми');
   if (!evt.target.closest('.numb')) {
     return;
   }
   let pageNumber = evt.target.closest('.numb').dataset.page;
-  console.log(evt.target.closest('.numb').dataset.page);
+  // console.log(evt.target.closest('.numb').dataset.page);
   let page = pageNumber;
   clearGallery();
   getPopularFilmArr(Number(page));

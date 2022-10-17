@@ -17,7 +17,7 @@ try {
   libraryFilmGalleryEl.addEventListener('click', onRenderModal);
   modalCloseBtnEl.addEventListener('click', onCloseModal);
 } catch (error) {
-  console.log(error);
+  // console.log(error);
 }
 
 function onRenderModal(e) {
@@ -43,7 +43,7 @@ function onRenderModal(e) {
         'https://st2.depositphotos.com/3994049/8290/v/950/depositphotos_82902580-stock-illustration-retro-movie-projector-vector-detailed.jpg';
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 
   document.querySelector('.backdrop').classList.remove('display__none');
@@ -97,7 +97,7 @@ function cheackBtn(electFilm) {
       }
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 
   addQueue.textContent = 'add to Queue';
@@ -124,7 +124,7 @@ function cheackBtn(electFilm) {
       }
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }
 
