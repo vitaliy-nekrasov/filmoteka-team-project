@@ -7,7 +7,7 @@ if (currentLang === null) {
   currentLang = localStorage.getItem('current-lang');
 }
 
-console.log(currentLang);
+// console.log(currentLang);
 
 selectEnLangEl.addEventListener('click', onChangeLang);
 selectUaLangEl.addEventListener('click', onChangeLang);
@@ -85,12 +85,12 @@ const languageVariable = [
 ];
 
 if (currentLang === 'ukrainian') {
-  console.log('ukrainian if');
+  // console.log('ukrainian if');
   languageVariable.map(el => {
     try {
       changeStringLangOnUa(el);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   });
   try {
@@ -100,22 +100,22 @@ if (currentLang === 'ukrainian') {
 
 function onChangeLang(e) {
   let targetLang = e.target.dataset.lang;
-  console.log(targetLang);
+  // console.log(targetLang);
   if (currentLang === targetLang) {
-    console.log('=');
+    // console.log('=');
     return;
   }
-  console.log('!=');
+  // console.log('!=');
   localStorage.setItem('current-lang', targetLang);
   currentLang = targetLang;
 
   if (currentLang === 'ukrainian') {
-    console.log('ukrainian if');
+    // console.log('ukrainian if');
     languageVariable.map(el => {
       try {
         changeStringLangOnUa(el);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     });
     try {
@@ -123,13 +123,13 @@ function onChangeLang(e) {
     } catch {}
   }
   if (currentLang === 'english') {
-    console.log('english if');
+    // console.log('english if');
 
     languageVariable.map(el => {
       try {
         changeStringLangOnEng(el);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     });
     try {
@@ -141,10 +141,10 @@ function onChangeLang(e) {
 }
 
 function changeStringLangOnUa(el) {
-  console.log(el.refsEl);
+  // console.log(el.refsEl);
   el.refsEl.textContent = el.ukr;
 }
 function changeStringLangOnEng(el) {
   el.refsEl.textContent = el.eng;
-  console.log(el.refsEl);
+  // console.log(el.refsEl);
 }

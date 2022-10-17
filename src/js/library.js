@@ -41,7 +41,7 @@ try {
         onRenderLibraryQueuePageNumber
       );
     } catch (eror) {
-      console.log(eror);
+      // console.log(eror);
     }
     displaySorryMassege(JSON.parse(localStorage.getItem('films-to-watched')));
     pagginationListEl.addEventListener(
@@ -50,7 +50,7 @@ try {
     );
   });
 } catch (eror) {
-  console.log(eror);
+  // console.log(eror);
 }
 
 try {
@@ -65,19 +65,19 @@ try {
         onRenderLibraryWathedPageNumber
       );
     } catch (eror) {
-      console.log(eror);
+      // console.log(eror);
     }
     displaySorryMassege(JSON.parse(localStorage.getItem('films-to-queue')));
     pagginationListEl.addEventListener('click', onRenderLibraryQueuePageNumber);
   });
 } catch (eror) {
-  console.log(eror);
+  // console.log(eror);
 }
 
 try {
   displaySorryMassege(JSON.parse(localStorage.getItem('films-to-watched')));
 } catch (eror) {
-  console.log(eror);
+  // console.log(eror);
 }
 
 function clearGallery() {
@@ -85,7 +85,7 @@ function clearGallery() {
 }
 
 function renderGalleryLib(movie) {
-  console.log(movie);
+  // console.log(movie);
   const markupGalleryLib = movie.map(mov => renderOneCard(mov)).join('');
   try {
     clearGallery();
@@ -184,36 +184,36 @@ function createPaginationInLibrary(filmArr, page = 1) {
       parthOfFilmArr.push(filmArr[i]);
     }
   }
-  console.log(parthOfFilmArr);
+  // console.log(parthOfFilmArr);
   renderGalleryLib(parthOfFilmArr);
 }
 
 try {
   pagginationListEl.addEventListener('click', onRenderLibraryWathedPageNumber);
 } catch (eror) {
-  console.log(eror);
+  // console.log(eror);
 }
 
 function onRenderLibraryWathedPageNumber(evt) {
-  console.log('biblio-watched');
+  // console.log('biblio-watched');
   if (!evt.target.closest('.numb')) {
     return;
   }
   let filmArr = JSON.parse(localStorage.getItem('films-to-watched'));
   let pageNumber = evt.target.closest('.numb').dataset.page;
-  console.log(evt.target.closest('.numb').dataset.page);
+  // console.log(evt.target.closest('.numb').dataset.page);
   let page = pageNumber;
   clearGallery();
   createPaginationInLibrary(filmArr, page);
 }
 function onRenderLibraryQueuePageNumber(evt) {
-  console.log('biblio-queue');
+  // console.log('biblio-queue');
   if (!evt.target.closest('.numb')) {
     return;
   }
   let filmArr = JSON.parse(localStorage.getItem('films-to-queue'));
   let pageNumber = evt.target.closest('.numb').dataset.page;
-  console.log(evt.target.closest('.numb').dataset.page);
+  // console.log(evt.target.closest('.numb').dataset.page);
   let page = pageNumber;
   clearGallery();
   createPaginationInLibrary(filmArr, page);

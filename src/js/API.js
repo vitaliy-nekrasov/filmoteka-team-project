@@ -8,7 +8,7 @@ async function fetchTrending(page) {
     return response.json();
   } catch (error) {
     // обработка ошибки получения данных с бэкэнда
-    console.error(error);
+    // console.error(error);
   }
 }
 
@@ -22,7 +22,7 @@ async function fetchSearchFilm(query, page) {
     return response.json();
   } catch (error) {
     // обработка ошибки получения данных с бэкэнда
-    console.error(error);
+    // console.error(error);
   }
 }
 
@@ -34,7 +34,7 @@ async function fetchGenres() {
     return response.json();
   } catch (error) {
     // обработка ошибки получения данных с бэкэнда
-    console.error(error);
+    // console.error(error);
   }
 }
 
@@ -47,7 +47,7 @@ async function fetchIMDbId(filmoId) {
     return response.json();
   } catch (error) {
     // обработка ошибки получения данных с бэкэнда
-    console.error(error);
+    // console.error(error);
   }
 }
 

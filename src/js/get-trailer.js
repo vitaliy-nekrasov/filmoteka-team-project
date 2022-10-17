@@ -13,13 +13,13 @@ let id = undefined;
 try {
   listEl.addEventListener('click', getId);
 } catch (error) {
-  console.log(error);
+  // console.log(error);
 }
 
 try {
   libraryListEl.addEventListener('click', getId);
 } catch (error) {
-  console.log(error);
+  // console.log(error);
 }
 
 // GET FILM ID WHEN FILM-MODAL OPEN //
@@ -58,7 +58,7 @@ async function fetchTrailerById(filmId) {
       return result;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }
 
@@ -80,7 +80,7 @@ async function getTrailerMarkup() {
       await `<iframe class="youtube" width="1400" height="700" src='https://www.youtube.com/embed/${getLink}' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="trailer_video"></iframe>`;
     return markup;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }
 
