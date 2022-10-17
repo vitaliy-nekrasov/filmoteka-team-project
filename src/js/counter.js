@@ -1,11 +1,8 @@
 const galleryItemlist = document.querySelector('.gallery__item');
-let clickMouse = 0;
-const totalClickMouse = 1;
-window.addEventListener(
-  'click',
-  windowLoad,
-  clickMouse === 1 ? addEventListener.remove='click' : addEventListener.add= 'click'
-);
+const options = {
+  once: true,
+};
+window.addEventListener('click', windowLoad, options);
 
 function windowLoad() {
   // Функція ініціалізації
