@@ -2,10 +2,10 @@
   "name": "Filmoteka_by_ITLegend",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://Musiyan98.github.io/filmoteka_by_ITLegend",
+  "homepage": "https://vitaliy-nekrasov.github.io/filmoteka-team-project/",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /filmoteka_by_ITLegend/"
+    "build": "parcel build src/*.html --public-url /filmoteka-team-project/"
   },
   "repository": {
     "type": "git",
